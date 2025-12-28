@@ -18,7 +18,7 @@ export interface BestImageProfile {
 }
 
 /**
- * Modern Light Mode Canvas Generator (3:4 Portrait)
+ * Game UI Canvas Generator (Dark Tech/Cyber Style)
  */
 export async function generateBestImage(scores: BestImageScore[], profile: BestImageProfile): Promise<string> {
   const width = 1200; 
@@ -31,30 +31,25 @@ export async function generateBestImage(scores: BestImageScore[], profile: BestI
   if (!ctx) throw new Error("Could not get canvas context");
 
   // --- 1. Background Layer ---
-  ctx.fillStyle = "#f8fafc"; 
+  // Base background: #0E1F34
+  ctx.fillStyle = "#0E1F34"; 
   ctx.fillRect(0, 0, width, height);
-  
-  const drawBlob = (x: number, y: number, color: string, radius: number) => {
-      const g = ctx.createRadialGradient(x, y, 0, x, y, radius);
-      g.addColorStop(0, color);
-      g.addColorStop(1, "transparent");
-      ctx.fillStyle = g;
-      ctx.beginPath();
-      ctx.arc(x, y, radius, 0, Math.PI * 2);
-      ctx.fill();
-  };
-  
-  drawBlob(width, 0, "rgba(59, 130, 246, 0.08)", 900);
-  drawBlob(0, height, "rgba(168, 85, 247, 0.08)", 900);
 
-  ctx.fillStyle = "rgba(100, 116, 139, 0.08)"; 
-  const dotSpacing = 40;
-  for (let x = 0; x < width; x += dotSpacing) {
-    for (let y = 0; y < height; y += dotSpacing) {
-      ctx.beginPath();
-      ctx.arc(x, y, 1.5, 0, Math.PI * 2);
-      ctx.fill();
-    }
+  // Optional: Subtle grid or tech accent for "Game UI" feel
+  ctx.strokeStyle = "rgba(0, 223, 235, 0.1)"; // Cyan dim
+  ctx.lineWidth = 1;
+  const gridSize = 60;
+  for (let x = 0; x < width; x += gridSize) {
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, height);
+    ctx.stroke();
+  }
+  for (let y = 0; y < height; y += gridSize) {
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(width, y);
+    ctx.stroke();
   }
 
   // --- 2. Header ---
@@ -66,18 +61,17 @@ export async function generateBestImage(scores: BestImageScore[], profile: BestI
 
   ctx.save();
   
-  // Header Card
-  ctx.shadowColor = "rgba(148, 163, 184, 0.2)";
-  ctx.shadowBlur = 20;
-  ctx.shadowOffsetY = 10;
-  ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
-  roundedRect(ctx, headerBoxY, headerBoxY, width - headerBoxY * 2, headerBoxH, 24);
-  ctx.fill();
+  // Header Frame Logic
+  // Frame Color: #00DFEB
+  // Fill Color: #1682A2
   
-  // Border
-  ctx.shadowColor = "transparent";
-  ctx.strokeStyle = "#ffffff";
-  ctx.lineWidth = 2;
+  ctx.fillStyle = "#1682A2";
+  ctx.strokeStyle = "#00DFEB";
+  ctx.lineWidth = 3;
+  
+  // Create shape path
+  chamferedRect(ctx, headerBoxY, headerBoxY, width - headerBoxY * 2, headerBoxH, 20);
+  ctx.fill();
   ctx.stroke();
 
   // --- User Icon ---
@@ -85,19 +79,18 @@ export async function generateBestImage(scores: BestImageScore[], profile: BestI
   const iconX = glassMargin + 40;
   const iconY = headerCenterY - iconSize / 2;
   
-  // Ring
-  ctx.strokeStyle = "#e2e8f0"; 
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.arc(iconX + iconSize/2, iconY + iconSize/2, iconSize/2 + 4, 0, Math.PI*2);
-  ctx.stroke();
-
-  // Image
+  // Icon Border (Chamfered)
   ctx.save();
-  roundedRect(ctx, iconX, iconY, iconSize, iconSize, iconSize/2); 
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = "#00DFEB";
+  chamferedRect(ctx, iconX - 4, iconY - 4, iconSize + 8, iconSize + 8, 12);
+  ctx.stroke();
+  
+  // Icon Clip & Draw
+  chamferedRect(ctx, iconX, iconY, iconSize, iconSize, 8); 
   ctx.clip();
-  ctx.fillStyle = "#cbd5e1"; 
-  ctx.fill();
+  ctx.fillStyle = "#22363B"; 
+  ctx.fillRect(iconX, iconY, iconSize, iconSize);
 
   if (profile.userImageUrl) {
     try {
@@ -116,73 +109,88 @@ export async function generateBestImage(scores: BestImageScore[], profile: BestI
   // --- Header Text Content ---
   const infoX = iconX + iconSize + 30; 
   
-  // Available width logic
-  const rightStatsWidth = 180; // Reduced for narrower graph
+  const rightStatsWidth = 180;
   const maxNameWidth = width - infoX - rightStatsWidth - glassMargin - 20;
 
   ctx.textBaseline = "middle"; 
   
+  // Helper for outlined text
+  const drawOutlinedText = (text: string, x: number, y: number, fontSize: number, align: CanvasTextAlign = "left") => {
+    ctx.font = `${fontSize}px sans-serif`; // Regular weight
+    ctx.textAlign = align;
+    ctx.textBaseline = "middle";
+    ctx.lineJoin = "round";
+    
+    // Stroke (Black outline)
+    ctx.strokeStyle = "#000000";
+    ctx.lineWidth = 3; 
+    ctx.strokeText(text, x, y);
+    
+    // Fill (White)
+    ctx.fillStyle = "#FFFFFF";
+    ctx.fillText(text, x, y);
+  };
+
   // 1. Player Name
-  ctx.fillStyle = "#1e293b"; 
-  ctx.textAlign = "left";
-  
-  const mainFontSize = 56;
-  
-  let nameFontSize = mainFontSize;
-  ctx.font = `bold ${nameFontSize}px sans-serif`;
+  let nameFontSize = 56;
+  ctx.font = `${nameFontSize}px sans-serif`;
   while (ctx.measureText(profile.name).width > maxNameWidth && nameFontSize > 24) {
     nameFontSize -= 2;
-    ctx.font = `bold ${nameFontSize}px sans-serif`;
+    ctx.font = `${nameFontSize}px sans-serif`;
   }
-  ctx.fillText(profile.name, infoX, headerCenterY);
+  drawOutlinedText(profile.name, infoX, headerCenterY, nameFontSize, "left");
   const nameActualWidth = ctx.measureText(profile.name).width;
 
-  // 2. Rating Group (Aligned to Name, Same Line)
+  // 2. Rating Group
   const rateGroupX = infoX + nameActualWidth + 30;
-  const rateNum = parseFloat(profile.rate);
   
-  // Determine Rate Color / Gradient shared for Label and Number
-  let rateFillStyle: string | CanvasGradient = "#0284c7"; // Default Cyan
-
-  if (rateNum >= 19.0) {
-     const gradient = ctx.createLinearGradient(rateGroupX, 0, rateGroupX + 250, 0); // Wide coverage
-     gradient.addColorStop(0, "#eab308"); // yellow
-     gradient.addColorStop(0.5, "#d946ef"); // magenta
-     gradient.addColorStop(1, "#0ea5e9"); // cyan
-     rateFillStyle = gradient;
-  } else if (rateNum >= 18.0) {
-     rateFillStyle = "#ca8a04"; 
-  }
-
   // "RATING" Label
-  ctx.fillStyle = rateFillStyle; 
-  ctx.font = "bold 20px sans-serif"; 
-  ctx.fillText("RATING", rateGroupX, headerCenterY); 
+  drawOutlinedText("RATING", rateGroupX, headerCenterY, 24, "left");
   const labelWidth = ctx.measureText("RATING").width;
 
-  // Rating Value
+  // Rating Value (Dynamically Colored)
+  const rateNum = parseFloat(profile.rate);
   const valueX = rateGroupX + labelWidth + 15;
-  ctx.font = `bold ${mainFontSize}px sans-serif`; 
-  ctx.fillStyle = rateFillStyle;
+  const rateFontSize = 56;
+  
+  // Color Logic
+  let rateColor = "#00DFEB"; // Default Cyan
+  if (rateNum >= 19.0) rateColor = "#FFD700"; // Gold
+  else if (rateNum >= 18.0) rateColor = "#C0C0C0"; // Silverish/White
+  else if (rateNum >= 17.0) rateColor = "#CD7F32"; // Bronze
+  else if (rateNum >= 16.0) rateColor = "#ff7777"; // Reddish
+
+  ctx.font = `${rateFontSize}px sans-serif`;
+  ctx.textAlign = "left";
+  ctx.lineJoin = "round";
+  
+  // Stroke
+  ctx.strokeStyle = "#000000";
+  ctx.lineWidth = 4;
+  ctx.strokeText(profile.rate, valueX, headerCenterY);
+  
+  // Fill
+  ctx.fillStyle = rateColor;
   ctx.fillText(profile.rate, valueX, headerCenterY);
 
-  // Date Tag
+  // Date Tag (Upper Right of Header)
+  // Subtle text
   const dateText = profile.date.replace(/\//g, '.');
-  ctx.fillStyle = "#cbd5e1"; 
-  ctx.font = "13px monospace";
+  ctx.font = "14px monospace";
   ctx.textAlign = "right";
-  ctx.fillText(dateText, width - glassMargin - 30, glassMargin + 30);
+  ctx.fillStyle = "rgba(255,255,255,0.7)";
+  ctx.fillText(dateText, width - glassMargin - 20, headerBoxY + 20);
 
-  // --- Graph Area (Far Right, Narrower) ---
-  const graphWidth = 150; // Halved from 300
-  const graphRightX = width - glassMargin - 40;
+  // --- Graph Area (Far Right) ---
+  const graphWidth = 140;
+  const graphRightX = width - glassMargin - 30;
   const graphX = graphRightX - graphWidth;
   const graphH = 50;
-  const graphY = headerCenterY - graphH / 2;
+  const graphY = headerCenterY - graphH / 2 + 10;
 
-  // Graph Container
-  ctx.fillStyle = "#f1f5f9"; 
-  roundedRect(ctx, graphX - 10, graphY - 15, graphWidth + 20, graphH + 25, 12);
+  // Graph bg
+  ctx.fillStyle = "rgba(0,0,0,0.3)";
+  chamferedRect(ctx, graphX - 5, graphY - 5, graphWidth + 10, graphH + 10, 8);
   ctx.fill();
 
   if (scores.length > 0) {
@@ -198,127 +206,116 @@ export async function generateBestImage(scores: BestImageScore[], profile: BestI
        else ctx.lineTo(px, py);
     });
     
-    ctx.lineJoin = "round";
-    ctx.lineCap = "round";
-    ctx.strokeStyle = "#3b82f6"; 
-    ctx.lineWidth = 2.5;
+    ctx.strokeStyle = "#00DFEB"; 
+    ctx.lineWidth = 2;
     ctx.stroke();
 
-    ctx.lineTo(graphX + graphWidth, graphY + graphH);
-    ctx.lineTo(graphX, graphY + graphH);
-    ctx.closePath();
-    const grad = ctx.createLinearGradient(0, graphY, 0, graphY + graphH);
-    grad.addColorStop(0, "rgba(59, 130, 246, 0.2)");
-    grad.addColorStop(1, "rgba(59, 130, 246, 0.0)");
-    ctx.fillStyle = grad;
-    ctx.fill();
-
-    ctx.fillStyle = "#64748b";
+    ctx.fillStyle = "#00DFEB";
     ctx.font = "bold 9px sans-serif";
     ctx.textAlign = "left";
-    ctx.textBaseline = "alphabetic";
-    ctx.fillText("ANALYTICS", graphX, graphY - 8);
-
+    ctx.fillText("ANALYTICS", graphX, graphY - 10);
     ctx.restore();
   }
 
-  ctx.restore(); // End Header Scope
+  ctx.restore(); // End Header
 
   // --- 3. Score List ---
   const contentStartY = 230; 
   const colGap = 20;
   const colWidth = (width - (glassMargin * 2) - colGap) / 2; 
-  const rowHeight = 59; 
-  const rowGap = 7; 
+  const rowHeight = 60; 
+  const rowGap = 8; 
 
   const drawScoreCard = (score: BestImageScore, index: number, x: number, y: number) => {
-    // Weighted Progress Bar
-    const scoreVal = score.score;
-    let progressRatio = Math.max(0, Math.min((scoreVal - 800000) / 200000, 1.0));
-    progressRatio = Math.pow(progressRatio, 4);
-    const progressWidth = colWidth * progressRatio;
-
+    // Fill: #22363B
+    // Border: #00DFEB (maybe thinner)
+    
     ctx.save();
     
-    // Background
-    ctx.shadowColor = "rgba(148, 163, 184, 0.1)"; 
-    ctx.shadowBlur = 4;
-    ctx.shadowOffsetY = 2;
-    ctx.fillStyle = "white"; 
-    roundedRect(ctx, x, y, colWidth, rowHeight, 8);
+    // Background Fill
+    ctx.fillStyle = "#22363B"; 
+    chamferedRect(ctx, x, y, colWidth, rowHeight, 10);
     ctx.fill();
-    ctx.shadowBlur = 0; 
+    
+    // Optional: Border for each card? Or just fill.
+    // User said "Like header", implying border.
+    ctx.strokeStyle = "#1682A2"; // Slightly dimmer than header border for contrast hierarchy
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
 
-    // Progress Bar
-    ctx.save();
-    roundedRect(ctx, x, y, colWidth, rowHeight, 8);
-    ctx.clip();
-    const progGrad = ctx.createLinearGradient(x, y, x + progressWidth, y);
-    progGrad.addColorStop(0, "rgba(224, 242, 254, 0.3)"); 
-    progGrad.addColorStop(1, "rgba(186, 230, 253, 0.8)"); 
-    ctx.fillStyle = progGrad;
-    ctx.fillRect(x, y, progressWidth, rowHeight);
-    ctx.restore();
+    // Progress Bar (Background accent)
+    const scoreVal = score.score;
+    // Ratio for visual flair
+    const progressRatio = Math.max(0, Math.min((scoreVal - 900000) / 100000, 1.0)); // simple range
+    if (progressRatio > 0) {
+        ctx.save();
+        chamferedRect(ctx, x, y, colWidth, rowHeight, 10);
+        ctx.clip();
+        ctx.fillStyle = "rgba(0, 223, 235, 0.1)"; // Cyan faint
+        ctx.fillRect(x, y, colWidth * progressRatio, rowHeight);
+        ctx.restore();
+    }
 
     // --- Content ---
     const centerY = y + rowHeight / 2;
     ctx.textBaseline = "middle";
 
-    // 1. Rank (Far Left)
-    ctx.fillStyle = "#94a3b8"; 
-    ctx.font = "bold 16px monospace"; // Larger
+    // 1. Rank
+    ctx.fillStyle = "#00DFEB"; 
+    ctx.font = "bold 16px monospace"; 
     ctx.textAlign = "center";
     ctx.fillText(`${index + 1}`, x + 25, centerY);
     
-    // 2. Difficulty (Bar + Text)
+    // 2. Difficulty Tag
     const diffColor = getDiffColor(score.difficulty);
     const diffAbbr = getDiffAbbr(score.difficulty);
     
     ctx.fillStyle = diffColor;
-    const barH = 28; // Taller bar
-    roundedRect(ctx, x + 48, centerY - barH/2, 5, barH, 2.5); // Thicker bar
+    chamferedRect(ctx, x + 45, centerY - 12, 28, 24, 6);
     ctx.fill();
     
-    ctx.fillStyle = diffColor;
-    ctx.font = "bold 16px sans-serif"; // Larger
-    ctx.textAlign = "left";
+    ctx.fillStyle = "#FFFFFF";
+    ctx.font = "bold 14px sans-serif";
+    ctx.textAlign = "center";
     ctx.fillText({
       "NOR": "N", "HRD": "H", "MAS": "M", "INS": "I", "RVG": "R", "UNK": "?"
-    }[diffAbbr] || diffAbbr, x + 62, centerY + 1);
+    }[diffAbbr] || "?", x + 59, centerY + 1);
 
-    // 3. Right Side Stats
+    // 3. Stats (Right side)
     const cardPadding = 15;
     const rightEdge = x + colWidth - cardPadding;
     
-    // Rate (Far Right)
+    // Rate
     ctx.textAlign = "right";
-    ctx.fillStyle = "#0284c7"; 
-    ctx.font = "bold 26px monospace"; // Even Larger
+    ctx.fillStyle = "#FFFFFF"; // Clean white
+    ctx.font = "bold 24px monospace";
     const rateText = score.rating;
     ctx.fillText(rateText, rightEdge, centerY); 
     const rateWidth = ctx.measureText(rateText).width;
     
     // Const & Score
-    const statsColor = "#475569"; 
-    const statsX = rightEdge - rateWidth - 25;
+    const statsColor = "#9CA3AF"; // Grayish cyan
+    const statsX = rightEdge - rateWidth - 20;
+    
     ctx.textAlign = "right";
     ctx.fillStyle = statsColor;
 
-    // Const (Top)
-    ctx.font = "bold 14px monospace"; // Larger
+    // Const
+    ctx.font = "bold 13px monospace";
     ctx.fillText(`${score.constVal.toFixed(1)}`, statsX, centerY - 10);
     
-    // Score (Bottom)
-    ctx.font = "15px monospace"; // Larger
+    // Score
+    ctx.fillStyle = "#E5E7EB";
+    ctx.font = "14px monospace";
     ctx.fillText(score.score.toLocaleString(), statsX, centerY + 10);
     
-    // 4. Title (Fills remaining space)
-    const titleStartX = x + 90; // Shifted right due to larger diff
-    const titleEndX = statsX - 25; 
+    // 4. Title
+    const titleStartX = x + 85; 
+    const titleEndX = statsX - 15; 
     const maxTitleW = titleEndX - titleStartX;
     
-    ctx.fillStyle = "#1e293b"; 
-    ctx.font = "bold 22px sans-serif"; // Significantly Larger Title
+    ctx.fillStyle = "#FFFFFF"; 
+    ctx.font = "20px sans-serif"; // Regular sans
     ctx.textAlign = "left";
     let title = score.title || "";
     title = truncateText(ctx, title, maxTitleW);
@@ -341,13 +338,18 @@ export async function generateBestImage(scores: BestImageScore[], profile: BestI
   // --- Footer ---
   const footerH = 50;
   ctx.save();
-  ctx.fillStyle = "#f1f5f9"; 
-  ctx.fillRect(0, height - footerH, width, footerH);
+  // Simple separator line
+  ctx.beginPath();
+  ctx.moveTo(glassMargin, height - footerH);
+  ctx.lineTo(width - glassMargin, height - footerH);
+  ctx.strokeStyle = "#1682A2";
+  ctx.lineWidth = 1;
+  ctx.stroke();
   
-  ctx.fillStyle = "#64748b"; 
+  ctx.fillStyle = "#1682A2"; 
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.font = "bold 14px sans-serif";
+  ctx.font = "14px sans-serif";
   ctx.fillText("GENERATED BY TAKUMI³ SCORE MANAGER", width/2, height - footerH/2);
   ctx.restore();
 
@@ -356,21 +358,17 @@ export async function generateBestImage(scores: BestImageScore[], profile: BestI
 
 /* --- Helpers --- */
 
-function roundedRect(ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number, radius: number | {tl?:number, tr?:number, br?:number, bl?: number}) {
+// Chamfered Rectangle (Octagonal-ish corners)
+function chamferedRect(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, chamfer: number) {
   ctx.beginPath();
-  const r = typeof radius === 'number' ? {tl: radius, tr: radius, br: radius, bl: radius} : radius;
-  // Defaults
-  const tl = r.tl || 0; const tr = r.tr || 0; const br = r.br || 0; const bl = r.bl || 0;
-  
-  ctx.moveTo(x + tl, y);
-  ctx.lineTo(x + width - tr, y);
-  ctx.quadraticCurveTo(x + width, y, x + width, y + tr);
-  ctx.lineTo(x + width, y + height - br);
-  ctx.quadraticCurveTo(x + width, y + height, x + width - br, y + height);
-  ctx.lineTo(x + bl, y + height);
-  ctx.quadraticCurveTo(x, y + height, x, y + height - bl);
-  ctx.lineTo(x, y + tl);
-  ctx.quadraticCurveTo(x, y, x + tl, y);
+  ctx.moveTo(x + chamfer, y);
+  ctx.lineTo(x + w - chamfer, y);
+  ctx.lineTo(x + w, y + chamfer);
+  ctx.lineTo(x + w, y + h - chamfer);
+  ctx.lineTo(x + w - chamfer, y + h);
+  ctx.lineTo(x + chamfer, y + h);
+  ctx.lineTo(x, y + h - chamfer);
+  ctx.lineTo(x, y + chamfer);
   ctx.closePath();
 }
 
@@ -386,11 +384,11 @@ function truncateText(ctx: CanvasRenderingContext2D, text: string, maxWidth: num
 function getDiffColor(diff: string): string {
   if (!diff) return "#94a3b8"; 
   const d = diff.toUpperCase();
-  if (d.includes("NORMAL")) return "#2563eb"; 
-  if (d.includes("HARD")) return "#d97706"; 
-  if (d.includes("MASTER")) return "#c026d3"; 
-  if (d.includes("INSANITY")) return "#475569"; 
-  if (d.includes("RAVAGE")) return "#dc2626"; 
+  if (d.includes("NORMAL")) return "#3b82f6"; // Blue
+  if (d.includes("HARD")) return "#f59e0b";   // Orange
+  if (d.includes("MASTER")) return "#d946ef";  // Magenta
+  if (d.includes("INSANITY")) return "#64748b"; // Dark/Gray
+  if (d.includes("RAVAGE")) return "#ef4444";   // Red
   return "#94a3b8";
 }
 
@@ -402,14 +400,4 @@ function getDiffAbbr(diff: string): string {
   if (d.includes("INSANITY")) return "INS";
   if (d.includes("RAVAGE")) return "RVG";
   return "UNK";
-}
-
-function getRankColor(rank: string): string {
-   switch (rank) {
-    case "S+": return "#d97706"; 
-    case "S":  return "#eab308"; 
-    case "aaa":
-    case "AAA": return "#c026d3"; 
-    default:   return "#94a3b8"; 
-  }
 }
