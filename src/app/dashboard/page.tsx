@@ -10,6 +10,8 @@ interface ScoreRow {
   chart_id: string;
   best_score: number;
   const_value: number | null;
+  title: string | null;
+  difficulty: string | null;
   updated_at: string;
 }
 
@@ -34,7 +36,7 @@ export default async function DashboardPage() {
   const db = getDb();
   // We include updated_at here
   const { results } = await db.prepare(`
-    SELECT chart_id, best_score, const_value, updated_at
+    SELECT chart_id, best_score, const_value, title, difficulty, updated_at
     FROM best_current 
     WHERE user_id = ? 
     ORDER BY best_score DESC

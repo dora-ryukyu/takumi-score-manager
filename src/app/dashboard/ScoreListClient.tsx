@@ -9,6 +9,8 @@ interface ScoreRow {
   chart_id: string;
   best_score: number;
   const_value: number | null;
+  title: string | null;
+  difficulty: string | null;
   updated_at: string;
 }
 
@@ -18,7 +20,7 @@ interface ScoreListClientProps {
   userImage: string;
 }
 
-type SortColumn = 'chart_id' | 'best_score' | 'rating' | 'updated_at' | 'const_value';
+type SortColumn = 'chart_id' | 'best_score' | 'rating' | 'updated_at' | 'const_value' | 'title';
 type SortDirection = 'asc' | 'desc';
 
 export default function ScoreListClient({ initialScores, userName, userImage }: ScoreListClientProps) {
@@ -40,77 +42,11 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
     });
   }, [initialScores]);
 
-  // Overall Rate Calculation
-  // Top 40 songs
+  // Overall Rate Calculation (Top 40 songs)
   const overallRate = useMemo(() => {
     const sortedByContrib = [...enrichedScores].sort((a, b) => b.contrib - a.contrib);
     const top40 = sortedByContrib.slice(0, 40);
     const sum = top40.reduce((acc, curr) => acc + curr.contrib, 0);
-    // Display = sum * 40 ?? Wait, logic says sum * 40?
-    // Let's check rating.ts: "round(sum * 40, 3)"? 
-    // Wait, typical systems:
-    // If calculateSongContrib returns "contrib" (which is usually tiny, like 0.3-0.5 per song?), then sum * 40 makes sense?
-    // Let's re-read rating.ts:
-    // "return (chartConst + bonus) / 34" -> 20.0 rating gives approx 0.58? 
-    // Actually, normally rating is sum of 40 songs.
-    // Let's check rating.ts calculateOverallRate logic:
-    // "sum = top40.reduce...; return (sum * 40).toFixed(3)"
-    // If a single song is 15.0, contrib = around 0.44?
-    // 0.44 * 40 songs = 17.6?
-    // Actually typically: single song rating (e.g. 15.00) is what is displayed.
-    // If the library says calculateSongContrib returns a small number, and then multiplies by 40 for display, 
-    // then for Overall Rate, we usually sum the Top 40 *Single Song Ratings* / 40? Or just sum of Contribs?
-    // The library says: sum of contribs * 40. I will trust the library.
-    
-    // Wait, if I want to display single song rating, I do contrib * 40.
-    // If I want to display overall rating: 
-    // The library `calculateOverallRate` does `sum * 40`.
-    // So if I have 40 songs with contrib X, total is 40*X.
-    // Then overall is (40*X) * 40 = 1600*X ?? That seems wrong if X is ~0.5.
-    // Ah, `calculateOverallRate` takes `top40Contribs`.
-    // Let's check the library logic again.
-    // Library: `return (chartConst + bonus) / 34;` -> this is small.
-    // Display Single: `contrib * 40`.
-    // Overall: `sum(contribs) * 40`.
-    // If I have 1 song with rating 15.0. 
-    // Contrib = 15.0 / 40 = 0.375.
-    // Overall = 0.375 * 40 = 15.0.
-    // If I have 40 songs with rating 15.0.
-    // Sum Contribs = 40 * 0.375 = 15.0.
-    // Overall = 15.0 * 40 = 600.0 ??? 
-    // Usually Overall Rate is around the same scale (0-20ish).
-    // Maybe the requirement 7.3 says "Top 40 songs song_contrib sum"?
-    // If so, 15.0. 
-    // But `calculateOverallRate` in rating.ts does `sum * 40`.
-    // So 15.0 * 40 = 600. 
-    // This implies the scale for Overall Rate `(user_rate)` is different (~1000s) or the library logic might be `avg`?
-    // BUT, USER instructions say specific colors for "19.000~", "18.000~".
-    // This implies Overall Rate is also on 0-20 scale.
-    // PROBABLY `rating.ts` `calculateOverallRate` is: `return rawOverall.toFixed(3)` where `rawOverall = sum`.
-    // Let's check `rating.ts` content I read earlier.
-    // Line 65: `const rawOverall = sum * 40;`
-    // This would result in ~600 for a good player.
-    // Maybe the user wants "Average Rating" or the "Rate Color Logic" applies to *Single Song Rating*.
-    // The prompt says: "User Stats Header... Overall Rate (Calculate sum of top 40 songs). Use the Rate Color Logic for the Overall Rate number."
-    // If Overall Rate is 600, then "19.000~" threshold makes no sense.
-    // OR, maybe the Rate Color Logic applies to *Average* or *Single* mainly, and Overall is just a number.
-    // However, usually in games like Chunithm/Arcaea, potential/rating is 0-20.
-    // If Takumi3 follows similar, maybe the "const/34" is wrong?
-    // Let's look at `rating.ts` again.
-    // `return (chartConst + bonus) / 34`
-    // If chartConst is 14.0. Bonus max is 2. (16.0) / 34 ~= 0.47.
-    // Display = 0.47 * 40 = 18.8.
-    // So 18.8 is a reasonable single song rating.
-    // If I have 40 songs of 18.8. Sum of contribs = 40 * 0.47 = 18.8.
-    // If `rating.ts` multiplies by 40 AGAIN, it becomes 752.
-    // I suspect `rating.ts` `calculateOverallRate` might be intended for a "Total Power" type metric (0-1000 range), OR it is incorrect for a "Rating" (0-20 range).
-    // Given the prompt's Color Logic table (which stops at 19+), it strongly implies a 0-20 scale for *whatever* we are coloring.
-    // The prompt says "Overall Rate... Use the Rate Color Logic".
-    // This implies Overall Rate should be 0-20 scale.
-    // So `sum of contribs` (which is ~18.8) is the correct value.
-    // The `rating.ts` `calculateOverallRate` doing `sum * 40` might be for a different metric or I should essentially ignore it if I want 0-20 scale.
-    // I will display logic: simply `sum(top40 contribs)`. This matches the scale.
-    
     return sum.toFixed(3);
   }, [enrichedScores]);
 
@@ -130,6 +66,10 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
         valA = a[sortColumn as keyof typeof a];
         valB = b[sortColumn as keyof typeof b];
       }
+      
+      // Handle nulls
+      if (valA === null) valA = "";
+      if (valB === null) valB = "";
 
       if (valA < valB) return sortDirection === 'asc' ? -1 : 1;
       if (valA > valB) return sortDirection === 'asc' ? 1 : -1;
@@ -201,10 +141,10 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
               <tr>
                 <th 
                   className="px-6 py-4 cursor-pointer hover:bg-slate-100 transition-colors group select-none"
-                  onClick={() => handleSort('chart_id')}
+                  onClick={() => handleSort('title')}
                 >
                   <div className="flex items-center">
-                     楽曲ID / 難易度 <SortIcon col="chart_id" />
+                     楽曲名 / 難易度 <SortIcon col="title" />
                   </div>
                 </th>
                 <th 
@@ -256,8 +196,15 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
                     key={row.chart_id} 
                     className="hover:bg-slate-50 transition-colors"
                   >
-                    <td className="px-6 py-4 font-medium font-mono text-slate-700">
-                      {row.chart_id}
+                    <td className="px-6 py-4">
+                      <div className="flex flex-col">
+                        <span className="font-bold text-slate-800 text-base">{row.title || row.chart_id}</span>
+                        <div className="mt-1">
+                          <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium uppercase tracking-wide border ${getDiffColorClass(row.difficulty)}`}>
+                             {row.difficulty || "UNKNOWN"}
+                          </span>
+                        </div>
+                      </div>
                     </td>
                     <td className="px-6 py-4 text-right font-mono text-base tabular-nums text-slate-600">
                       {row.best_score.toLocaleString()}
@@ -302,4 +249,15 @@ function getRankColorClassForBadge(rank: string) {
     case "B":  return "bg-teal-50 text-teal-700 border border-teal-200";
     default:   return "bg-slate-50 text-slate-500 border border-slate-200";
   }
+}
+
+function getDiffColorClass(diff: string | null) {
+  if (!diff) return "bg-slate-100 text-slate-500 border-slate-200";
+  const d = diff.toUpperCase();
+  if (d.includes("MASTER")) return "bg-purple-50 text-purple-700 border-purple-200";
+  if (d.includes("EXPERT")) return "bg-red-50 text-red-700 border-red-200";
+  if (d.includes("HARD")) return "bg-yellow-50 text-yellow-700 border-yellow-200";
+  if (d.includes("NORMAL")) return "bg-green-50 text-green-700 border-green-200";
+  if (d.includes("EASY")) return "bg-blue-50 text-blue-700 border-blue-200";
+  return "bg-slate-100 text-slate-500 border-slate-200";
 }
