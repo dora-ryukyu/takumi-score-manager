@@ -4,6 +4,9 @@ import { useState, useMemo } from 'react';
 import { getRank } from "@/lib/rank";
 import { getRateColorClass } from "@/lib/colors";
 import { calculateSongContrib, calculateDisplayRate } from "@/lib/rating";
+import { LayoutDashboard, Settings, FileUp, Image as ImageIcon } from "lucide-react";
+import { generateBestImage, BestImageScore, BestImageProfile } from "@/lib/canvas-generator";
+import BestImageModal from "@/components/BestImageModal";
 
 interface ScoreRow {
   chart_id: string;
@@ -26,6 +29,11 @@ type SortDirection = 'asc' | 'desc';
 export default function ScoreListClient({ initialScores, userName, userImage }: ScoreListClientProps) {
   const [sortColumn, setSortColumn] = useState<SortColumn>('rating');
   const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
+  
+  // Image Generation State
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [generatedImage, setGeneratedImage] = useState<string | null>(null);
+  const [isGenerating, setIsGenerating] = useState(false);
 
   // Enriched Data (Calculate Rating once)
   const enrichedScores = useMemo(() => {
@@ -49,6 +57,47 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
     const sum = top40.reduce((acc, curr) => acc + curr.contrib, 0);
     return sum.toFixed(3);
   }, [enrichedScores]);
+
+  // Handle Image Generation
+  const handleGenerateImage = async () => {
+    setIsModalOpen(true);
+    if (!generatedImage) {
+      setIsGenerating(true);
+      
+      // Small delay to allow modal to open
+      setTimeout(async () => {
+        try {
+          // Prepare data sorted by rating
+          const topScores = [...enrichedScores]
+            .sort((a, b) => b.contrib - a.contrib)
+            .slice(0, 40)
+            .map(s => ({
+              title: s.title || s.chart_id,
+              difficulty: s.difficulty || "UNKNOWN",
+              score: s.best_score,
+              rank: s.rank,
+              constVal: s.constVal,
+              rating: s.ratingDisplay,
+              contrib: s.contrib
+            } as BestImageScore));
+
+          const profile: BestImageProfile = {
+            name: userName || "Player",
+            rate: overallRate,
+            date: new Date().toLocaleDateString("ja-JP"),
+            userImageUrl: userImage
+          };
+
+          const dataUrl = await generateBestImage(topScores, profile);
+          setGeneratedImage(dataUrl);
+        } catch (e) {
+          console.error("Failed to generate image", e);
+        } finally {
+          setIsGenerating(false);
+        }
+      }, 100);
+    }
+  };
 
 
   // Sorting Logic
@@ -120,17 +169,24 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
           disabled
           className="flex items-center justify-center gap-3 p-4 rounded-xl border-2 border-dashed border-slate-300 text-slate-500 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-50 transition-all group"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
+          <FileUp size={24} />
           <span className="font-bold">CSVインポート (Coming Soon)</span>
         </button>
         <button 
-          disabled
+          onClick={handleGenerateImage}
           className="flex items-center justify-center gap-3 p-4 rounded-xl border-2 border-dashed border-slate-300 text-slate-500 hover:border-purple-500 hover:text-purple-600 hover:bg-purple-50 transition-all group"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-          <span className="font-bold">ベスト枠画像生成 (Coming Soon)</span>
+          <ImageIcon size={24} />
+          <span className="font-bold">ベスト枠画像生成</span>
         </button>
       </div>
+
+      <BestImageModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)}
+        imageDataUrl={generatedImage}
+        isLoading={isGenerating}
+      />
 
       {/* Score Table */}
       <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">

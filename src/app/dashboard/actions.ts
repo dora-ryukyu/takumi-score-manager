@@ -13,8 +13,8 @@ export async function addDummyScore() {
   const db = getDb();
 
   // Generate random data
-  const titles = ["Freedom Dive", "Glorious Crown", "Halcyon", "Parousia", "Conflict", "Oshama Scramble", "Brain Power", "Aleph-0", "Test Song A", "Test Song B"];
-  const diffs = ["MASTER", "EXPERT", "HARD", "NORMAL"];
+  const titles = ["Freedom Dive", "Glorious Crown", "Halcyon", "Parousia", "Conflict", "Oshama Scramble", "Brain Power", "Aleph-0", "Test Song A", "Test Song B", "Grievous Lady", "Fracture Ray", "Tempestissimo"];
+  const diffs = ["NORMAL", "HARD", "MASTER", "INSANITY", "RAVAGE"];
   
   const title = titles[Math.floor(Math.random() * titles.length)];
   const difficulty = diffs[Math.floor(Math.random() * diffs.length)];
