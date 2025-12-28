@@ -4,8 +4,8 @@ import { useState, useMemo } from 'react';
 import { getRank } from "@/lib/rank";
 import { getRateColorClass } from "@/lib/colors";
 import { calculateSongContrib, calculateDisplayRate } from "@/lib/rating";
-import { LayoutDashboard, Settings, FileUp, Image as ImageIcon } from "lucide-react";
-import { generateBestImage, BestImageScore, BestImageProfile } from "@/lib/canvas-generator";
+import { LayoutDashboard, Settings, FileUp, Image as ImageIcon, Palette } from "lucide-react";
+import { generateBestImage, BestImageScore, BestImageProfile, ImageTheme } from "@/lib/canvas-generator";
 import BestImageModal from "@/components/BestImageModal";
 
 interface ScoreRow {
@@ -34,6 +34,7 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [generatedImage, setGeneratedImage] = useState<string | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [imageTheme, setImageTheme] = useState<ImageTheme>('game'); // Default to Game Mode
 
   // Enriched Data (Calculate Rating once)
   const enrichedScores = useMemo(() => {
@@ -61,8 +62,9 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
   // Handle Image Generation
   const handleGenerateImage = async () => {
     setIsModalOpen(true);
-    if (!generatedImage) {
-      setIsGenerating(true);
+    
+    setGeneratedImage(null); // Clear previous to show loading state
+    setIsGenerating(true);
       
       // Small delay to allow modal to open
       setTimeout(async () => {
@@ -88,7 +90,7 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
             userImageUrl: userImage
           };
 
-          const dataUrl = await generateBestImage(topScores, profile);
+          const dataUrl = await generateBestImage(topScores, profile, imageTheme);
           setGeneratedImage(dataUrl);
         } catch (e) {
           console.error("Failed to generate image", e);
@@ -96,7 +98,6 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
           setIsGenerating(false);
         }
       }, 100);
-    }
   };
 
 
@@ -164,21 +165,41 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
       </div>
 
       {/* Tools Section */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <button 
           disabled
-          className="flex items-center justify-center gap-3 p-4 rounded-xl border-2 border-dashed border-slate-300 text-slate-500 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-50 transition-all group"
+          className="flex items-center justify-center gap-3 p-4 rounded-xl border-2 border-dashed border-slate-300 text-slate-500 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-50 transition-all group col-span-1"
         >
           <FileUp size={24} />
-          <span className="font-bold">CSVインポート (Coming Soon)</span>
+          <span className="font-bold">CSVインポート</span>
         </button>
-        <button 
-          onClick={handleGenerateImage}
-          className="flex items-center justify-center gap-3 p-4 rounded-xl border-2 border-dashed border-slate-300 text-slate-500 hover:border-purple-500 hover:text-purple-600 hover:bg-purple-50 transition-all group"
-        >
-          <ImageIcon size={24} />
-          <span className="font-bold">ベスト枠画像生成</span>
-        </button>
+        
+        {/* Image Gen Group */}
+        <div className="md:col-span-2 lg:col-span-3 flex flex-col sm:flex-row gap-4">
+           {/* Theme Selector */}
+           <div className="flex-1 bg-white border border-slate-200 rounded-xl px-4 py-2 flex items-center justify-between shadow-sm">
+              <div className="flex items-center gap-2 text-slate-600">
+                <Palette size={20} />
+                <span className="font-medium text-sm">画像テーマ:</span>
+              </div>
+              <select 
+                value={imageTheme}
+                onChange={(e) => setImageTheme(e.target.value as ImageTheme)}
+                className="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2"
+              >
+                 <option value="game">ゲーム再現 (Dark)</option>
+                 <option value="light">モダン (Light)</option>
+              </select>
+           </div>
+           
+           <button 
+            onClick={handleGenerateImage}
+            className="flex-1 flex items-center justify-center gap-3 p-4 rounded-xl border-2 border-dashed border-slate-300 text-slate-500 hover:border-purple-500 hover:text-purple-600 hover:bg-purple-50 transition-all group shadow-sm bg-white"
+          >
+            <ImageIcon size={24} />
+            <span className="font-bold">ベスト枠画像生成</span>
+          </button>
+        </div>
       </div>
 
       <BestImageModal 
