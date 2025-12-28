@@ -10,21 +10,21 @@ export default async function SettingsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 p-6 sm:p-12">
+    <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-foreground)] p-6 sm:p-12">
       <div className="max-w-2xl mx-auto space-y-8">
-        <header className="border-b border-slate-200 pb-6">
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900">設定</h1>
-          <p className="text-slate-500 mt-1">
+        <header className="border-b border-[var(--color-header-border)] pb-6">
+          <h1 className="text-3xl font-bold tracking-tight text-[var(--color-foreground)]">設定</h1>
+          <p className="text-[var(--color-foreground)] opacity-60 mt-1">
             プロフィールなどの設定を変更します。
           </p>
         </header>
 
-        <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
+        <div className="bg-[var(--color-card-bg)] p-8 rounded-xl shadow-sm border border-[var(--color-header-border)]">
           <form action={updateProfile} className="space-y-6">
             
             {/* User Icon Display (Read-only) */}
             <div className="flex items-center gap-6">
-              <div className="relative w-20 h-20 rounded-full overflow-hidden border border-slate-200 bg-slate-100">
+              <div className="relative w-20 h-20 rounded-full overflow-hidden border border-[var(--color-header-border)] bg-[var(--color-menu-hover)]">
                 <Image 
                   src={profile.imageUrl} 
                   alt={profile.displayName} 
@@ -32,14 +32,14 @@ export default async function SettingsPage() {
                   className="object-cover"
                 />
               </div>
-              <div className="text-sm text-slate-500">
+              <div className="text-sm text-[var(--color-foreground)] opacity-60">
                 <p>アイコンはClerkアカウント（またはGoogleアカウント）のものが使用されます。</p>
               </div>
             </div>
 
             {/* Display Name Input */}
             <div className="space-y-2">
-              <label htmlFor="display_name" className="block text-sm font-medium text-slate-700">
+              <label htmlFor="display_name" className="block text-sm font-medium text-[var(--color-foreground)]">
                 表示名
               </label>
               <input
@@ -48,11 +48,11 @@ export default async function SettingsPage() {
                 id="display_name"
                 defaultValue={profile.displayName}
                 placeholder="プレイヤー名を入力"
-                className="block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm px-4 py-2 border"
+                className="block w-full rounded-md border-[var(--color-header-border)] bg-[var(--color-background)] text-[var(--color-foreground)] shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm px-4 py-2 border"
                 required
                 maxLength={50}
               />
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-[var(--color-foreground)] opacity-60">
                 ダッシュボードやランキングで表示される名前です。
               </p>
             </div>

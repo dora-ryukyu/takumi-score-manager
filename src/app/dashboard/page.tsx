@@ -43,14 +43,14 @@ export default async function DashboardPage() {
   `).bind(userId).all<ScoreRow>();
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 p-4 sm:p-8">
+    <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-foreground)] p-4 sm:p-8">
       <div className="max-w-6xl mx-auto space-y-6">
         
         {/* Header Section */}
         <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
-            <h1 className="text-3xl font-extrabold tracking-tight text-slate-900">スコア管理</h1>
-            <p className="text-slate-500 mt-1">
+            <h1 className="text-3xl font-extrabold tracking-tight text-[var(--color-foreground)]">スコア一覧</h1>
+            <p className="text-[var(--color-foreground)] opacity-70 mt-1">
               あなたの現在のベストスコア一覧
             </p>
           </div>
@@ -58,7 +58,7 @@ export default async function DashboardPage() {
           <form action={addDummyScore}>
             <button 
               type="submit"
-              className="px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-200"
+              className="px-4 py-2 text-sm font-medium text-[var(--color-foreground)] bg-[var(--color-card-bg)] border border-[var(--color-header-border)] rounded-lg hover:bg-[var(--color-menu-hover)] transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               デバッグ用: ダミーデータ追加
             </button>

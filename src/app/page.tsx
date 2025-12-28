@@ -31,7 +31,7 @@ export default function Home() {
 							href="/dashboard"
 							className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-lg w-full sm:w-auto inline-flex items-center justify-center"
 						>
-							ダッシュボードへ
+							スコア一覧へ
 						</Link>
 					</SignedIn>
 				</div>

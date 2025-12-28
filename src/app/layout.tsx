@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import Header from "@/components/Header";
+import { ThemeProvider } from "@/context/ThemeContext";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -25,16 +26,18 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="ja">
-			<head>
-				<link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
-			</head>
-			<body className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans text-slate-800 bg-slate-50`}>
-				<ClerkProvider>
-					<Header />
-					{children}
-				</ClerkProvider>
-			</body>
-		</html>
+		<ClerkProvider>
+			<html lang="ja">
+				<head>
+					<link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
+				</head>
+				<body className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans text-slate-800 bg-slate-50`}>
+					<ThemeProvider>
+						<Header />
+						{children}
+					</ThemeProvider>
+				</body>
+			</html>
+		</ClerkProvider>
 	);
 }

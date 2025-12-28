@@ -4,9 +4,6 @@ import { useState, useMemo } from 'react';
 import { getRank } from "@/lib/rank";
 import { getRateColorClass } from "@/lib/colors";
 import { calculateSongContrib, calculateDisplayRate } from "@/lib/rating";
-import { LayoutDashboard, Settings, FileUp, Image as ImageIcon, Palette } from "lucide-react";
-import { generateBestImage, BestImageScore, BestImageProfile, ImageTheme } from "@/lib/canvas-generator";
-import BestImageModal from "@/components/BestImageModal";
 
 interface ScoreRow {
   chart_id: string;
@@ -30,12 +27,6 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
   const [sortColumn, setSortColumn] = useState<SortColumn>('rating');
   const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
   
-  // Image Generation State
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [generatedImage, setGeneratedImage] = useState<string | null>(null);
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [imageTheme, setImageTheme] = useState<ImageTheme>('game'); // Default to Game Mode
-
   // Enriched Data (Calculate Rating once)
   const enrichedScores = useMemo(() => {
     return initialScores.map(row => {
@@ -58,48 +49,6 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
     const sum = top40.reduce((acc, curr) => acc + curr.contrib, 0);
     return sum.toFixed(3);
   }, [enrichedScores]);
-
-  // Handle Image Generation
-  const handleGenerateImage = async () => {
-    setIsModalOpen(true);
-    
-    setGeneratedImage(null); // Clear previous to show loading state
-    setIsGenerating(true);
-      
-      // Small delay to allow modal to open
-      setTimeout(async () => {
-        try {
-          // Prepare data sorted by rating
-          const topScores = [...enrichedScores]
-            .sort((a, b) => b.contrib - a.contrib)
-            .slice(0, 40)
-            .map(s => ({
-              title: s.title || s.chart_id,
-              difficulty: s.difficulty || "UNKNOWN",
-              score: s.best_score,
-              rank: s.rank,
-              constVal: s.constVal,
-              rating: s.ratingDisplay,
-              contrib: s.contrib
-            } as BestImageScore));
-
-          const profile: BestImageProfile = {
-            name: userName || "Player",
-            rate: overallRate,
-            date: new Date().toLocaleDateString("ja-JP"),
-            userImageUrl: userImage
-          };
-
-          const dataUrl = await generateBestImage(topScores, profile, imageTheme);
-          setGeneratedImage(dataUrl);
-        } catch (e) {
-          console.error("Failed to generate image", e);
-        } finally {
-          setIsGenerating(false);
-        }
-      }, 100);
-  };
-
 
   // Sorting Logic
   const sortedScores = useMemo(() => {
@@ -137,87 +86,42 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
   };
 
   const SortIcon = ({ col }: { col: SortColumn }) => {
-    if (sortColumn !== col) return <span className="text-slate-300 ml-1">⇅</span>;
-    return <span className="text-blue-600 ml-1">{sortDirection === 'asc' ? '↑' : '↓'}</span>;
+    if (sortColumn !== col) return <span className="text-[var(--color-foreground)] opacity-20 ml-1">⇅</span>;
+    return <span className="text-[var(--color-accent)] ml-1">{sortDirection === 'asc' ? '↑' : '↓'}</span>;
   };
 
   return (
     <div className="space-y-8">
       {/* User Stats Card */}
-      <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div className="bg-[var(--color-header-bg)] rounded-2xl p-6 shadow-sm border border-[var(--color-header-border)] flex flex-col sm:flex-row items-center justify-between gap-6 transition-colors duration-300">
         <div className="flex items-center gap-4">
-          <div className="relative w-16 h-16 rounded-full overflow-hidden border border-slate-200 bg-slate-100">
+          <div className="relative w-16 h-16 rounded-full overflow-hidden border border-[var(--color-header-border)] bg-[var(--color-menu-hover)]">
              {/* eslint-disable-next-line @next/next/no-img-element */}
              <img src={userImage} alt={userName || "User"} className="object-cover w-full h-full" />
           </div>
           <div>
-            <p className="text-sm text-slate-500 font-medium uppercase tracking-wider">Player Name</p>
-            <h2 className="text-2xl font-bold text-slate-900">{userName || "Guest Player"}</h2>
+            <p className="text-sm text-[var(--color-foreground)] opacity-60 font-medium uppercase tracking-wider">Player Name</p>
+            <h2 className="text-2xl font-bold text-[var(--color-foreground)] game-text-stroke">{userName || "Guest Player"}</h2>
           </div>
         </div>
         
         <div className="text-center sm:text-right">
-          <p className="text-sm text-slate-500 font-medium uppercase tracking-wider">Overall Rate (Top 40)</p>
-          <div className={`text-5xl tracking-tight ${getRateColorClass(parseFloat(overallRate))}`}>
+          <p className="text-sm text-[var(--color-foreground)] opacity-60 font-medium uppercase tracking-wider">Overall Rate (Top 40)</p>
+          <div className={`text-5xl tracking-tight game-text-stroke ${getRateColorClass(parseFloat(overallRate))}`}>
             {overallRate}
           </div>
         </div>
       </div>
 
-      {/* Tools Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <button 
-          disabled
-          className="flex items-center justify-center gap-3 p-4 rounded-xl border-2 border-dashed border-slate-300 text-slate-500 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-50 transition-all group col-span-1"
-        >
-          <FileUp size={24} />
-          <span className="font-bold">CSVインポート</span>
-        </button>
-        
-        {/* Image Gen Group */}
-        <div className="md:col-span-2 lg:col-span-3 flex flex-col sm:flex-row gap-4">
-           {/* Theme Selector */}
-           <div className="flex-1 bg-white border border-slate-200 rounded-xl px-4 py-2 flex items-center justify-between shadow-sm">
-              <div className="flex items-center gap-2 text-slate-600">
-                <Palette size={20} />
-                <span className="font-medium text-sm">画像テーマ:</span>
-              </div>
-              <select 
-                value={imageTheme}
-                onChange={(e) => setImageTheme(e.target.value as ImageTheme)}
-                className="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2"
-              >
-                 <option value="game">ゲーム再現 (Dark)</option>
-                 <option value="light">モダン (Light)</option>
-              </select>
-           </div>
-           
-           <button 
-            onClick={handleGenerateImage}
-            className="flex-1 flex items-center justify-center gap-3 p-4 rounded-xl border-2 border-dashed border-slate-300 text-slate-500 hover:border-purple-500 hover:text-purple-600 hover:bg-purple-50 transition-all group shadow-sm bg-white"
-          >
-            <ImageIcon size={24} />
-            <span className="font-bold">ベスト枠画像生成</span>
-          </button>
-        </div>
-      </div>
-
-      <BestImageModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)}
-        imageDataUrl={generatedImage}
-        isLoading={isGenerating}
-      />
-
       {/* Score Table */}
-      <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+      <div className="bg-[var(--color-card-bg)] rounded-xl shadow-sm border border-[var(--color-header-border)] overflow-hidden transition-colors duration-300">
          {/* Mobile Card View (Visible only on small screens?) - For now, scrollable table is easiest for "Excel-like" data */}
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm whitespace-nowrap">
-            <thead className="bg-slate-50 text-slate-600 font-semibold uppercase tracking-wider text-xs border-b border-slate-200">
+            <thead className="bg-[var(--color-menu-hover)] text-[var(--color-foreground)] font-semibold uppercase tracking-wider text-xs border-b border-[var(--color-header-border)]">
               <tr>
                 <th 
-                  className="px-6 py-4 cursor-pointer hover:bg-slate-100 transition-colors group select-none"
+                  className="px-6 py-4 cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 transition-colors group select-none"
                   onClick={() => handleSort('title')}
                 >
                   <div className="flex items-center">
@@ -225,7 +129,7 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
                   </div>
                 </th>
                 <th 
-                  className="px-6 py-4 text-right cursor-pointer hover:bg-slate-100 transition-colors group select-none"
+                  className="px-6 py-4 text-right cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 transition-colors group select-none"
                   onClick={() => handleSort('best_score')}
                 >
                   <div className="flex items-center justify-end">
@@ -234,7 +138,7 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
                 </th>
                 <th className="px-6 py-4 text-center">ランク</th>
                 <th 
-                  className="px-6 py-4 text-center cursor-pointer hover:bg-slate-100 transition-colors group select-none"
+                  className="px-6 py-4 text-center cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 transition-colors group select-none"
                   onClick={() => handleSort('const_value')}
                 >
                   <div className="flex justify-center items-center">
@@ -242,7 +146,7 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
                   </div>
                 </th>
                 <th 
-                  className="px-6 py-4 text-right cursor-pointer hover:bg-slate-100 transition-colors group select-none"
+                  className="px-6 py-4 text-right cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 transition-colors group select-none"
                   onClick={() => handleSort('rating')}
                 >
                   <div className="flex items-center justify-end">
@@ -250,7 +154,7 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
                   </div>
                 </th>
                 <th 
-                  className="px-6 py-4 text-right cursor-pointer hover:bg-slate-100 transition-colors group select-none"
+                  className="px-6 py-4 text-right cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 transition-colors group select-none"
                   onClick={() => handleSort('updated_at')}
                 >
                   <div className="flex items-center justify-end">
@@ -259,11 +163,11 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100">
+            <tbody className="divide-y divide-[var(--color-header-border)]">
               {sortedScores.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="px-6 py-12 text-center text-slate-500">
-                    <p className="mb-2 text-lg font-medium text-slate-700">データがありません</p>
+                  <td colSpan={6} className="px-6 py-12 text-center text-[var(--color-foreground)] opacity-60">
+                    <p className="mb-2 text-lg font-medium">データがありません</p>
                     <p className="text-sm">デバッグボタンを押してデータを追加してください。</p>
                   </td>
                 </tr>
@@ -271,11 +175,11 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
                 sortedScores.map((row) => (
                   <tr 
                     key={row.chart_id} 
-                    className="hover:bg-slate-50 transition-colors"
+                    className="hover:bg-[var(--color-menu-hover)] transition-colors"
                   >
                     <td className="px-6 py-4">
                       <div className="flex flex-col">
-                        <span className="font-bold text-slate-800 text-base">{row.title || row.chart_id}</span>
+                        <span className="font-bold text-[var(--color-foreground)] text-base">{row.title || row.chart_id}</span>
                         <div className="mt-1">
                           <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium uppercase tracking-wide border ${getDiffColorClass(row.difficulty)}`}>
                              {row.difficulty || "UNKNOWN"}
@@ -283,7 +187,7 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-right font-mono text-base tabular-nums text-slate-600">
+                    <td className="px-6 py-4 text-right font-mono text-base tabular-nums text-[var(--color-foreground)] opacity-90">
                       {row.best_score.toLocaleString()}
                     </td>
                     <td className="px-6 py-4 text-center">
@@ -294,13 +198,13 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
                         {row.rank}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-center text-slate-400 tabular-nums text-xs">
+                    <td className="px-6 py-4 text-center text-[var(--color-foreground)] opacity-60 tabular-nums text-xs">
                       {row.constVal.toFixed(1)}
                     </td>
                     <td className={`px-6 py-4 text-right font-bold tabular-nums text-lg ${getRateColorClass(parseFloat(row.ratingDisplay))}`}>
                       {row.ratingDisplay}
                     </td>
-                    <td className="px-6 py-4 text-right text-slate-400 text-xs tabular-nums">
+                    <td className="px-6 py-4 text-right text-[var(--color-foreground)] opacity-60 text-xs tabular-nums">
                       {new Date(row.updated_at).toLocaleDateString("ja-JP")}
                     </td>
                   </tr>
@@ -314,27 +218,39 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
   );
 }
 
+// TODO: Update these mainly static color classes to be theme compatible if needed. 
+// For now, we will leave them as they provide semantic meaning (Yellow for S+, etc)
+// but we might want to ensure they aren't unreadable in Dark Mode.
+// The "text-xxx-700" might be hard to read on dark backgrounds if the background is also dark.
+// But the badges have their own "bg-xxx-50" or similar.
 function getRankColorClassForBadge(rank: string) {
+  // Using specific Tailwind colors. In dark mode, we might want to invert or adjust.
+  // For simplicity, we can trust they look "okay" as badges, or use "dark:" variants if we want to perfect it.
   switch (rank) {
-    case "S+": return "bg-gradient-to-br from-yellow-100 to-amber-200 text-yellow-800 border border-yellow-300";
-    case "S":  return "bg-gradient-to-br from-amber-50 to-amber-100 text-amber-700 border border-amber-200";
-    case "AAA": return "bg-purple-100 text-purple-700 border border-purple-200";
-    case "AA": return "bg-indigo-50 text-indigo-700 border border-indigo-200";
-    case "A":  return "bg-blue-50 text-blue-700 border border-blue-200";
-    case "BBB": return "bg-sky-50 text-sky-700 border border-sky-200";
-    case "BB": return "bg-emerald-50 text-emerald-700 border border-emerald-200";
-    case "B":  return "bg-teal-50 text-teal-700 border border-teal-200";
-    default:   return "bg-slate-50 text-slate-500 border border-slate-200";
+    case "S+": return "bg-gradient-to-br from-yellow-100 to-amber-200 text-yellow-900 border border-yellow-300";
+    case "S":  return "bg-amber-100 text-amber-900 border border-amber-200";
+    case "AAA": return "bg-purple-100 text-purple-900 border border-purple-200";
+    case "AA": return "bg-indigo-100 text-indigo-900 border border-indigo-200";
+    case "A":  return "bg-blue-100 text-blue-900 border border-blue-200";
+    case "BBB": return "bg-sky-100 text-sky-900 border border-sky-200";
+    case "BB": return "bg-emerald-100 text-emerald-900 border border-emerald-200";
+    case "B":  return "bg-teal-100 text-teal-900 border border-teal-200";
+    default:   return "bg-slate-100 text-slate-700 border border-slate-200";
   }
 }
 
 function getDiffColorClass(diff: string | null) {
-  if (!diff) return "bg-slate-100 text-slate-500 border-slate-200";
+  // Default/Unknown (includes EXPERT per instruction) -> Orange to differ from Insanity(Gray)
+  if (!diff) return "bg-orange-100 text-orange-900 border-orange-200";
+  
   const d = diff.toUpperCase();
-  if (d.includes("MASTER")) return "bg-purple-50 text-purple-700 border-purple-200";
-  if (d.includes("EXPERT")) return "bg-red-50 text-red-700 border-red-200";
-  if (d.includes("HARD")) return "bg-yellow-50 text-yellow-700 border-yellow-200";
-  if (d.includes("NORMAL")) return "bg-green-50 text-green-700 border-green-200";
-  if (d.includes("EASY")) return "bg-blue-50 text-blue-700 border-blue-200";
-  return "bg-slate-100 text-slate-500 border-slate-200";
+  
+  if (d.includes("RAVAGE")) return "bg-red-100 text-red-900 border-red-200";
+  if (d.includes("INSANITY")) return "bg-slate-200 text-slate-800 border-slate-300"; // Gray
+  if (d.includes("MASTER")) return "bg-purple-100 text-purple-900 border-purple-200";
+  if (d.includes("HARD")) return "bg-yellow-100 text-yellow-900 border-yellow-200";
+  if (d.includes("NORMAL")) return "bg-blue-100 text-blue-900 border-blue-200";
+  
+  // Default for unmatching (e.g. EXPERT, EASY if exists)
+  return "bg-orange-100 text-orange-900 border-orange-200";
 }
