@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { getDb } from "@/lib/d1";
 import { addDummyScore } from "./actions";
 import ScoreListClient from "./ScoreListClient";
+import { getUserProfile } from "@/lib/auth";
 
 // Type for the database row
 interface ScoreRow {
@@ -22,19 +23,16 @@ async function syncUser(userId: string) {
 }
 
 export default async function DashboardPage() {
-  const { userId } = await auth();
-  if (!userId) {
+  const profile = await getUserProfile();
+  if (!profile) {
     redirect("/sign-in");
   }
 
-  // User Info (for Greeting)
-  const user = await currentUser();
-  const userName = user?.firstName || user?.username || "Player";
-
-  await syncUser(userId);
+  const { userId, displayName, imageUrl } = profile;
 
   // 2. Fetch Scores
   const db = getDb();
+  // We include updated_at here
   const { results } = await db.prepare(`
     SELECT chart_id, best_score, const_value, updated_at
     FROM best_current 
@@ -66,7 +64,11 @@ export default async function DashboardPage() {
         </header>
 
         {/* Client Component for Sortable List & Stats */}
-        <ScoreListClient initialScores={results} userName={userName} />
+        <ScoreListClient 
+          initialScores={results} 
+          userName={displayName} 
+          userImage={imageUrl}
+        />
         
       </div>
     </div>

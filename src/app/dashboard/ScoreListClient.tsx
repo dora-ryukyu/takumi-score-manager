@@ -15,12 +15,13 @@ interface ScoreRow {
 interface ScoreListClientProps {
   initialScores: ScoreRow[];
   userName: string | null | undefined;
+  userImage: string;
 }
 
 type SortColumn = 'chart_id' | 'best_score' | 'rating' | 'updated_at' | 'const_value';
 type SortDirection = 'asc' | 'desc';
 
-export default function ScoreListClient({ initialScores, userName }: ScoreListClientProps) {
+export default function ScoreListClient({ initialScores, userName, userImage }: ScoreListClientProps) {
   const [sortColumn, setSortColumn] = useState<SortColumn>('rating');
   const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
 
@@ -155,8 +156,9 @@ export default function ScoreListClient({ initialScores, userName }: ScoreListCl
       {/* User Stats Card */}
       <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-4">
-          <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center text-2xl">
-             👤
+          <div className="relative w-16 h-16 rounded-full overflow-hidden border border-slate-200 bg-slate-100">
+             {/* eslint-disable-next-line @next/next/no-img-element */}
+             <img src={userImage} alt={userName || "User"} className="object-cover w-full h-full" />
           </div>
           <div>
             <p className="text-sm text-slate-500 font-medium uppercase tracking-wider">Player Name</p>
