@@ -1,51 +1,96 @@
 import Image from "next/image";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import Link from "next/link";
 
 export default function Home() {
 	return (
-		<div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-			<main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-				<Image className="dark:invert" src="/next.svg" alt="Next.js logo" width={180} height={38} priority />
-				<ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-					<li className="mb-2 tracking-[-.01em]">
-						Get started by editing{" "}
-						<code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-							src/app/page.tsx
-						</code>
-						.
-					</li>
-					<li className="tracking-[-.01em]">Save and see your changes instantly.</li>
-				</ol>
+		<div className="font-sans min-h-screen grid grid-rows-[auto_1fr_auto] bg-slate-50 text-slate-800">
+			{/* Navbar */}
+			<nav className="flex items-center justify-between p-6 max-w-7xl mx-auto w-full">
+				<div className="font-bold text-xl tracking-tight text-blue-900">
+					TAKUMI³ Manager
+				</div>
+				<div>
+					<SignedIn>
+						<UserButton />
+					</SignedIn>
+					<SignedOut>
+						<SignInButton mode="modal">
+							<button className="text-sm font-medium hover:text-blue-600 transition-colors">
+								ログイン
+							</button>
+						</SignInButton>
+					</SignedOut>
+				</div>
+			</nav>
 
-				<div className="flex gap-4 items-center flex-col sm:flex-row">
-					<a
-						className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-						href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Read our docs
-					</a>
+			{/* Hero Section */}
+			<main className="flex flex-col items-center justify-center text-center px-4 sm:px-8 py-20 gap-8">
+				<div className="space-y-4 max-w-2xl">
+					<h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
+						TAKUMI³のスコアを、<br />
+						<span className="text-blue-600">もっとスマートに。</span>
+					</h1>
+					<p className="text-lg text-slate-600 leading-relaxed">
+						CSVをアップロードして、ベストスコアやレートを簡単に管理・分析。<br className="hidden sm:block" />
+						あなたの成長を可視化するツールです。
+					</p>
+				</div>
+
+				<div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+					<SignedOut>
+						<SignInButton mode="modal">
+							<button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-lg w-full sm:w-auto">
+								ログインして始める
+							</button>
+						</SignInButton>
+					</SignedOut>
+
+					<SignedIn>
+						<Link
+							href="/dashboard"
+							className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-lg w-full sm:w-auto inline-flex items-center justify-center"
+						>
+							ダッシュボードへ
+						</Link>
+					</SignedIn>
+				</div>
+
+				{/* Feature Highlights (Optional Visuals) */}
+				<div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-8 text-left max-w-4xl w-full">
+					<div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+						<div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600 font-bold">
+							1
+						</div>
+						<h3 className="font-bold text-lg mb-2">CSVインポート</h3>
+						<p className="text-slate-500 text-sm">
+							公式のエクスポートデータをそのまま読み込み可能。
+						</p>
+					</div>
+					<div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+						<div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600 font-bold">
+							2
+						</div>
+						<h3 className="font-bold text-lg mb-2">レート計算</h3>
+						<p className="text-slate-500 text-sm">
+							譜面定数に基づいた単曲・総合レートを自動算出。
+						</p>
+					</div>
+					<div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+						<div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600 font-bold">
+							3
+						</div>
+						<h3 className="font-bold text-lg mb-2">スコア管理</h3>
+						<p className="text-slate-500 text-sm">
+							過去と現在のスコアを比較し、上達を一目で確認。
+						</p>
+					</div>
 				</div>
 			</main>
-			<footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-				<a
-					className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-					href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<Image aria-hidden src="/file.svg" alt="File icon" width={16} height={16} />
-					Learn
-				</a>
-				<a
-					className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-					href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<Image aria-hidden src="/globe.svg" alt="Globe icon" width={16} height={16} />
-					Go to nextjs.org →
-				</a>
+
+			{/* Footer */}
+			<footer className="py-8 text-center text-slate-400 text-sm">
+				<p>&copy; {new Date().getFullYear()} TAKUMI³ Score Manager. All rights reserved.</p>
 			</footer>
 		</div>
 	);

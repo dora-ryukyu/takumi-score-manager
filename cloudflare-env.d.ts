@@ -4,7 +4,7 @@
 declare namespace Cloudflare {
 	interface Env {
 		NEXTJS_ENV: string;
-		score_db: D1Database;
+		DB: D1Database;
 		WORKER_SELF_REFERENCE: Fetcher /* takumi-score-manager */;
 		IMAGES: ImagesBinding;
 		ASSETS: Fetcher;
