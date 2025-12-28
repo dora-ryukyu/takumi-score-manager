@@ -1,29 +1,9 @@
-import Image from "next/image";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
+import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 
 export default function Home() {
 	return (
-		<div className="font-sans min-h-screen grid grid-rows-[auto_1fr_auto] bg-slate-50 text-slate-800">
-			{/* Navbar */}
-			<nav className="flex items-center justify-between p-6 max-w-7xl mx-auto w-full">
-				<div className="font-bold text-xl tracking-tight text-blue-900">
-					TAKUMI³ Manager
-				</div>
-				<div>
-					<SignedIn>
-						<UserButton />
-					</SignedIn>
-					<SignedOut>
-						<SignInButton mode="modal">
-							<button className="text-sm font-medium hover:text-blue-600 transition-colors">
-								ログイン
-							</button>
-						</SignInButton>
-					</SignedOut>
-				</div>
-			</nav>
-
+		<div className="font-sans min-h-[calc(100vh-64px)] grid grid-rows-[auto_1fr_auto] bg-slate-50 text-slate-800">
 			{/* Hero Section */}
 			<main className="flex flex-col items-center justify-center text-center px-4 sm:px-8 py-20 gap-8">
 				<div className="space-y-4 max-w-2xl">
@@ -56,7 +36,7 @@ export default function Home() {
 					</SignedIn>
 				</div>
 
-				{/* Feature Highlights (Optional Visuals) */}
+				{/* Feature Highlights */}
 				<div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-8 text-left max-w-4xl w-full">
 					<div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
 						<div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600 font-bold">
