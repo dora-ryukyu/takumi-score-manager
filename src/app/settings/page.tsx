@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { getUserProfile } from "@/lib/auth";
 import { updateProfile } from "./actions";
 import Image from "next/image";
+import DeleteDataButton from "./DeleteDataButton";
 
 export default async function SettingsPage() {
   const profile = await getUserProfile();
@@ -67,7 +68,21 @@ export default async function SettingsPage() {
             </div>
           </form>
         </div>
+
+        {/* Danger Zone */}
+        <div className="bg-[var(--color-card-bg)] p-8 rounded-xl shadow-sm border border-red-500/30">
+          <h2 className="text-xl font-bold text-red-500 mb-4">Danger Zone</h2>
+          <div className="space-y-4">
+            <p className="text-sm text-[var(--color-foreground)] opacity-70">
+              この操作を行うと、全てのスコアデータ、履歴、設定が削除されます。<br />
+              削除されたデータは復元できません。
+            </p>
+            <DeleteDataButton />
+          </div>
+        </div>
       </div>
     </div>
   );
 }
+
+
