@@ -97,13 +97,10 @@ export default function ImageGenClient({ initialScores, userName, userImage }: I
   return (
     <div className="space-y-8">
       {/* Back Link */}
-      <Link href="/dashboard" className="inline-flex items-center gap-2 text-[var(--color-foreground)] opacity-70 hover:opacity-100 transition-opacity">
-        <ArrowLeft size={20} />
-        <span>ダッシュボードに戻る</span>
-      </Link>
+
 
       <div className="bg-[var(--color-card-bg)] rounded-2xl p-6 shadow-sm border border-[var(--color-header-border)]">
-        <h2 className="text-xl font-bold mb-6 text-[var(--color-foreground)]">ベスト枠画像生成</h2>
+
         
         <div className="space-y-6">
            {/* Theme Selector */}

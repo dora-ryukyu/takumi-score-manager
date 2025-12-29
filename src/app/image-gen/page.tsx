@@ -32,7 +32,16 @@ export default async function ImageGenPage() {
 
   return (
     <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-foreground)] p-4 sm:p-8">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto space-y-6">
+        <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div>
+            <h1 className="text-3xl font-extrabold tracking-tight text-[var(--color-foreground)]">ベスト枠画像生成</h1>
+            <p className="text-[var(--color-foreground)] opacity-70 mt-1">
+              ベストスコア画像を生成してSNSでシェアしましょう
+            </p>
+          </div>
+        </header>
+
         <ImageGenClient 
           initialScores={results} 
           userName={displayName} 

@@ -11,7 +11,8 @@ import {
   ListMusic, 
   Moon, 
   Sun,
-  LogOut
+  LogOut,
+  Calculator
 } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 import { SignOutButton } from "@clerk/nextjs";
@@ -27,6 +28,7 @@ export default function Menu() {
     { href: "/settings", label: "設定", icon: Settings },
     { href: "/import", label: "CSVインポート", icon: FileSpreadsheet }, // Assuming /import route exists or will exist
     { href: "/image-gen", label: "ベスト枠画像生成", icon: ImageIcon },       // Assuming /image-gen route exists or will exist
+    { href: "/calculator", label: "計算機", icon: Calculator },
   ];
 
   return (

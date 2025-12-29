@@ -70,3 +70,58 @@ export function calculateRating(score: number, chartConst: number): number {
   const contrib = calculateSongContrib(score, chartConst);
   return contrib * 40;
 }
+/**
+ * 単曲レートから到達スコアを逆算する
+ * calculateSongContribの逆関数
+ * @param rate 単曲レート (例: 16.00)
+ * @param chartConst 譜面定数 (Example: 14.0)
+ * @returns 推定スコア (整数に丸めるのが一般的だが一旦実数で返すか、呼び出し元で丸める)
+ */
+export function calculateRequiredScore(displayRate: number, chartConst: number): number {
+  if (displayRate <= 0) return 0;
+  
+  // displayRate = contrib * 40 => contrib = displayRate / 40
+  // val = contrib * 34
+  // val = (displayRate / 40) * 34 = displayRate * 0.85
+  const val = displayRate * 0.85;
+
+  // Case 6: 999,000+
+  // val = const + 2 + (score - 999000)/10000
+  // Threshold: const + 2
+  if (val >= chartConst + 2) {
+    return Math.round((val - chartConst - 2) * 10000 + 999000);
+  }
+
+  // Case 5: 995,000 ~ 999,000
+  // val = const + 1.5 + (score - 995000)/8000
+  // Threshold: const + 1.5
+  if (val >= chartConst + 1.5) {
+    return Math.round((val - chartConst - 1.5) * 8000 + 995000);
+  }
+
+  // Case 4: 990,000 ~ 995,000
+  // val = const + 1 + (score - 990000)/10000
+  // Threshold: const + 1
+  if (val >= chartConst + 1) {
+    return Math.round((val - chartConst - 1) * 10000 + 990000);
+  }
+
+  // Case 3: 970,000 ~ 990,000
+  // val = const + (score - 970000)/20000
+  // Threshold: const
+  if (val >= chartConst) {
+    return Math.round((val - chartConst) * 20000 + 970000);
+  }
+
+  // Case 2: 800,000 ~ 970,000
+  // val = const * ((score - 800000) / 170000)
+  // Threshold: > 0 (assuming const > 0)
+  if (chartConst > 0 && val > 0) {
+    // val / const = ratio
+    // ratio = (score - 800000) / 170000
+    const ratio = val / chartConst;
+    return Math.round(ratio * 170000 + 800000);
+  }
+
+  return 0; // 80万未満相当
+}
