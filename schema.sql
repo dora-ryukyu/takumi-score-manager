@@ -11,6 +11,8 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS best_current (
     user_id TEXT NOT NULL,
     chart_id TEXT NOT NULL,
+    title TEXT,
+    difficulty TEXT,
     best_score INTEGER NOT NULL,
     best_observed_at TEXT NOT NULL,
     const_value REAL,
@@ -23,6 +25,8 @@ CREATE TABLE IF NOT EXISTS best_history (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id TEXT NOT NULL,
     chart_id TEXT NOT NULL,
+    title TEXT,
+    difficulty TEXT,
     score INTEGER NOT NULL,
     observed_at TEXT NOT NULL,
     const_value REAL

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import Link from 'next/link';
 import { getRank } from "@/lib/rank";
 import { getRateColorClass } from "@/lib/colors";
 import { calculateSongContrib, calculateDisplayRate } from "@/lib/rating";
@@ -50,9 +51,51 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
     return sum.toFixed(3);
   }, [enrichedScores]);
 
-  // Sorting Logic
+  // Filters
+  const [difficultyFilter, setDifficultyFilter] = useState<string[]>([]);
+  const [levelMin, setLevelMin] = useState<string>('');
+  const [levelMax, setLevelMax] = useState<string>('');
+  const [scoreMin, setScoreMin] = useState<string>('');
+  const [scoreMax, setScoreMax] = useState<string>('');
+  const [rateMin, setRateMin] = useState<string>('');
+  const [rateMax, setRateMax] = useState<string>('');
+  
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+  // Filter Logic
+  const filteredScores = useMemo(() => {
+    return enrichedScores.filter(row => {
+      // Difficulty: Check if row.difficulty includes ANY of the selected difficulty strings
+      if (difficultyFilter.length > 0) {
+        if (!row.difficulty) return false;
+        const rowDiffUpper = row.difficulty.toUpperCase();
+        // Returns true if rowDiffUpper contains any of the selected filters
+        const matches = difficultyFilter.some(filterDiff => rowDiffUpper.includes(filterDiff));
+        if (!matches) return false;
+      }
+      
+      // Chart Constant
+      const lvl = row.constVal;
+      if (levelMin !== '' && lvl < parseFloat(levelMin)) return false;
+      if (levelMax !== '' && lvl > parseFloat(levelMax)) return false;
+
+      // Score
+      const sc = row.best_score;
+      if (scoreMin !== '' && sc < parseInt(scoreMin, 10)) return false;
+      if (scoreMax !== '' && sc > parseInt(scoreMax, 10)) return false;
+
+      // Rating
+      const rt = parseFloat(row.ratingDisplay);
+      if (rateMin !== '' && rt < parseFloat(rateMin)) return false;
+      if (rateMax !== '' && rt > parseFloat(rateMax)) return false;
+
+      return true;
+    });
+  }, [enrichedScores, difficultyFilter, levelMin, levelMax, scoreMin, scoreMax, rateMin, rateMax]);
+
+  // Sorting Logic (operate on filteredScores)
   const sortedScores = useMemo(() => {
-    return [...enrichedScores].sort((a, b) => {
+    return [...filteredScores].sort((a, b) => {
       let valA: any;
       let valB: any;
 
@@ -74,7 +117,7 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
       if (valA > valB) return sortDirection === 'asc' ? 1 : -1;
       return 0;
     });
-  }, [enrichedScores, sortColumn, sortDirection]);
+  }, [filteredScores, sortColumn, sortDirection]);
 
   const handleSort = (col: SortColumn) => {
     if (sortColumn === col) {
@@ -83,6 +126,12 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
       setSortColumn(col);
       setSortDirection('desc'); // default desc for new col
     }
+  };
+
+  const toggleDifficulty = (diff: string) => {
+    setDifficultyFilter(prev => 
+      prev.includes(diff) ? prev.filter(d => d !== diff) : [...prev, diff]
+    );
   };
 
   const SortIcon = ({ col }: { col: SortColumn }) => {
@@ -110,6 +159,124 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
           <div className={`text-5xl tracking-tight game-text-stroke ${getRateColorClass(parseFloat(overallRate))}`}>
             {overallRate}
           </div>
+        </div>
+      </div>
+
+      {/* Filter Panel */}
+      <div className="bg-[var(--color-card-bg)] rounded-xl shadow-sm border border-[var(--color-header-border)] p-5 space-y-4">
+        <div 
+          className="flex items-center justify-between cursor-pointer select-none"
+          onClick={() => setIsFilterOpen(!isFilterOpen)}
+        >
+          <h3 className="font-bold text-[var(--color-foreground)] opacity-80 flex items-center gap-2">
+            <span className={`text-[var(--color-accent)] transition-transform duration-200 ${isFilterOpen ? 'rotate-180' : 'rotate-0'}`}>▼</span> 絞り込み
+          </h3>
+          <button className="text-xs font-bold text-[var(--color-accent)] border border-[var(--color-accent)] px-2 py-1 rounded hover:bg-[var(--color-accent)] hover:text-white transition-colors">
+            {isFilterOpen ? '閉じる' : '開く'}
+          </button>
+        </div>
+        
+        {isFilterOpen && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-in fade-in slide-in-from-top-2 duration-200">
+            {/* Difficulty Filter */}
+            <div className="space-y-2">
+              <label className="text-xs font-semibold text-[var(--color-foreground)] opacity-60 uppercase">難易度</label>
+              <div className="flex flex-wrap gap-2">
+                {['NORMAL', 'HARD', 'MASTER', 'INSANITY', 'RAVAGE'].map(diff => (
+                  <button
+                    key={diff}
+                    onClick={() => toggleDifficulty(diff)}
+                    className={`px-3 py-1 rounded text-xs font-bold border transition-colors ${
+                      difficultyFilter.includes(diff)
+                        ? getDiffColorClass(diff) + " ring-2 ring-offset-1 ring-offset-[var(--color-card-bg)] ring-blue-400"
+                        : "bg-[var(--color-menu-hover)] text-[var(--color-foreground)] border-[var(--color-header-border)] opacity-60 hover:opacity-100"
+                    }`}
+                  >
+                    {diff}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Chart Constant Filter */}
+            <div className="space-y-2">
+              <label className="text-xs font-semibold text-[var(--color-foreground)] opacity-60 uppercase">譜面定数</label>
+              <div className="flex items-center gap-2">
+                <input 
+                  type="number" 
+                  step="0.1" 
+                  placeholder="Min" 
+                  value={levelMin} 
+                  onChange={e => setLevelMin(e.target.value)}
+                  className="w-full bg-[var(--color-menu-hover)] border border-[var(--color-header-border)] rounded px-3 py-1.5 text-sm text-[var(--color-foreground)] focus:ring-2 focus:ring-[var(--color-accent)] focus:outline-none"
+                />
+                <span className="text-[var(--color-foreground)] opacity-40">~</span>
+                <input 
+                  type="number" 
+                  step="0.1" 
+                  placeholder="Max" 
+                  value={levelMax} 
+                  onChange={e => setLevelMax(e.target.value)}
+                  className="w-full bg-[var(--color-menu-hover)] border border-[var(--color-header-border)] rounded px-3 py-1.5 text-sm text-[var(--color-foreground)] focus:ring-2 focus:ring-[var(--color-accent)] focus:outline-none"
+                />
+              </div>
+            </div>
+
+            {/* Score Filter */}
+            <div className="space-y-2">
+              <label className="text-xs font-semibold text-[var(--color-foreground)] opacity-60 uppercase">スコア</label>
+              <div className="flex items-center gap-2">
+                <input 
+                  type="number" 
+                  step="1000" 
+                  placeholder="Min" 
+                  value={scoreMin} 
+                  onChange={e => setScoreMin(e.target.value)}
+                  className="w-full bg-[var(--color-menu-hover)] border border-[var(--color-header-border)] rounded px-3 py-1.5 text-sm text-[var(--color-foreground)] focus:ring-2 focus:ring-[var(--color-accent)] focus:outline-none"
+                />
+                <span className="text-[var(--color-foreground)] opacity-40">~</span>
+                <input 
+                  type="number" 
+                  step="1000" 
+                  placeholder="Max" 
+                  value={scoreMax} 
+                  onChange={e => setScoreMax(e.target.value)}
+                  className="w-full bg-[var(--color-menu-hover)] border border-[var(--color-header-border)] rounded px-3 py-1.5 text-sm text-[var(--color-foreground)] focus:ring-2 focus:ring-[var(--color-accent)] focus:outline-none"
+                />
+              </div>
+            </div>
+
+            {/* Rate Filter */}
+            <div className="space-y-2">
+              <label className="text-xs font-semibold text-[var(--color-foreground)] opacity-60 uppercase">単曲レート</label>
+              <div className="flex items-center gap-2">
+                <input 
+                  type="number" 
+                  step="0.01" 
+                  placeholder="Min" 
+                  value={rateMin} 
+                  onChange={e => setRateMin(e.target.value)}
+                  className="w-full bg-[var(--color-menu-hover)] border border-[var(--color-header-border)] rounded px-3 py-1.5 text-sm text-[var(--color-foreground)] focus:ring-2 focus:ring-[var(--color-accent)] focus:outline-none"
+                />
+                <span className="text-[var(--color-foreground)] opacity-40">~</span>
+                <input 
+                  type="number" 
+                  step="0.01" 
+                  placeholder="Max" 
+                  value={rateMax} 
+                  onChange={e => setRateMax(e.target.value)}
+                  className="w-full bg-[var(--color-menu-hover)] border border-[var(--color-header-border)] rounded px-3 py-1.5 text-sm text-[var(--color-foreground)] focus:ring-2 focus:ring-[var(--color-accent)] focus:outline-none"
+                />
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Results Count */}
+      <div className="flex items-center justify-between text-sm text-[var(--color-foreground)] opacity-80 px-1">
+        <div>
+          該当件数: <span className="font-bold text-[var(--color-accent)] text-lg">{filteredScores.length}</span> <span className="text-xs opacity-60">/ {enrichedScores.length}</span>
         </div>
       </div>
 
@@ -168,7 +335,7 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center text-[var(--color-foreground)] opacity-60">
                     <p className="mb-2 text-lg font-medium">データがありません</p>
-                    <p className="text-sm">デバッグボタンを押してデータを追加してください。</p>
+                    <p className="text-sm">条件を変更するか、データを追加してください。</p>
                   </td>
                 </tr>
               ) : (
@@ -179,7 +346,9 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
                   >
                     <td className="px-6 py-4">
                       <div className="flex flex-col">
-                        <span className="font-bold text-[var(--color-foreground)] text-base">{row.title || row.chart_id}</span>
+                        <Link href={`/dashboard/chart/${row.chart_id}`} className="font-bold text-[var(--color-foreground)] text-base hover:underline hover:text-blue-400 transition-colors">
+                          {row.title || row.chart_id}
+                        </Link>
                         <div className="mt-1">
                           <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium uppercase tracking-wide border ${getDiffColorClass(row.difficulty)}`}>
                              {row.difficulty || "UNKNOWN"}
@@ -201,8 +370,10 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
                     <td className="px-6 py-4 text-center text-[var(--color-foreground)] opacity-60 tabular-nums text-xs">
                       {row.constVal.toFixed(1)}
                     </td>
-                    <td className={`px-6 py-4 text-right font-bold tabular-nums text-lg ${getRateColorClass(parseFloat(row.ratingDisplay))}`}>
-                      {row.ratingDisplay}
+                    <td className="px-6 py-4 text-right tabular-nums text-lg">
+                      <span className={getRateColorClass(parseFloat(row.ratingDisplay))}>
+                        {row.ratingDisplay}
+                      </span>
                     </td>
                     <td className="px-6 py-4 text-right text-[var(--color-foreground)] opacity-60 text-xs tabular-nums">
                       {new Date(row.updated_at).toLocaleDateString("ja-JP")}

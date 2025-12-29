@@ -1,4 +1,4 @@
-import { getRateColorClass } from "./colors";
+import { getRateColorClass, getDiffColor, getDiffAbbr } from "./colors";
 
 export interface BestImageScore {
   title: string;
@@ -603,23 +603,4 @@ function truncateText(ctx: CanvasRenderingContext2D, text: string, maxWidth: num
   return truncatedText + "...";
 }
 
-function getDiffColor(diff: string): string {
-  if (!diff) return "#94a3b8"; 
-  const d = diff.toUpperCase();
-  if (d.includes("NORMAL")) return "#3b82f6"; // Blue
-  if (d.includes("HARD")) return "#f59e0b";   // Orange
-  if (d.includes("MASTER")) return "#d946ef";  // Magenta
-  if (d.includes("INSANITY")) return "#64748b"; // Dark/Gray
-  if (d.includes("RAVAGE")) return "#ef4444";   // Red
-  return "#94a3b8";
-}
-
-function getDiffAbbr(diff: string): string {
-  const d = diff ? diff.toUpperCase() : "";
-  if (d.includes("NORMAL")) return "NOR";
-  if (d.includes("HARD")) return "HRD";
-  if (d.includes("MASTER")) return "MAS";
-  if (d.includes("INSANITY")) return "INS";
-  if (d.includes("RAVAGE")) return "RVG";
-  return "UNK";
-}
+// function getDiffColor and getDiffAbbr removed, imported from colors.ts

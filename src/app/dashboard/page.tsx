@@ -47,6 +47,7 @@ export default async function DashboardPage() {
       <div className="max-w-6xl mx-auto space-y-6">
         
         {/* Header Section */}
+        {/* Header Section */}
         <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
             <h1 className="text-3xl font-extrabold tracking-tight text-[var(--color-foreground)]">スコア一覧</h1>
@@ -55,14 +56,7 @@ export default async function DashboardPage() {
             </p>
           </div>
           
-          <form action={addDummyScore}>
-            <button 
-              type="submit"
-              className="px-4 py-2 text-sm font-medium text-[var(--color-foreground)] bg-[var(--color-card-bg)] border border-[var(--color-header-border)] rounded-lg hover:bg-[var(--color-menu-hover)] transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              デバッグ用: ダミーデータ追加
-            </button>
-          </form>
+          {/* Debug button removed */}
         </header>
 
         {/* Client Component for Sortable List & Stats */}

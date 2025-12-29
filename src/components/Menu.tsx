@@ -26,7 +26,7 @@ export default function Menu() {
     { href: "/dashboard", label: "スコア一覧", icon: ListMusic },
     { href: "/settings", label: "設定", icon: Settings },
     { href: "/import", label: "CSVインポート", icon: FileSpreadsheet }, // Assuming /import route exists or will exist
-    { href: "/image-gen", label: "画像生成", icon: ImageIcon },       // Assuming /image-gen route exists or will exist
+    { href: "/image-gen", label: "ベスト枠画像生成", icon: ImageIcon },       // Assuming /image-gen route exists or will exist
   ];
 
   return (
@@ -76,6 +76,17 @@ export default function Menu() {
                   </Link>
                 </li>
               ))}
+               {/* Debug Menu - Separated */}
+               <li>
+                  <Link 
+                    href="/dashboard/debug"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-3 px-4 py-3 text-[var(--color-foreground)] hover:bg-[var(--color-menu-hover)] rounded-lg transition-colors opacity-70 hover:opacity-100"
+                  >
+                    <Settings size={20} className="text-red-400"/>
+                    <span>デバッグメニュー</span>
+                  </Link>
+                </li>
             </ul>
           </nav>
 
@@ -85,8 +96,11 @@ export default function Menu() {
               onClick={toggleTheme}
               className="flex items-center gap-3 px-4 py-3 w-full text-left text-[var(--color-foreground)] hover:bg-[var(--color-menu-hover)] rounded-lg transition-colors"
             >
-              {theme === 'modern-light' ? <Moon size={20} /> : <Sun size={20} />}
-              <span>{theme === 'modern-light' ? 'ダークモード' : 'ライトモード'}</span>
+              {theme === 'modern-light' ? <Sun size={20} /> : theme === 'dark' ? <Moon size={20} /> : <FileSpreadsheet size={20} /* Placeholder for Game Theme */ />}
+              <span className="flex-1">
+                {theme === 'modern-light' ? 'ライトテーマ' : theme === 'dark' ? 'ダークテーマ' : '原作風テーマ'}
+              </span>
+              <span className="text-xs opacity-50 border border-[var(--color-foreground)] px-1 rounded">切替</span>
             </button>
             
             <SignOutButton>

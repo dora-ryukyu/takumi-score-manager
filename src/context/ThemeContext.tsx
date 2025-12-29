@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-type Theme = "modern-light" | "game-dark";
+type Theme = "modern-light" | "dark" | "game-dark";
 
 interface ThemeContextType {
   theme: Theme;
@@ -33,7 +33,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   };
 
   const toggleTheme = () => {
-    const newTheme = theme === "modern-light" ? "game-dark" : "modern-light";
+    // Cycle: Light -> Dark -> Game -> Light
+    let newTheme: Theme = "modern-light";
+    if (theme === "modern-light") newTheme = "dark";
+    else if (theme === "dark") newTheme = "game-dark";
+    else newTheme = "modern-light";
+    
     setTheme(newTheme);
   };
 

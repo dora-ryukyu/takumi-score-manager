@@ -11,6 +11,17 @@
   --accent-color: #2563eb; /* blue-600 */
 }
 
+[data-theme="dark"] {
+  /* New Dark Theme (Black-based) */
+  --bg-main: #000000;
+  --text-main: #ffffff;
+  --header-bg: #121212;
+  --header-border: #333333;
+  --card-bg: #18181b; /* zinc-900 */
+  --menu-hover: #27272a; /* zinc-800 */
+  --accent-color: #3b82f6; /* blue-500 */
+}
+
 [data-theme="game-dark"] {
   /* Game Reproduction Dark */
   --bg-main: #0e1f34;
@@ -45,4 +56,19 @@ body {
   color: var(--text-main);
   font-family: Arial, Helvetica, sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@keyframes rainbow-hue {
+  from { filter: hue-rotate(0deg); }
+  to { filter: hue-rotate(360deg); }
+}
+
+.animate-rainbow {
+  /* Tailwind 500 colors: Red, Yellow, Green, Blue, Purple */
+  background-image: linear-gradient(to right, #ef4444, #eab308, #22c55e, #3b82f6, #a855f7);
+  background-size: 100% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: rainbow-hue 5s linear infinite;
 }

@@ -65,3 +65,8 @@ export function calculateOverallRate(top40Contribs: number[]): string {
   const rawOverall = sum * 40;
   return rawOverall.toFixed(3);
 }
+
+export function calculateRating(score: number, chartConst: number): number {
+  const contrib = calculateSongContrib(score, chartConst);
+  return contrib * 40;
+}
