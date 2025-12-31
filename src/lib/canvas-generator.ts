@@ -268,7 +268,7 @@ async function renderGameMode(ctx: CanvasRenderingContext2D, width: number, heig
     ctx.font = "bold 14px sans-serif";
     ctx.textAlign = "center";
     ctx.fillText({
-      "NOR": "N", "HRD": "H", "MAS": "M", "INS": "I", "RVG": "R", "UNK": "?"
+      "NOR": "N", "HAR": "H", "MAS": "M", "INS": "I", "RVG": "R", "UNK": "?"
     }[diffAbbr] || "?", x + 59, centerY + 1);
 
     // 3. Stats
@@ -508,7 +508,7 @@ async function renderLightMode(ctx: CanvasRenderingContext2D, width: number, hei
     // So text was colored.
     ctx.font = "bold 16px sans-serif"; 
     ctx.textAlign = "left";
-    ctx.fillText({ "NOR":"N", "HRD":"H", "MAS":"M", "INS":"I", "RVG":"R", "UNK":"?" }[diffAbbr] || diffAbbr, x + 62, centerY + 1);
+    ctx.fillText({ "NOR":"N", "HAR":"H", "MAS":"M", "INS":"I", "RVG":"R", "UNK":"?" }[diffAbbr] || diffAbbr, x + 62, centerY + 1);
 
     // Stats
     const cardPadding = 15;

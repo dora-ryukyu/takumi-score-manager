@@ -114,11 +114,12 @@ export async function upsertScore(
         isNewRecord: true
     };
 
-  } catch (e: any) {
+  } catch (e: unknown) {
+    const errorMessage = e instanceof Error ? e.message : String(e);
     console.error("upsertScore error:", e);
     return {
         success: false,
-        message: `Error: ${e.message}`
+        message: `Error: ${errorMessage}`
     };
   }
 }

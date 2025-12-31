@@ -1,0 +1,4018 @@
+[
+  {
+    "chart_id": "Absolute Disintegration_HARD",
+    "title": "Absolute Disintegration",
+    "difficulty": "HARD",
+    "const_value": 13.0,
+    "match_config": null
+  },
+  {
+    "chart_id": "Igallta_HARD",
+    "title": "Igallta",
+    "difficulty": "HARD",
+    "const_value": 13.0,
+    "match_config": null
+  },
+  {
+    "chart_id": "Eat.Wav_HARD",
+    "title": "Eat.Wav",
+    "difficulty": "HARD",
+    "const_value": 13.0,
+    "match_config": null
+  },
+  {
+    "chart_id": "Cuvism³_HARD",
+    "title": "Cuvism³",
+    "difficulty": "HARD",
+    "const_value": 13.0,
+    "match_config": null
+  },
+  {
+    "chart_id": "Crossing Dimension_HARD",
+    "title": "Crossing Dimension",
+    "difficulty": "HARD",
+    "const_value": 13.0,
+    "match_config": null
+  },
+  {
+    "chart_id": "Steer for Next Planet_MASTER",
+    "title": "Steer for Next Planet",
+    "difficulty": "MASTER",
+    "const_value": 13.0,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "OMG_MASTER",
+    "title": "OMG",
+    "difficulty": "MASTER",
+    "const_value": 13.0,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "work^work^work^work^work^work_MASTER",
+    "title": "work^work^work^work^work^work",
+    "difficulty": "MASTER",
+    "const_value": 13.0,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Strike the Despair_MASTER",
+    "title": "Strike the Despair",
+    "difficulty": "MASTER",
+    "const_value": 13.0,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Thear_MASTER",
+    "title": "Thear",
+    "difficulty": "MASTER",
+    "const_value": 13.0,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "To our sky_MASTER",
+    "title": "To our sky",
+    "difficulty": "MASTER",
+    "const_value": 13.0,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "DiSORDΣR_MASTER",
+    "title": "DiSORDΣR",
+    "difficulty": "MASTER",
+    "const_value": 13.0,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Peroizor³_MASTER",
+    "title": "Peroizor³",
+    "difficulty": "MASTER",
+    "const_value": 13.0,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "キユビック_MASTER",
+    "title": "キユビック",
+    "difficulty": "MASTER",
+    "const_value": 13.0,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Awaken In Ruins_MASTER",
+    "title": "Awaken In Ruins",
+    "difficulty": "MASTER",
+    "const_value": 13.0,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "ReVEAL_RAVAGE",
+    "title": "ReVEAL",
+    "difficulty": "RAVAGE",
+    "const_value": 13.0,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "3.566×10^80m³_HARD",
+    "title": "3.566×10^80m³",
+    "difficulty": "HARD",
+    "const_value": 13.1,
+    "match_config": null
+  },
+  {
+    "chart_id": "Sadalmelik_HARD",
+    "title": "Sadalmelik",
+    "difficulty": "HARD",
+    "const_value": 13.1,
+    "match_config": null
+  },
+  {
+    "chart_id": "Distorted Fate_HARD",
+    "title": "Distorted Fate",
+    "difficulty": "HARD",
+    "const_value": 13.1,
+    "match_config": null
+  },
+  {
+    "chart_id": "Enemy Controller_MASTER",
+    "title": "Enemy Controller",
+    "difficulty": "MASTER",
+    "const_value": 13.1,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "FIRST PROMIZE_MASTER",
+    "title": "FIRST PROMIZE",
+    "difficulty": "MASTER",
+    "const_value": 13.1,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Evil Emperor_MASTER",
+    "title": "Evil Emperor",
+    "difficulty": "MASTER",
+    "const_value": 13.1,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Arousal Legato_MASTER",
+    "title": "Arousal Legato",
+    "difficulty": "MASTER",
+    "const_value": 13.1,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Ymir_MASTER",
+    "title": "Ymir",
+    "difficulty": "MASTER",
+    "const_value": 13.1,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "This is Jack_MASTER",
+    "title": "This is Jack",
+    "difficulty": "MASTER",
+    "const_value": 13.1,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "GOODBOUNCE_MASTER",
+    "title": "GOODBOUNCE",
+    "difficulty": "MASTER",
+    "const_value": 13.1,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "GOODMEN_MASTER",
+    "title": "GOODMEN",
+    "difficulty": "MASTER",
+    "const_value": 13.1,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "devil¿la6ue_MASTER",
+    "title": "devil¿la6ue",
+    "difficulty": "MASTER",
+    "const_value": 13.1,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Clockwork Paradox_HARD",
+    "title": "Clockwork Paradox",
+    "difficulty": "HARD",
+    "const_value": 13.2,
+    "match_config": null
+  },
+  {
+    "chart_id": "颪_HARD",
+    "title": "颪",
+    "difficulty": "HARD",
+    "const_value": 13.2,
+    "match_config": null
+  },
+  {
+    "chart_id": "A W A K E_MASTER",
+    "title": "A W A K E",
+    "difficulty": "MASTER",
+    "const_value": 13.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "conflict_MASTER",
+    "title": "conflict",
+    "difficulty": "MASTER",
+    "const_value": 13.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Secret Order_MASTER",
+    "title": "Secret Order",
+    "difficulty": "MASTER",
+    "const_value": 13.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "神々の住まう天域_MASTER",
+    "title": "神々の住まう天域",
+    "difficulty": "MASTER",
+    "const_value": 13.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "LiVEMeTAL_MASTER",
+    "title": "LiVEMeTAL",
+    "difficulty": "MASTER",
+    "const_value": 13.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Wütender Postbote_MASTER",
+    "title": "Wütender Postbote",
+    "difficulty": "MASTER",
+    "const_value": 13.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "TokyoKawaiiBeats_MASTER",
+    "title": "TokyoKawaiiBeats",
+    "difficulty": "MASTER",
+    "const_value": 13.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "ZODIAC_MASTER",
+    "title": "ZODIAC",
+    "difficulty": "MASTER",
+    "const_value": 13.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "NO ONE YES MAN_MASTER",
+    "title": "NO ONE YES MAN",
+    "difficulty": "MASTER",
+    "const_value": 13.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "OCCHOCO-REST-LESS_MASTER",
+    "title": "OCCHOCO-REST-LESS",
+    "difficulty": "MASTER",
+    "const_value": 13.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "嵐柳_MASTER",
+    "title": "嵐柳",
+    "difficulty": "MASTER",
+    "const_value": 13.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Wütender Postbote_RAVAGE",
+    "title": "Wütender Postbote",
+    "difficulty": "RAVAGE",
+    "const_value": 13.2,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "GOODWORLD_RAVAGE",
+    "title": "GOODWORLD",
+    "difficulty": "RAVAGE",
+    "const_value": 13.2,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Floor of Lava (TAKUMI³ Edit)_HARD",
+    "title": "Floor of Lava (TAKUMI³ Edit)",
+    "difficulty": "HARD",
+    "const_value": 13.3,
+    "match_config": null
+  },
+  {
+    "chart_id": "iL-Artifact_HARD",
+    "title": "iL-Artifact",
+    "difficulty": "HARD",
+    "const_value": 13.3,
+    "match_config": null
+  },
+  {
+    "chart_id": "a truth seeker -Communication with Utopia will be lost-_HARD",
+    "title": "a truth seeker -Communication with Utopia will be lost-",
+    "difficulty": "HARD",
+    "const_value": 13.3,
+    "match_config": null
+  },
+  {
+    "chart_id": "Tera I/O_HARD",
+    "title": "Tera I/O",
+    "difficulty": "HARD",
+    "const_value": 13.3,
+    "match_config": null
+  },
+  {
+    "chart_id": "BlueWish_MASTER",
+    "title": "BlueWish",
+    "difficulty": "MASTER",
+    "const_value": 13.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "NightTheater_MASTER",
+    "title": "NightTheater",
+    "difficulty": "MASTER",
+    "const_value": 13.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Hello LimitBreak³r!!!_MASTER",
+    "title": "Hello LimitBreak³r!!!",
+    "difficulty": "MASTER",
+    "const_value": 13.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Dark Aspect_MASTER",
+    "title": "Dark Aspect",
+    "difficulty": "MASTER",
+    "const_value": 13.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "DeusX-Machina_MASTER",
+    "title": "DeusX-Machina",
+    "difficulty": "MASTER",
+    "const_value": 13.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Outrage_MASTER",
+    "title": "Outrage",
+    "difficulty": "MASTER",
+    "const_value": 13.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Faith of Eastward_MASTER",
+    "title": "Faith of Eastward",
+    "difficulty": "MASTER",
+    "const_value": 13.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Roll over Cubic_INSANITY",
+    "title": "Roll over Cubic",
+    "difficulty": "INSANITY",
+    "const_value": 13.3,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Cryout_MASTER",
+    "title": "Cryout",
+    "difficulty": "MASTER",
+    "const_value": 13.4,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "黎明の響 -Echo of Dawn-_MASTER",
+    "title": "黎明の響 -Echo of Dawn-",
+    "difficulty": "MASTER",
+    "const_value": 13.4,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "HARD NOTES RUSH!_MASTER",
+    "title": "HARD NOTES RUSH!",
+    "difficulty": "MASTER",
+    "const_value": 13.4,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "SILASIM_MASTER",
+    "title": "SILASIM",
+    "difficulty": "MASTER",
+    "const_value": 13.4,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Stratoscraper_MASTER",
+    "title": "Stratoscraper",
+    "difficulty": "MASTER",
+    "const_value": 13.4,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Get Ready!!_MASTER",
+    "title": "Get Ready!!",
+    "difficulty": "MASTER",
+    "const_value": 13.4,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Meteorite_INSANITY",
+    "title": "Meteorite",
+    "difficulty": "INSANITY",
+    "const_value": 13.4,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Claimh solaiS_INSANITY",
+    "title": "Claimh solaiS",
+    "difficulty": "INSANITY",
+    "const_value": 13.4,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Drop my DAW_RAVAGE",
+    "title": "Drop my DAW",
+    "difficulty": "RAVAGE",
+    "const_value": 13.4,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "13",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "いざ、参ります_MASTER",
+    "title": "いざ、参ります",
+    "difficulty": "MASTER",
+    "const_value": 13.5,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "!nterroban(?，_MASTER",
+    "title": "!nterroban(?，",
+    "difficulty": "MASTER",
+    "const_value": 13.5,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Punishment_MASTER",
+    "title": "Punishment",
+    "difficulty": "MASTER",
+    "const_value": 13.5,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "階段練習曲_MASTER",
+    "title": "階段練習曲",
+    "difficulty": "MASTER",
+    "const_value": 13.5,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Oceanus_MASTER",
+    "title": "Oceanus",
+    "difficulty": "MASTER",
+    "const_value": 13.5,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "bpm160の練習曲_MASTER",
+    "title": "bpm160の練習曲",
+    "difficulty": "MASTER",
+    "const_value": 13.5,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Finixtahv_MASTER",
+    "title": "Finixtahv",
+    "difficulty": "MASTER",
+    "const_value": 13.5,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Obscuritas_MASTER",
+    "title": "Obscuritas",
+    "difficulty": "MASTER",
+    "const_value": 13.5,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "OMG_MASTER",
+    "title": "OMG",
+    "difficulty": "MASTER",
+    "const_value": 13.5,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "望郷のオデッセイ_MASTER",
+    "title": "望郷のオデッセイ",
+    "difficulty": "MASTER",
+    "const_value": 13.5,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "HATEN CODE 583_MASTER",
+    "title": "HATEN CODE 583",
+    "difficulty": "MASTER",
+    "const_value": 13.5,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Marble Rush!n‘_MASTER",
+    "title": "Marble Rush!n‘",
+    "difficulty": "MASTER",
+    "const_value": 13.6,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Noesis_MASTER",
+    "title": "Noesis",
+    "difficulty": "MASTER",
+    "const_value": 13.6,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "ZEUS_MASTER",
+    "title": "ZEUS",
+    "difficulty": "MASTER",
+    "const_value": 13.6,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Toytown_MASTER",
+    "title": "Toytown",
+    "difficulty": "MASTER",
+    "const_value": 13.6,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "No-name Requiem_MASTER",
+    "title": "No-name Requiem",
+    "difficulty": "MASTER",
+    "const_value": 13.6,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Bright Star Tactics_MASTER",
+    "title": "Bright Star Tactics",
+    "difficulty": "MASTER",
+    "const_value": 13.6,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "RENDA JOCEKY_MASTER",
+    "title": "RENDA JOCEKY",
+    "difficulty": "MASTER",
+    "const_value": 13.6,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Bright red hertz_MASTER",
+    "title": "Bright red hertz",
+    "difficulty": "MASTER",
+    "const_value": 13.6,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Brain Power_MASTER",
+    "title": "Brain Power",
+    "difficulty": "MASTER",
+    "const_value": 13.6,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "RESISTANCE_INSANITY",
+    "title": "RESISTANCE",
+    "difficulty": "INSANITY",
+    "const_value": 13.6,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Shrinewing_INSANITY",
+    "title": "Shrinewing",
+    "difficulty": "INSANITY",
+    "const_value": 13.6,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "devil¿la6ue_INSANITY",
+    "title": "devil¿la6ue",
+    "difficulty": "INSANITY",
+    "const_value": 13.6,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Unshakable_RAVAGE",
+    "title": "Unshakable",
+    "difficulty": "RAVAGE",
+    "const_value": 13.6,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "FREEDOM DiVE↓_HARD",
+    "title": "FREEDOM DiVE↓",
+    "difficulty": "HARD",
+    "const_value": 13.7,
+    "match_config": null
+  },
+  {
+    "chart_id": "≠_HARD",
+    "title": "≠",
+    "difficulty": "HARD",
+    "const_value": 13.7,
+    "match_config": null
+  },
+  {
+    "chart_id": "Fafnir_MASTER",
+    "title": "Fafnir",
+    "difficulty": "MASTER",
+    "const_value": 13.7,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Do You Remember?_MASTER",
+    "title": "Do You Remember?",
+    "difficulty": "MASTER",
+    "const_value": 13.7,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "刹空月想 feat.こずみっく_MASTER",
+    "title": "刹空月想 feat.こずみっく",
+    "difficulty": "MASTER",
+    "const_value": 13.7,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Get Out of This Endmost Dystøpia_MASTER",
+    "title": "Get Out of This Endmost Dystøpia",
+    "difficulty": "MASTER",
+    "const_value": 13.7,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Cyber Entrance_MASTER",
+    "title": "Cyber Entrance",
+    "difficulty": "MASTER",
+    "const_value": 13.7,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Sunset Toybox_MASTER",
+    "title": "Sunset Toybox",
+    "difficulty": "MASTER",
+    "const_value": 13.7,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Flamewall_MASTER",
+    "title": "Flamewall",
+    "difficulty": "MASTER",
+    "const_value": 13.7,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "ReVEAL_MASTER",
+    "title": "ReVEAL",
+    "difficulty": "MASTER",
+    "const_value": 13.7,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Banbard's Summer_MASTER",
+    "title": "Banbard's Summer",
+    "difficulty": "MASTER",
+    "const_value": 13.7,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Luminescence_MASTER",
+    "title": "Luminescence",
+    "difficulty": "MASTER",
+    "const_value": 13.7,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "TRⅢDiM3NXi0NaL_HARD",
+    "title": "TRⅢDiM3NXi0NaL",
+    "difficulty": "HARD",
+    "const_value": 13.8,
+    "match_config": null
+  },
+  {
+    "chart_id": "wavelite_MASTER",
+    "title": "wavelite",
+    "difficulty": "MASTER",
+    "const_value": 13.8,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "rest^rest^rest^rest^rest^rest_MASTER",
+    "title": "rest^rest^rest^rest^rest^rest",
+    "difficulty": "MASTER",
+    "const_value": 13.8,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Signal to the comet_MASTER",
+    "title": "Signal to the comet",
+    "difficulty": "MASTER",
+    "const_value": 13.8,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "LiquidSplinter_MASTER",
+    "title": "LiquidSplinter",
+    "difficulty": "MASTER",
+    "const_value": 13.8,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Azzurro -HardRenaissance Remix-_MASTER",
+    "title": "Azzurro -HardRenaissance Remix-",
+    "difficulty": "MASTER",
+    "const_value": 13.8,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "OЯDIN -Apocalyptic War-_MASTER",
+    "title": "OЯDIN -Apocalyptic War-",
+    "difficulty": "MASTER",
+    "const_value": 13.8,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "As the Wind Dictates_MASTER",
+    "title": "As the Wind Dictates",
+    "difficulty": "MASTER",
+    "const_value": 13.8,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "タマモッチ_MASTER",
+    "title": "タマモッチ",
+    "difficulty": "MASTER",
+    "const_value": 13.8,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "テウメッサ_MASTER",
+    "title": "テウメッサ",
+    "difficulty": "MASTER",
+    "const_value": 13.8,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Yabai-Jan (Game Edit.)_MASTER",
+    "title": "Yabai-Jan (Game Edit.)",
+    "difficulty": "MASTER",
+    "const_value": 13.8,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Power Attack_MASTER",
+    "title": "Power Attack",
+    "difficulty": "MASTER",
+    "const_value": 13.8,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "destiny feat.ＯＲＩ姫_INSANITY",
+    "title": "destiny feat.ＯＲＩ姫",
+    "difficulty": "INSANITY",
+    "const_value": 13.8,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Crowning End_INSANITY",
+    "title": "Crowning End",
+    "difficulty": "INSANITY",
+    "const_value": 13.8,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Strike the Despair_RAVAGE",
+    "title": "Strike the Despair",
+    "difficulty": "RAVAGE",
+    "const_value": 13.8,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "マジカルラテアート_RAVAGE",
+    "title": "マジカルラテアート",
+    "difficulty": "RAVAGE",
+    "const_value": 13.8,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "ELIMINATE LOCKED_RAVAGE",
+    "title": "ELIMINATE LOCKED",
+    "difficulty": "RAVAGE",
+    "const_value": 13.8,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "NOTES RUSH!_HARD",
+    "title": "NOTES RUSH!",
+    "difficulty": "HARD",
+    "const_value": 13.9,
+    "match_config": null
+  },
+  {
+    "chart_id": "アイリス・アウトでさようなら_MASTER",
+    "title": "アイリス・アウトでさようなら",
+    "difficulty": "MASTER",
+    "const_value": 13.9,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Better Graphic Animation_MASTER",
+    "title": "Better Graphic Animation",
+    "difficulty": "MASTER",
+    "const_value": 13.9,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Oversleeping_MASTER",
+    "title": "Oversleeping",
+    "difficulty": "MASTER",
+    "const_value": 13.9,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Psyched Fevereiro_MASTER",
+    "title": "Psyched Fevereiro",
+    "difficulty": "MASTER",
+    "const_value": 13.9,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Canon (trr⇔don's Remix)_MASTER",
+    "title": "Canon (trr⇔don's Remix)",
+    "difficulty": "MASTER",
+    "const_value": 13.9,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "INFiNiTE ENERZY -Overdoze-_MASTER",
+    "title": "INFiNiTE ENERZY -Overdoze-",
+    "difficulty": "MASTER",
+    "const_value": 13.9,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Back Out_MASTER",
+    "title": "Back Out",
+    "difficulty": "MASTER",
+    "const_value": 13.9,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "天Q._MASTER",
+    "title": "天Q.",
+    "difficulty": "MASTER",
+    "const_value": 13.9,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Fulgurite_INSANITY",
+    "title": "Fulgurite",
+    "difficulty": "INSANITY",
+    "const_value": 13.9,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "バンバード ～Piano Version～_INSANITY",
+    "title": "バンバード ～Piano Version～",
+    "difficulty": "INSANITY",
+    "const_value": 13.9,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "13+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Ops:Limone -FINAL EX-_MASTER",
+    "title": "Ops:Limone -FINAL EX-",
+    "difficulty": "MASTER",
+    "const_value": 14.0,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Galaxy Shot_MASTER",
+    "title": "Galaxy Shot",
+    "difficulty": "MASTER",
+    "const_value": 14.0,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "解脱_MASTER",
+    "title": "解脱",
+    "difficulty": "MASTER",
+    "const_value": 14.0,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Tokyo Haze_MASTER",
+    "title": "Tokyo Haze",
+    "difficulty": "MASTER",
+    "const_value": 14.0,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Grayscale Tragedy_MASTER",
+    "title": "Grayscale Tragedy",
+    "difficulty": "MASTER",
+    "const_value": 14.0,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "ローテック・ライフ_INSANITY",
+    "title": "ローテック・ライフ",
+    "difficulty": "INSANITY",
+    "const_value": 14.0,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Outrage_INSANITY",
+    "title": "Outrage",
+    "difficulty": "INSANITY",
+    "const_value": 14.0,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "DiSORDΣR_INSANITY",
+    "title": "DiSORDΣR",
+    "difficulty": "INSANITY",
+    "const_value": 14.0,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "LiVEMeTAL_INSANITY",
+    "title": "LiVEMeTAL",
+    "difficulty": "INSANITY",
+    "const_value": 14.0,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "This is Jack_INSANITY",
+    "title": "This is Jack",
+    "difficulty": "INSANITY",
+    "const_value": 14.0,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Open The Gate_RAVAGE",
+    "title": "Open The Gate",
+    "difficulty": "RAVAGE",
+    "const_value": 14.0,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "ZODIAC_RAVAGE",
+    "title": "ZODIAC",
+    "difficulty": "RAVAGE",
+    "const_value": 14.0,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Traxxendenza_HARD",
+    "title": "Traxxendenza",
+    "difficulty": "HARD",
+    "const_value": 14.1,
+    "match_config": null
+  },
+  {
+    "chart_id": "Cipher : /2&//＜|0_MASTER",
+    "title": "Cipher : /2&//＜|0",
+    "difficulty": "MASTER",
+    "const_value": 14.1,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Judge the World_MASTER",
+    "title": "Judge the World",
+    "difficulty": "MASTER",
+    "const_value": 14.1,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "電脳戦姫 -cyber valkyrie-_MASTER",
+    "title": "電脳戦姫 -cyber valkyrie-",
+    "difficulty": "MASTER",
+    "const_value": 14.1,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Get Out of This Endmost Dystøpia (Halv's ””DISΛSTΣR”” Remix)_MASTER",
+    "title": "Get Out of This Endmost Dystøpia (Halv's ””DISΛSTΣR”” Remix)",
+    "difficulty": "MASTER",
+    "const_value": 14.1,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Connection Destination : Utopia (Nk ( Nekoribo )'s Remix)_MASTER",
+    "title": "Connection Destination : Utopia (Nk ( Nekoribo )'s Remix)",
+    "difficulty": "MASTER",
+    "const_value": 14.1,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "ParadiseWORLD sketched MAN_MASTER",
+    "title": "ParadiseWORLD sketched MAN",
+    "difficulty": "MASTER",
+    "const_value": 14.1,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Requillio_MASTER",
+    "title": "Requillio",
+    "difficulty": "MASTER",
+    "const_value": 14.1,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "ミラクルサマータイム(Radio Edit)_INSANITY",
+    "title": "ミラクルサマータイム(Radio Edit)",
+    "difficulty": "INSANITY",
+    "const_value": 14.1,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Alice Witch Of Sweets_INSANITY",
+    "title": "Alice Witch Of Sweets",
+    "difficulty": "INSANITY",
+    "const_value": 14.1,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "#LOOP_MASTER",
+    "title": "#LOOP",
+    "difficulty": "MASTER",
+    "const_value": 14.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "創世_MASTER",
+    "title": "創世",
+    "difficulty": "MASTER",
+    "const_value": 14.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Grayed Out-Antifront-_MASTER",
+    "title": "Grayed Out-Antifront-",
+    "difficulty": "MASTER",
+    "const_value": 14.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Drop my DAW_MASTER",
+    "title": "Drop my DAW",
+    "difficulty": "MASTER",
+    "const_value": 14.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "VEZZELiX_MASTER",
+    "title": "VEZZELiX",
+    "difficulty": "MASTER",
+    "const_value": 14.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Iris/Re:construct_MASTER",
+    "title": "Iris/Re:construct",
+    "difficulty": "MASTER",
+    "const_value": 14.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Dutedimpianekepusaan-分散的絶望夢-_MASTER",
+    "title": "Dutedimpianekepusaan-分散的絶望夢-",
+    "difficulty": "MASTER",
+    "const_value": 14.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Europa the Beauty_MASTER",
+    "title": "Europa the Beauty",
+    "difficulty": "MASTER",
+    "const_value": 14.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Marionette Lady_MASTER",
+    "title": "Marionette Lady",
+    "difficulty": "MASTER",
+    "const_value": 14.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Valmung_MASTER",
+    "title": "Valmung",
+    "difficulty": "MASTER",
+    "const_value": 14.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Unshakable_MASTER",
+    "title": "Unshakable",
+    "difficulty": "MASTER",
+    "const_value": 14.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Gravisphere Crisis_MASTER",
+    "title": "Gravisphere Crisis",
+    "difficulty": "MASTER",
+    "const_value": 14.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Echoes of the Forest_MASTER",
+    "title": "Echoes of the Forest",
+    "difficulty": "MASTER",
+    "const_value": 14.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Cybernetic Vampire_MASTER",
+    "title": "Cybernetic Vampire",
+    "difficulty": "MASTER",
+    "const_value": 14.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "かきくけこーしょん_MASTER",
+    "title": "かきくけこーしょん",
+    "difficulty": "MASTER",
+    "const_value": 14.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "RAKUGAKI NOTE_INSANITY",
+    "title": "RAKUGAKI NOTE",
+    "difficulty": "INSANITY",
+    "const_value": 14.2,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "GOODBOUNCE_INSANITY",
+    "title": "GOODBOUNCE",
+    "difficulty": "INSANITY",
+    "const_value": 14.2,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Rush-More_INSANITY",
+    "title": "Rush-More",
+    "difficulty": "INSANITY",
+    "const_value": 14.2,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Igallta_MASTER",
+    "title": "Igallta",
+    "difficulty": "MASTER",
+    "const_value": 14.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "MAGiADR1V3_MASTER",
+    "title": "MAGiADR1V3",
+    "difficulty": "MASTER",
+    "const_value": 14.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Memory：ZERΘ_MASTER",
+    "title": "Memory：ZERΘ",
+    "difficulty": "MASTER",
+    "const_value": 14.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Re：End of a Dream_MASTER",
+    "title": "Re：End of a Dream",
+    "difficulty": "MASTER",
+    "const_value": 14.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "From Nought_MASTER",
+    "title": "From Nought",
+    "difficulty": "MASTER",
+    "const_value": 14.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "[410]:Odyssey_MASTER",
+    "title": "[410]:Odyssey",
+    "difficulty": "MASTER",
+    "const_value": 14.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "宵焔桜火_MASTER",
+    "title": "宵焔桜火",
+    "difficulty": "MASTER",
+    "const_value": 14.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "花火のための幻想曲_MASTER",
+    "title": "花火のための幻想曲",
+    "difficulty": "MASTER",
+    "const_value": 14.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Rainy/Storm_MASTER",
+    "title": "Rainy/Storm",
+    "difficulty": "MASTER",
+    "const_value": 14.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Dance with Silence_MASTER",
+    "title": "Dance with Silence",
+    "difficulty": "MASTER",
+    "const_value": 14.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "バンバード ～FM Shock Version～_MASTER",
+    "title": "バンバード ～FM Shock Version～",
+    "difficulty": "MASTER",
+    "const_value": 14.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Dizzolve_MASTER",
+    "title": "Dizzolve",
+    "difficulty": "MASTER",
+    "const_value": 14.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "VS. マスターコア_MASTER",
+    "title": "VS. マスターコア",
+    "difficulty": "MASTER",
+    "const_value": 14.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "竹_MASTER",
+    "title": "竹",
+    "difficulty": "MASTER",
+    "const_value": 14.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Secret Order_INSANITY",
+    "title": "Secret Order",
+    "difficulty": "INSANITY",
+    "const_value": 14.3,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Vapula Cathedral_INSANITY",
+    "title": "Vapula Cathedral",
+    "difficulty": "INSANITY",
+    "const_value": 14.3,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Faith of Eastward_INSANITY",
+    "title": "Faith of Eastward",
+    "difficulty": "INSANITY",
+    "const_value": 14.3,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "NO ONE YES MAN_INSANITY",
+    "title": "NO ONE YES MAN",
+    "difficulty": "INSANITY",
+    "const_value": 14.3,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Better Graphic Animation_RAVAGE",
+    "title": "Better Graphic Animation",
+    "difficulty": "RAVAGE",
+    "const_value": 14.3,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "N3ON_RAVAGE",
+    "title": "N3ON",
+    "difficulty": "RAVAGE",
+    "const_value": 14.3,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Absolute Disintegration_MASTER",
+    "title": "Absolute Disintegration",
+    "difficulty": "MASTER",
+    "const_value": 14.4,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Maze_MASTER",
+    "title": "Maze",
+    "difficulty": "MASTER",
+    "const_value": 14.4,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "ZEUS+1 -2017 Flashback-_MASTER",
+    "title": "ZEUS+1 -2017 Flashback-",
+    "difficulty": "MASTER",
+    "const_value": 14.4,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Twinkle☆Dreamer_MASTER",
+    "title": "Twinkle☆Dreamer",
+    "difficulty": "MASTER",
+    "const_value": 14.4,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Dogbite_MASTER",
+    "title": "Dogbite",
+    "difficulty": "MASTER",
+    "const_value": 14.4,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Edgelord_MASTER",
+    "title": "Edgelord",
+    "difficulty": "MASTER",
+    "const_value": 14.4,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "LiR Acanthus_MASTER",
+    "title": "LiR Acanthus",
+    "difficulty": "MASTER",
+    "const_value": 14.4,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "銀世廻 -Alternative-_MASTER",
+    "title": "銀世廻 -Alternative-",
+    "difficulty": "MASTER",
+    "const_value": 14.4,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Starry Sky_INSANITY",
+    "title": "Starry Sky",
+    "difficulty": "INSANITY",
+    "const_value": 14.4,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Rubbish Sorting_INSANITY",
+    "title": "Rubbish Sorting",
+    "difficulty": "INSANITY",
+    "const_value": 14.4,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Awaken In Ruins_INSANITY",
+    "title": "Awaken In Ruins",
+    "difficulty": "INSANITY",
+    "const_value": 14.4,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "ST4R DUST_RAVAGE",
+    "title": "ST4R DUST",
+    "difficulty": "RAVAGE",
+    "const_value": 14.4,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Wheel of 4 Tune_MASTER",
+    "title": "Wheel of 4 Tune",
+    "difficulty": "MASTER",
+    "const_value": 14.5,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Stratostrider_MASTER",
+    "title": "Stratostrider",
+    "difficulty": "MASTER",
+    "const_value": 14.5,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Fxxking Wedding_MASTER",
+    "title": "Fxxking Wedding",
+    "difficulty": "MASTER",
+    "const_value": 14.5,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Electrick or Treat_MASTER",
+    "title": "Electrick or Treat",
+    "difficulty": "MASTER",
+    "const_value": 14.5,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Reflect RGB_MASTER",
+    "title": "Reflect RGB",
+    "difficulty": "MASTER",
+    "const_value": 14.5,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Grasshopper_MASTER",
+    "title": "Grasshopper",
+    "difficulty": "MASTER",
+    "const_value": 14.5,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "ニニ_INSANITY",
+    "title": "ニニ",
+    "difficulty": "INSANITY",
+    "const_value": 14.5,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "NightTheater_INSANITY",
+    "title": "NightTheater",
+    "difficulty": "INSANITY",
+    "const_value": 14.5,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "bpm160の練習曲_INSANITY",
+    "title": "bpm160の練習曲",
+    "difficulty": "INSANITY",
+    "const_value": 14.5,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "OCCHOCO-REST-LESS_INSANITY",
+    "title": "OCCHOCO-REST-LESS",
+    "difficulty": "INSANITY",
+    "const_value": 14.5,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "席替えやったー！_RAVAGE",
+    "title": "席替えやったー！",
+    "difficulty": "RAVAGE",
+    "const_value": 14.5,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "maessigkeit_MASTER",
+    "title": "maessigkeit",
+    "difficulty": "MASTER",
+    "const_value": 14.6,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "G e n g a o z o_MASTER",
+    "title": "G e n g a o z o",
+    "difficulty": "MASTER",
+    "const_value": 14.6,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "αthena_MASTER",
+    "title": "αthena",
+    "difficulty": "MASTER",
+    "const_value": 14.6,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "天照らす律動_MASTER",
+    "title": "天照らす律動",
+    "difficulty": "MASTER",
+    "const_value": 14.6,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "She has gone out 0f reach_MASTER",
+    "title": "She has gone out 0f reach",
+    "difficulty": "MASTER",
+    "const_value": 14.6,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "3LiMiNATE_MASTER",
+    "title": "3LiMiNATE",
+    "difficulty": "MASTER",
+    "const_value": 14.6,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "rvLer_MASTER",
+    "title": "rvLer",
+    "difficulty": "MASTER",
+    "const_value": 14.6,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "ViCToRi4_MASTER",
+    "title": "ViCToRi4",
+    "difficulty": "MASTER",
+    "const_value": 14.6,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Dead AND Alive!_MASTER",
+    "title": "Dead AND Alive!",
+    "difficulty": "MASTER",
+    "const_value": 14.6,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Espace neige_MASTER",
+    "title": "Espace neige",
+    "difficulty": "MASTER",
+    "const_value": 14.6,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Moonstone_MASTER",
+    "title": "Moonstone",
+    "difficulty": "MASTER",
+    "const_value": 14.6,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Enemy Controller_INSANITY",
+    "title": "Enemy Controller",
+    "difficulty": "INSANITY",
+    "const_value": 14.6,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Obscuritas_INSANITY",
+    "title": "Obscuritas",
+    "difficulty": "INSANITY",
+    "const_value": 14.6,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "NiFlhel_MASTER",
+    "title": "NiFlhel",
+    "difficulty": "MASTER",
+    "const_value": 14.7,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "＋η_MASTER",
+    "title": "＋η",
+    "difficulty": "MASTER",
+    "const_value": 14.7,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "tundra_MASTER",
+    "title": "tundra",
+    "difficulty": "MASTER",
+    "const_value": 14.7,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Connection Destination：Utopia_MASTER",
+    "title": "Connection Destination：Utopia",
+    "difficulty": "MASTER",
+    "const_value": 14.7,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Aquae Et Puella_MASTER",
+    "title": "Aquae Et Puella",
+    "difficulty": "MASTER",
+    "const_value": 14.7,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Memory Of Summer Days_INSANITY",
+    "title": "Memory Of Summer Days",
+    "difficulty": "INSANITY",
+    "const_value": 14.7,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Stratoscraper_INSANITY",
+    "title": "Stratoscraper",
+    "difficulty": "INSANITY",
+    "const_value": 14.7,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Arousal Legato_INSANITY",
+    "title": "Arousal Legato",
+    "difficulty": "INSANITY",
+    "const_value": 14.7,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Are You Ready？？？_INSANITY",
+    "title": "Are You Ready？？？",
+    "difficulty": "INSANITY",
+    "const_value": 14.7,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Daydream_INSANITY",
+    "title": "Daydream",
+    "difficulty": "INSANITY",
+    "const_value": 14.7,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Luminescence_INSANITY",
+    "title": "Luminescence",
+    "difficulty": "INSANITY",
+    "const_value": 14.7,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Brain Power_INSANITY",
+    "title": "Brain Power",
+    "difficulty": "INSANITY",
+    "const_value": 14.7,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "電脳戦姫 -cyber valkyrie-_RAVAGE",
+    "title": "電脳戦姫 -cyber valkyrie-",
+    "difficulty": "RAVAGE",
+    "const_value": 14.7,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Flashdance_RAVAGE",
+    "title": "Flashdance",
+    "difficulty": "RAVAGE",
+    "const_value": 14.7,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "キマグレ☆テキトウ・アンサンブル→コミュニケーション Re_Dive!_MASTER",
+    "title": "キマグレ☆テキトウ・アンサンブル→コミュニケーション Re_Dive!",
+    "difficulty": "MASTER",
+    "const_value": 14.8,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "ULTRARENDA1_MASTER",
+    "title": "ULTRARENDA1",
+    "difficulty": "MASTER",
+    "const_value": 14.8,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Still Be，Will Be_MASTER",
+    "title": "Still Be，Will Be",
+    "difficulty": "MASTER",
+    "const_value": 14.8,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "A W A K E_INSANITY",
+    "title": "A W A K E",
+    "difficulty": "INSANITY",
+    "const_value": 14.8,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Couleur_INSANITY",
+    "title": "Couleur",
+    "difficulty": "INSANITY",
+    "const_value": 14.8,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Eltaw_INSANITY",
+    "title": "Eltaw",
+    "difficulty": "INSANITY",
+    "const_value": 14.8,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "tundra_INSANITY",
+    "title": "tundra",
+    "difficulty": "INSANITY",
+    "const_value": 14.8,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "YRU_INSANITY",
+    "title": "YRU",
+    "difficulty": "INSANITY",
+    "const_value": 14.8,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "タマモッチ_INSANITY",
+    "title": "タマモッチ",
+    "difficulty": "INSANITY",
+    "const_value": 14.8,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Erwachen (TAKUMI³mix)_RAVAGE",
+    "title": "Erwachen (TAKUMI³mix)",
+    "difficulty": "RAVAGE",
+    "const_value": 14.8,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "ZEUS † 666_MASTER",
+    "title": "ZEUS † 666",
+    "difficulty": "MASTER",
+    "const_value": 14.9,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Squall - TAKUMIX -_MASTER",
+    "title": "Squall - TAKUMIX -",
+    "difficulty": "MASTER",
+    "const_value": 14.9,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Yggdrasill_MASTER",
+    "title": "Yggdrasill",
+    "difficulty": "MASTER",
+    "const_value": 14.9,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "SO GRAND._MASTER",
+    "title": "SO GRAND.",
+    "difficulty": "MASTER",
+    "const_value": 14.9,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Naughty Naughty Angel_MASTER",
+    "title": "Naughty Naughty Angel",
+    "difficulty": "MASTER",
+    "const_value": 14.9,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Last Noble Flame_MASTER",
+    "title": "Last Noble Flame",
+    "difficulty": "MASTER",
+    "const_value": 14.9,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "BPM = BPM + 1_MASTER",
+    "title": "BPM = BPM + 1",
+    "difficulty": "MASTER",
+    "const_value": 14.9,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "泡沫のジェミニ_MASTER",
+    "title": "泡沫のジェミニ",
+    "difficulty": "MASTER",
+    "const_value": 14.9,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "work^work^work^work^work^work_INSANITY",
+    "title": "work^work^work^work^work^work",
+    "difficulty": "INSANITY",
+    "const_value": 14.9,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Sunset Toybox_INSANITY",
+    "title": "Sunset Toybox",
+    "difficulty": "INSANITY",
+    "const_value": 14.9,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "テウメッサ_INSANITY",
+    "title": "テウメッサ",
+    "difficulty": "INSANITY",
+    "const_value": 14.9,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Finixtahv_RAVAGE",
+    "title": "Finixtahv",
+    "difficulty": "RAVAGE",
+    "const_value": 14.9,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Marionette Lady_RAVAGE",
+    "title": "Marionette Lady",
+    "difficulty": "RAVAGE",
+    "const_value": 14.9,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "ARCANAA？_MASTER",
+    "title": "ARCANAA？",
+    "difficulty": "MASTER",
+    "const_value": 15.0,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "BPM＝RT_MASTER",
+    "title": "BPM＝RT",
+    "difficulty": "MASTER",
+    "const_value": 15.0,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Creigis_MASTER",
+    "title": "Creigis",
+    "difficulty": "MASTER",
+    "const_value": 15.0,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "RESURRECTION WORLD_MASTER",
+    "title": "RESURRECTION WORLD",
+    "difficulty": "MASTER",
+    "const_value": 15.0,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "KiNG FORM -XIII-_MASTER",
+    "title": "KiNG FORM -XIII-",
+    "difficulty": "MASTER",
+    "const_value": 15.0,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "G e n g a o z o_INSANITY",
+    "title": "G e n g a o z o",
+    "difficulty": "INSANITY",
+    "const_value": 15.0,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "LiquidSplinter_INSANITY",
+    "title": "LiquidSplinter",
+    "difficulty": "INSANITY",
+    "const_value": 15.0,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "ZEUS_INSANITY",
+    "title": "ZEUS",
+    "difficulty": "INSANITY",
+    "const_value": 15.0,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Thear_INSANITY",
+    "title": "Thear",
+    "difficulty": "INSANITY",
+    "const_value": 15.0,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "解脱_INSANITY",
+    "title": "解脱",
+    "difficulty": "INSANITY",
+    "const_value": 15.0,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Connection Destination：Utopia_RAVAGE",
+    "title": "Connection Destination：Utopia",
+    "difficulty": "RAVAGE",
+    "const_value": 15.0,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "OMG_RAVAGE",
+    "title": "OMG",
+    "difficulty": "RAVAGE",
+    "const_value": 15.0,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Clockwork Paradox_MASTER",
+    "title": "Clockwork Paradox",
+    "difficulty": "MASTER",
+    "const_value": 15.1,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "紅恋桜_MASTER",
+    "title": "紅恋桜",
+    "difficulty": "MASTER",
+    "const_value": 15.1,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Sephirah×ClusteR_MASTER",
+    "title": "Sephirah×ClusteR",
+    "difficulty": "MASTER",
+    "const_value": 15.1,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "GOODWORLD_MASTER",
+    "title": "GOODWORLD",
+    "difficulty": "MASTER",
+    "const_value": 15.1,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Ops:Limone -FINAL EX-_INSANITY",
+    "title": "Ops:Limone -FINAL EX-",
+    "difficulty": "INSANITY",
+    "const_value": 15.1,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "階段練習曲_INSANITY",
+    "title": "階段練習曲",
+    "difficulty": "INSANITY",
+    "const_value": 15.1,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "琴音_INSANITY",
+    "title": "琴音",
+    "difficulty": "INSANITY",
+    "const_value": 15.1,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Bright Star Tactics_INSANITY",
+    "title": "Bright Star Tactics",
+    "difficulty": "INSANITY",
+    "const_value": 15.1,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "GOODMEN_INSANITY",
+    "title": "GOODMEN",
+    "difficulty": "INSANITY",
+    "const_value": 15.1,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Banbard's Summer_INSANITY",
+    "title": "Banbard's Summer",
+    "difficulty": "INSANITY",
+    "const_value": 15.1,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "キユビック_INSANITY",
+    "title": "キユビック",
+    "difficulty": "INSANITY",
+    "const_value": 15.1,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "OMG_INSANITY",
+    "title": "OMG",
+    "difficulty": "INSANITY",
+    "const_value": 15.1,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 1
+    }
+  },
+  {
+    "chart_id": "Power Attack_INSANITY",
+    "title": "Power Attack",
+    "difficulty": "INSANITY",
+    "const_value": 15.1,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Dance with Silence_RAVAGE",
+    "title": "Dance with Silence",
+    "difficulty": "RAVAGE",
+    "const_value": 15.1,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "3.566×10^80m³_MASTER",
+    "title": "3.566×10^80m³",
+    "difficulty": "MASTER",
+    "const_value": 15.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "A EaGLE_MASTER",
+    "title": "A EaGLE",
+    "difficulty": "MASTER",
+    "const_value": 15.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "≠_MASTER",
+    "title": "≠",
+    "difficulty": "MASTER",
+    "const_value": 15.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Distorted Fate_MASTER",
+    "title": "Distorted Fate",
+    "difficulty": "MASTER",
+    "const_value": 15.2,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Fafnir_INSANITY",
+    "title": "Fafnir",
+    "difficulty": "INSANITY",
+    "const_value": 15.2,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "透るエデンに花束を_INSANITY",
+    "title": "透るエデンに花束を",
+    "difficulty": "INSANITY",
+    "const_value": 15.2,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Cryout_INSANITY",
+    "title": "Cryout",
+    "difficulty": "INSANITY",
+    "const_value": 15.2,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "ZEUS † 666_INSANITY",
+    "title": "ZEUS † 666",
+    "difficulty": "INSANITY",
+    "const_value": 15.2,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Peroizor³_INSANITY",
+    "title": "Peroizor³",
+    "difficulty": "INSANITY",
+    "const_value": 15.2,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Back Out_INSANITY",
+    "title": "Back Out",
+    "difficulty": "INSANITY",
+    "const_value": 15.2,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Eltriwm_INSANITY",
+    "title": "Eltriwm",
+    "difficulty": "INSANITY",
+    "const_value": 15.2,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "天Q._INSANITY",
+    "title": "天Q.",
+    "difficulty": "INSANITY",
+    "const_value": 15.2,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Bright red hertz_INSANITY",
+    "title": "Bright red hertz",
+    "difficulty": "INSANITY",
+    "const_value": 15.2,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "HATEN CODE 583_INSANITY",
+    "title": "HATEN CODE 583",
+    "difficulty": "INSANITY",
+    "const_value": 15.2,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Sephirah×ClusteR_RAVAGE",
+    "title": "Sephirah×ClusteR",
+    "difficulty": "RAVAGE",
+    "const_value": 15.2,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "TRⅢDiM3NXi0NaL_MASTER",
+    "title": "TRⅢDiM3NXi0NaL",
+    "difficulty": "MASTER",
+    "const_value": 15.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "FREEDOM DiVE↓_MASTER",
+    "title": "FREEDOM DiVE↓",
+    "difficulty": "MASTER",
+    "const_value": 15.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Floor of Lava (TAKUMI³ Edit)_MASTER",
+    "title": "Floor of Lava (TAKUMI³ Edit)",
+    "difficulty": "MASTER",
+    "const_value": 15.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Traxxendenza_MASTER",
+    "title": "Traxxendenza",
+    "difficulty": "MASTER",
+    "const_value": 15.3,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Maze_INSANITY",
+    "title": "Maze",
+    "difficulty": "INSANITY",
+    "const_value": 15.3,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "!nterroban(?，_INSANITY",
+    "title": "!nterroban(?，",
+    "difficulty": "INSANITY",
+    "const_value": 15.3,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "ミルキーウェイに口づけを_INSANITY",
+    "title": "ミルキーウェイに口づけを",
+    "difficulty": "INSANITY",
+    "const_value": 15.3,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Taiko Warrior_INSANITY",
+    "title": "Taiko Warrior",
+    "difficulty": "INSANITY",
+    "const_value": 15.3,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "OЯDIN -Apocalyptic War-_INSANITY",
+    "title": "OЯDIN -Apocalyptic War-",
+    "difficulty": "INSANITY",
+    "const_value": 15.3,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "INFiNiTE ENERZY -Overdoze-_INSANITY",
+    "title": "INFiNiTE ENERZY -Overdoze-",
+    "difficulty": "INSANITY",
+    "const_value": 15.3,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "BPM = BPM + 1_INSANITY",
+    "title": "BPM = BPM + 1",
+    "difficulty": "INSANITY",
+    "const_value": 15.3,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "竹_RAVAGE",
+    "title": "竹",
+    "difficulty": "RAVAGE",
+    "const_value": 15.3,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Melody to Heaven_MASTER",
+    "title": "Melody to Heaven",
+    "difficulty": "MASTER",
+    "const_value": 15.4,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Taiko Warrior_MASTER",
+    "title": "Taiko Warrior",
+    "difficulty": "MASTER",
+    "const_value": 15.4,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Open The Gate_MASTER",
+    "title": "Open The Gate",
+    "difficulty": "MASTER",
+    "const_value": 15.4,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Cuvism³_MASTER",
+    "title": "Cuvism³",
+    "difficulty": "MASTER",
+    "const_value": 15.4,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Mr.RENDA_MASTER",
+    "title": "Mr.RENDA",
+    "difficulty": "MASTER",
+    "const_value": 15.4,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "WOLVRAVES_MASTER",
+    "title": "WOLVRAVES",
+    "difficulty": "MASTER",
+    "const_value": 15.4,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Oversleeping_INSANITY",
+    "title": "Oversleeping",
+    "difficulty": "INSANITY",
+    "const_value": 15.4,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "神々の住まう天域_INSANITY",
+    "title": "神々の住まう天域",
+    "difficulty": "INSANITY",
+    "const_value": 15.4,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "ParadiseWORLD sketched MAN_INSANITY",
+    "title": "ParadiseWORLD sketched MAN",
+    "difficulty": "INSANITY",
+    "const_value": 15.4,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "RENDA JOCEKY_INSANITY",
+    "title": "RENDA JOCEKY",
+    "difficulty": "INSANITY",
+    "const_value": 15.4,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "アイリス・アウトでさようなら_RAVAGE",
+    "title": "アイリス・アウトでさようなら",
+    "difficulty": "RAVAGE",
+    "const_value": 15.4,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "BPM＝RT_RAVAGE",
+    "title": "BPM＝RT",
+    "difficulty": "RAVAGE",
+    "const_value": 15.4,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "iL-Artifact_MASTER",
+    "title": "iL-Artifact",
+    "difficulty": "MASTER",
+    "const_value": 15.5,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Eat.Wav_MASTER",
+    "title": "Eat.Wav",
+    "difficulty": "MASTER",
+    "const_value": 15.5,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Grayed Out-Antifront-_INSANITY",
+    "title": "Grayed Out-Antifront-",
+    "difficulty": "INSANITY",
+    "const_value": 15.5,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Evil Emperor_INSANITY",
+    "title": "Evil Emperor",
+    "difficulty": "INSANITY",
+    "const_value": 15.5,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Dizzolve_INSANITY",
+    "title": "Dizzolve",
+    "difficulty": "INSANITY",
+    "const_value": 15.5,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "VEZZELiX_INSANITY",
+    "title": "VEZZELiX",
+    "difficulty": "INSANITY",
+    "const_value": 15.5,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Igallta_INSANITY",
+    "title": "Igallta",
+    "difficulty": "INSANITY",
+    "const_value": 15.5,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "嵐柳_INSANITY",
+    "title": "嵐柳",
+    "difficulty": "INSANITY",
+    "const_value": 15.5,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "KERBEROX_MASTER",
+    "title": "KERBEROX",
+    "difficulty": "MASTER",
+    "const_value": 15.6,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Wheel of 4 Tune_INSANITY",
+    "title": "Wheel of 4 Tune",
+    "difficulty": "INSANITY",
+    "const_value": 15.6,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Requillio_INSANITY",
+    "title": "Requillio",
+    "difficulty": "INSANITY",
+    "const_value": 15.6,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Ymir_INSANITY",
+    "title": "Ymir",
+    "difficulty": "INSANITY",
+    "const_value": 15.6,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Twinkle☆Dreamer_INSANITY",
+    "title": "Twinkle☆Dreamer",
+    "difficulty": "INSANITY",
+    "const_value": 15.6,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Flamewall_INSANITY",
+    "title": "Flamewall",
+    "difficulty": "INSANITY",
+    "const_value": 15.6,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Valmung_RAVAGE",
+    "title": "Valmung",
+    "difficulty": "RAVAGE",
+    "const_value": 15.6,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "夜襲_MASTER",
+    "title": "夜襲",
+    "difficulty": "MASTER",
+    "const_value": 15.7,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "volcanic_MASTER",
+    "title": "volcanic",
+    "difficulty": "MASTER",
+    "const_value": 15.7,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Crossing Dimension_MASTER",
+    "title": "Crossing Dimension",
+    "difficulty": "MASTER",
+    "const_value": 15.7,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "From Nought_INSANITY",
+    "title": "From Nought",
+    "difficulty": "INSANITY",
+    "const_value": 15.7,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "No-name Requiem_INSANITY",
+    "title": "No-name Requiem",
+    "difficulty": "INSANITY",
+    "const_value": 15.7,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Cuvism³_INSANITY",
+    "title": "Cuvism³",
+    "difficulty": "INSANITY",
+    "const_value": 15.7,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Edgelord_INSANITY",
+    "title": "Edgelord",
+    "difficulty": "INSANITY",
+    "const_value": 15.7,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "VS. マスターコア_INSANITY",
+    "title": "VS. マスターコア",
+    "difficulty": "INSANITY",
+    "const_value": 15.7,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Cybernetic Vampire_RAVAGE",
+    "title": "Cybernetic Vampire",
+    "difficulty": "RAVAGE",
+    "const_value": 15.7,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Sadalmelik_MASTER",
+    "title": "Sadalmelik",
+    "difficulty": "MASTER",
+    "const_value": 15.8,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Tera I/O_MASTER",
+    "title": "Tera I/O",
+    "difficulty": "MASTER",
+    "const_value": 15.8,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "DENGEKI Tube_MASTER",
+    "title": "DENGEKI Tube",
+    "difficulty": "MASTER",
+    "const_value": 15.8,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "She has gone out 0f reach_INSANITY",
+    "title": "She has gone out 0f reach",
+    "difficulty": "INSANITY",
+    "const_value": 15.8,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "花火のための幻想曲_INSANITY",
+    "title": "花火のための幻想曲",
+    "difficulty": "INSANITY",
+    "const_value": 15.8,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "a truth seeker -Communication with Utopia will be lost-_MASTER",
+    "title": "a truth seeker -Communication with Utopia will be lost-",
+    "difficulty": "MASTER",
+    "const_value": 15.9,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "飈_MASTER",
+    "title": "飈",
+    "difficulty": "MASTER",
+    "const_value": 15.9,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Absolute Disintegration_INSANITY",
+    "title": "Absolute Disintegration",
+    "difficulty": "INSANITY",
+    "const_value": 15.9,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Floor of Lava (TAKUMI³ Edit)_INSANITY",
+    "title": "Floor of Lava (TAKUMI³ Edit)",
+    "difficulty": "INSANITY",
+    "const_value": 15.9,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Gravisphere Crisis_INSANITY",
+    "title": "Gravisphere Crisis",
+    "difficulty": "INSANITY",
+    "const_value": 15.9,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Distorted Fate_INSANITY",
+    "title": "Distorted Fate",
+    "difficulty": "INSANITY",
+    "const_value": 15.9,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Dutedimpianekepusaan-分散的絶望夢-_RAVAGE",
+    "title": "Dutedimpianekepusaan-分散的絶望夢-",
+    "difficulty": "RAVAGE",
+    "const_value": 15.9,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "TRⅢDiM3NXi0NaL_INSANITY",
+    "title": "TRⅢDiM3NXi0NaL",
+    "difficulty": "INSANITY",
+    "const_value": 16.0,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "16",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Clockwork Paradox_INSANITY",
+    "title": "Clockwork Paradox",
+    "difficulty": "INSANITY",
+    "const_value": 16.0,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "16",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "conflict_INSANITY",
+    "title": "conflict",
+    "difficulty": "INSANITY",
+    "const_value": 16.0,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "16",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "≠_RAVAGE",
+    "title": "≠",
+    "difficulty": "RAVAGE",
+    "const_value": 16.0,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "16",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Stratostrider_RAVAGE",
+    "title": "Stratostrider",
+    "difficulty": "RAVAGE",
+    "const_value": 16.0,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "16",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "NOTES RUSH!_MASTER",
+    "title": "NOTES RUSH!",
+    "difficulty": "MASTER",
+    "const_value": 16.1,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "16",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "3.566×10^80m³_INSANITY",
+    "title": "3.566×10^80m³",
+    "difficulty": "INSANITY",
+    "const_value": 16.1,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "16",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "FREEDOM DiVE↓_INSANITY",
+    "title": "FREEDOM DiVE↓",
+    "difficulty": "INSANITY",
+    "const_value": 16.1,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "16",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Re：End of a Dream_INSANITY",
+    "title": "Re：End of a Dream",
+    "difficulty": "INSANITY",
+    "const_value": 16.1,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "16",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Traxxendenza_INSANITY",
+    "title": "Traxxendenza",
+    "difficulty": "INSANITY",
+    "const_value": 16.3,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "16",
+      "order": 0
+    }
+  }
+]

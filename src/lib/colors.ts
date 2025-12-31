@@ -52,7 +52,7 @@ export function getDiffColor(diff: string): string {
 export function getDiffAbbr(diff: string): string {
   const d = diff ? diff.toUpperCase() : "";
   if (d.includes("NORMAL")) return "NOR";
-  if (d.includes("HARD")) return "HRD";
+  if (d.includes("HARD")) return "HAR";
   if (d.includes("MASTER")) return "MAS";
   if (d.includes("INSANITY")) return "INS";
   if (d.includes("RAVAGE")) return "RVG";

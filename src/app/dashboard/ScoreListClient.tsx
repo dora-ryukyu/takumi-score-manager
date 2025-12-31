@@ -96,8 +96,8 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
   // Sorting Logic (operate on filteredScores)
   const sortedScores = useMemo(() => {
     return [...filteredScores].sort((a, b) => {
-      let valA: any;
-      let valB: any;
+      let valA: string | number | null;
+      let valB: string | number | null;
 
       // Special handling for computed
       if (sortColumn === 'rating') {
@@ -105,8 +105,8 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
         valB = b.contrib;
       } else {
         // Safe access because we know the other columns exist on 'a' and 'b' (except rating)
-        valA = a[sortColumn as keyof typeof a];
-        valB = b[sortColumn as keyof typeof b];
+        valA = a[sortColumn as keyof typeof a] as string | number | null;
+        valB = b[sortColumn as keyof typeof b] as string | number | null;
       }
       
       // Handle nulls

@@ -18,7 +18,7 @@ export async function getUserProfile(): Promise<UserProfile | null> {
   const dbUser = await db.prepare("SELECT display_name FROM users WHERE user_id = ?").bind(userId).first<{ display_name: string }>();
 
   // Priority: DB Display Name > Clerk First Name > Clerk Username > "Player"
-  let displayName = dbUser?.display_name || user.firstName || user.username || "Player";
+  const displayName = dbUser?.display_name || user.firstName || user.username || "Player";
 
   return {
     userId,
