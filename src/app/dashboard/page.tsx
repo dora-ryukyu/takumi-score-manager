@@ -52,7 +52,7 @@ export default async function DashboardPage() {
           <div>
             <h1 className="text-3xl font-extrabold tracking-tight text-[var(--color-foreground)]">スコア一覧</h1>
             <p className="text-[var(--color-foreground)] opacity-70 mt-1">
-              あなたの現在のベストスコア一覧
+              あなたの現在のベストスコア一覧 — <span className="text-xs">曲名をタップするとスコア推移を確認できます</span>
             </p>
           </div>
           

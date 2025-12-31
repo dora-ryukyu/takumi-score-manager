@@ -3,10 +3,9 @@
 import { useState, useMemo } from 'react';
 import { getRank } from "@/lib/rank";
 import { calculateSongContrib, calculateDisplayRate } from "@/lib/rating";
-import { Image as ImageIcon, Palette, ArrowLeft } from "lucide-react";
-import { generateBestImage, BestImageScore, BestImageProfile, ImageTheme } from "@/lib/canvas-generator";
+import { Image as ImageIcon, Info } from "lucide-react";
+import { generateBestImage, BestImageScore, BestImageProfile } from "@/lib/canvas-generator";
 import BestImageModal from "@/components/BestImageModal";
-import Link from 'next/link';
 
 interface ScoreRow {
   chart_id: string;
@@ -28,7 +27,6 @@ export default function ImageGenClient({ initialScores, userName, userImage }: I
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [generatedImage, setGeneratedImage] = useState<string | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
-  const [imageTheme, setImageTheme] = useState<ImageTheme>('game'); // Default to Game Mode
 
   // Enriched Data (Calculate Rating once)
   const enrichedScores = useMemo(() => {
@@ -84,7 +82,7 @@ export default function ImageGenClient({ initialScores, userName, userImage }: I
             userImageUrl: userImage
           };
 
-          const dataUrl = await generateBestImage(topScores, profile, imageTheme);
+          const dataUrl = await generateBestImage(topScores, profile);
           setGeneratedImage(dataUrl);
         } catch (e) {
           console.error("Failed to generate image", e);
@@ -95,42 +93,39 @@ export default function ImageGenClient({ initialScores, userName, userImage }: I
   };
 
   return (
-    <div className="space-y-8">
-      {/* Back Link */}
-
-
+    <div className="space-y-6">
+      {/* Main Card */}
       <div className="bg-[var(--color-card-bg)] rounded-2xl p-6 shadow-sm border border-[var(--color-header-border)]">
-
-        
         <div className="space-y-6">
-           {/* Theme Selector */}
-           <div className="flex flex-col sm:flex-row gap-4 items-center">
-               <div className="bg-white/5 border border-[var(--color-header-border)] rounded-xl px-4 py-2 flex items-center gap-3 w-full sm:w-auto">
-                  <Palette size={20} className="text-[var(--color-foreground)]" />
-                  <span className="font-medium text-sm text-[var(--color-foreground)]">画像テーマ:</span>
-                  <select 
-                    value={imageTheme}
-                    onChange={(e) => setImageTheme(e.target.value as ImageTheme)}
-                    className="bg-transparent border-none text-[var(--color-foreground)] text-sm focus:ring-0 cursor-pointer"
-                  >
-                     <option value="game" className="text-black">ゲーム再現 (Dark)</option>
-                     <option value="light" className="text-black">モダン (Light)</option>
-                  </select>
-               </div>
-               
-               <button 
-                onClick={handleGenerateImage}
-                className="flex-1 w-full sm:w-auto flex items-center justify-center gap-3 p-4 rounded-xl font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all shadow-md hover:shadow-lg"
-              >
-                <ImageIcon size={24} />
-                <span>画像を生成する</span>
-              </button>
-           </div>
-           
-           <p className="text-sm text-[var(--color-foreground)] opacity-60">
-             現在のベストスコア上位40曲を使用して、共有用の画像を生成します。<br/>
-             生成処理はお使いの端末で行われます。
-           </p>
+          {/* Description */}
+          <div className="flex items-start gap-3 p-4 bg-[var(--color-menu-hover)] rounded-xl">
+            <Info size={20} className="text-[var(--color-accent)] flex-shrink-0 mt-0.5" />
+            <div className="text-sm text-[var(--color-foreground)] opacity-80 space-y-2">
+              <p>
+                現在のベストスコア上位40曲のサマリー画像を生成します。
+                SNSへの共有や記録の保存にご利用ください。
+              </p>
+              <p className="opacity-60">
+                画像はゲーム風のデザインで生成されます。生成処理はお使いの端末上で行われます。
+              </p>
+            </div>
+          </div>
+
+          {/* Generate Button */}
+          <button 
+            onClick={handleGenerateImage}
+            disabled={enrichedScores.length === 0}
+            className="w-full flex items-center justify-center gap-3 p-4 rounded-xl font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <ImageIcon size={24} />
+            <span>画像を生成する</span>
+          </button>
+
+          {enrichedScores.length === 0 && (
+            <p className="text-sm text-center text-[var(--color-foreground)] opacity-60">
+              ※ スコアデータがありません。CSVインポートでデータを追加してください。
+            </p>
+          )}
         </div>
       </div>
 
@@ -139,7 +134,9 @@ export default function ImageGenClient({ initialScores, userName, userImage }: I
         onClose={() => setIsModalOpen(false)}
         imageDataUrl={generatedImage}
         isLoading={isGenerating}
+        userName={userName || undefined}
       />
     </div>
   );
 }
+

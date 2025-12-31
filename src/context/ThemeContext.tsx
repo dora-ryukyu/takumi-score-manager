@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-type Theme = "modern-light" | "dark" | "game-dark";
+type Theme = "modern-light" | "dark";
 
 interface ThemeContextType {
   theme: Theme;
@@ -19,9 +19,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // Load theme from localStorage on mount
     const savedTheme = localStorage.getItem("app-theme") as Theme;
-    if (savedTheme) {
+    // Handle legacy game-dark theme fallback
+    if (savedTheme && (savedTheme === "modern-light" || savedTheme === "dark")) {
       setThemeState(savedTheme);
       document.documentElement.setAttribute("data-theme", savedTheme);
+    } else {
+      // Default or invalid/legacy theme
+      document.documentElement.setAttribute("data-theme", "modern-light");
     }
     setMounted(true);
   }, []);
@@ -33,18 +37,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   };
 
   const toggleTheme = () => {
-    // Cycle: Light -> Dark -> Game -> Light
-    let newTheme: Theme = "modern-light";
-    if (theme === "modern-light") newTheme = "dark";
-    else if (theme === "dark") newTheme = "game-dark";
-    else newTheme = "modern-light";
-    
+    // Toggle between Light and Dark
+    const newTheme: Theme = theme === "modern-light" ? "dark" : "modern-light";
     setTheme(newTheme);
   };
-
-  // Prevent flash of incorrect theme by not rendering until mounted (or render layout but risk flash)
-  // For better UX, we can render children but with default theme initially.
-  // The useEffect handles the update quickly.
   
   return (
     <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>

@@ -114,10 +114,10 @@ export default function ChartDetail({
             </label>
         </div>
 
-        <div className="h-[400px] w-full">
+        <div className="h-[250px] sm:h-[300px] w-full">
             {chartData.length > 0 ? (
                 <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={chartData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                    <LineChart data={chartData} margin={{ top: 5, right: 15, left: 5, bottom: 5 }}>
                         <CartesianGrid strokeDasharray="3 3" stroke="var(--color-header-border)" opacity={0.3} />
                         <XAxis 
                             dataKey="observed_at" 
@@ -129,9 +129,9 @@ export default function ChartDetail({
                         <YAxis 
                             domain={['auto', 'auto']} 
                             stroke="var(--color-foreground)"
-                            width={80}
+                            width={55}
                             tickFormatter={(val) => val.toLocaleString()}
-                            tick={{ fill: "var(--color-foreground)", opacity: 0.7 }}
+                            tick={{ fontSize: 10, fill: "var(--color-foreground)", opacity: 0.7 }}
                         />
                         <Tooltip 
                             contentStyle={{ 
@@ -153,7 +153,7 @@ export default function ChartDetail({
                         />
                         <Brush 
                             dataKey="observed_at" 
-                            height={30} 
+                            height={25} 
                             stroke="var(--color-accent)"
                             fill="var(--color-card-bg)"
                             tickFormatter={() => ""}

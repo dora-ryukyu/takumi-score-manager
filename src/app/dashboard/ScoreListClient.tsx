@@ -273,16 +273,92 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
         )}
       </div>
 
-      {/* Results Count */}
+      {/* Results Count + Mobile Sort Selector */}
       <div className="flex items-center justify-between text-sm text-[var(--color-foreground)] opacity-80 px-1">
         <div>
           該当件数: <span className="font-bold text-[var(--color-accent)] text-lg">{filteredScores.length}</span> <span className="text-xs opacity-60">/ {enrichedScores.length}</span>
         </div>
+        
+        {/* Mobile Sort Selector */}
+        <div className="md:hidden flex items-center gap-2">
+          <select
+            value={`${sortColumn}-${sortDirection}`}
+            onChange={(e) => {
+              const [col, dir] = e.target.value.split('-') as [SortColumn, SortDirection];
+              setSortColumn(col);
+              setSortDirection(dir);
+            }}
+            className="bg-[var(--color-card-bg)] border border-[var(--color-header-border)] rounded-lg px-2 py-1.5 text-xs text-[var(--color-foreground)] focus:ring-2 focus:ring-[var(--color-accent)] focus:outline-none"
+          >
+            <option value="rating-desc">レート順 ↓</option>
+            <option value="rating-asc">レート順 ↑</option>
+            <option value="best_score-desc">スコア順 ↓</option>
+            <option value="best_score-asc">スコア順 ↑</option>
+            <option value="const_value-desc">定数順 ↓</option>
+            <option value="const_value-asc">定数順 ↑</option>
+            <option value="title-asc">曲名順 A→Z</option>
+            <option value="title-desc">曲名順 Z→A</option>
+            <option value="updated_at-desc">更新日順 新→古</option>
+            <option value="updated_at-asc">更新日順 古→新</option>
+          </select>
+        </div>
       </div>
 
-      {/* Score Table */}
-      <div className="bg-[var(--color-card-bg)] rounded-xl shadow-sm border border-[var(--color-header-border)] overflow-hidden transition-colors duration-300">
-         {/* Mobile Card View (Visible only on small screens?) - For now, scrollable table is easiest for "Excel-like" data */}
+      {/* Score List - Mobile Card View */}
+      <div className="md:hidden space-y-3">
+        {sortedScores.length === 0 ? (
+          <div className="bg-[var(--color-card-bg)] rounded-xl p-8 text-center text-[var(--color-foreground)] opacity-60 border border-[var(--color-header-border)]">
+            <p className="mb-2 text-lg font-medium">データがありません</p>
+            <p className="text-sm">条件を変更するか、データを追加してください。</p>
+          </div>
+        ) : (
+          sortedScores.map((row) => (
+            <div 
+              key={row.chart_id}
+              className="bg-[var(--color-card-bg)] rounded-xl p-4 border border-[var(--color-header-border)] transition-colors hover:border-[var(--color-accent)]"
+            >
+              {/* Title & Difficulty Row */}
+              <div className="flex items-start justify-between gap-2 mb-3">
+                <div className="flex-1 min-w-0">
+                  <Link href={`/dashboard/chart/${row.chart_id}`} className="font-bold text-[var(--color-foreground)] text-base hover:text-blue-400 transition-colors line-clamp-2">
+                    {row.title || row.chart_id}
+                  </Link>
+                </div>
+                <span className={`flex-shrink-0 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium uppercase tracking-wide border ${getDiffColorClass(row.difficulty)}`}>
+                  {row.difficulty || "UNK"}
+                </span>
+              </div>
+              
+              {/* Stats Grid */}
+              <div className="grid grid-cols-4 gap-2 text-center">
+                <div className="bg-[var(--color-menu-hover)] rounded-lg py-2 px-1">
+                  <div className="text-xs opacity-60 mb-0.5">スコア</div>
+                  <div className="font-mono text-sm font-bold tabular-nums">{row.best_score.toLocaleString()}</div>
+                </div>
+                <div className="bg-[var(--color-menu-hover)] rounded-lg py-2 px-1">
+                  <div className="text-xs opacity-60 mb-0.5">ランク</div>
+                  <span className={`inline-flex items-center justify-center px-2 py-0.5 rounded text-xs font-bold ${getRankColorClassForBadge(row.rank)}`}>
+                    {row.rank}
+                  </span>
+                </div>
+                <div className="bg-[var(--color-menu-hover)] rounded-lg py-2 px-1">
+                  <div className="text-xs opacity-60 mb-0.5">定数</div>
+                  <div className="text-sm tabular-nums">{row.constVal.toFixed(1)}</div>
+                </div>
+                <div className="bg-[var(--color-menu-hover)] rounded-lg py-2 px-1">
+                  <div className="text-xs opacity-60 mb-0.5">レート</div>
+                  <div className={`text-sm font-bold tabular-nums ${getRateColorClass(parseFloat(row.ratingDisplay))}`}>
+                    {row.ratingDisplay}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+
+      {/* Score Table - Desktop View */}
+      <div className="hidden md:block bg-[var(--color-card-bg)] rounded-xl shadow-sm border border-[var(--color-header-border)] overflow-hidden transition-colors duration-300">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm whitespace-nowrap">
             <thead className="bg-[var(--color-menu-hover)] text-[var(--color-foreground)] font-semibold uppercase tracking-wider text-xs border-b border-[var(--color-header-border)]">

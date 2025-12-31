@@ -12,7 +12,8 @@ import {
   Moon, 
   Sun,
   LogOut,
-  Calculator
+  Calculator,
+  BookOpen
 } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 import { SignOutButton } from "@clerk/nextjs";
@@ -25,10 +26,11 @@ export default function Menu() {
 
   const menuItems = [
     { href: "/dashboard", label: "スコア一覧", icon: ListMusic },
-    { href: "/settings", label: "設定", icon: Settings },
-    { href: "/import", label: "CSVインポート", icon: FileSpreadsheet }, // Assuming /import route exists or will exist
-    { href: "/image-gen", label: "ベスト枠画像生成", icon: ImageIcon },       // Assuming /image-gen route exists or will exist
+    { href: "/import", label: "CSVインポート", icon: FileSpreadsheet },
+    { href: "/image-gen", label: "ベスト枠画像生成", icon: ImageIcon },
     { href: "/calculator", label: "計算機", icon: Calculator },
+    { href: "/guide", label: "使い方", icon: BookOpen },
+    { href: "/settings", label: "設定", icon: Settings },
   ];
 
   return (
@@ -98,9 +100,9 @@ export default function Menu() {
               onClick={toggleTheme}
               className="flex items-center gap-3 px-4 py-3 w-full text-left text-[var(--color-foreground)] hover:bg-[var(--color-menu-hover)] rounded-lg transition-colors"
             >
-              {theme === 'modern-light' ? <Sun size={20} /> : theme === 'dark' ? <Moon size={20} /> : <FileSpreadsheet size={20} /* Placeholder for Game Theme */ />}
+              {theme === 'modern-light' ? <Sun size={20} /> : <Moon size={20} />}
               <span className="flex-1">
-                {theme === 'modern-light' ? 'ライトテーマ' : theme === 'dark' ? 'ダークテーマ' : '原作風テーマ'}
+                {theme === 'modern-light' ? 'ライトテーマ' : 'ダークテーマ'}
               </span>
               <span className="text-xs opacity-50 border border-[var(--color-foreground)] px-1 rounded">切替</span>
             </button>

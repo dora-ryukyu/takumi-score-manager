@@ -11,7 +11,7 @@ export default async function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Left: App Title */}
         <div className="flex items-center gap-2">
-          <Link href="/" className="font-bold text-xl tracking-tight text-[var(--color-foreground)] hover:opacity-80 transition-opacity flex items-center gap-2">
+          <Link href="/" className="font-bold text-lg sm:text-xl tracking-tight text-[var(--color-foreground)] hover:opacity-80 transition-opacity flex items-center gap-2">
             {/* Logo Removed */}
             <span>TAKUMI³ Score Manager</span>
           </Link>

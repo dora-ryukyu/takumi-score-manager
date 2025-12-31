@@ -99,10 +99,10 @@ export default function ImportForm({ userId }: ImportFormProps) {
                   file:mr-4 file:py-2 file:px-4
                   file:rounded-lg file:border-0
                   file:text-sm file:font-semibold
-                  file:bg-[var(--color-header-fill)] file:text-white
-                  hover:file:bg-[var(--color-header-border)]
+                  file:bg-[var(--color-accent)] file:text-white
+                  hover:file:opacity-80
                   file:cursor-pointer cursor-pointer
-                  file:transition-colors"
+                  file:transition-all"
               />
             </label>
           </div>
@@ -119,8 +119,8 @@ export default function ImportForm({ userId }: ImportFormProps) {
           <button
             onClick={handleImport}
             disabled={isLoading || !fileName}
-            className="px-6 py-3 bg-[var(--color-header-border)] text-white font-bold rounded-lg
-              hover:bg-[var(--color-header-fill)] transition-colors
+            className="px-6 py-3 bg-[var(--color-accent)] text-white font-bold rounded-lg
+              hover:opacity-80 transition-all
               disabled:opacity-50 disabled:cursor-not-allowed
               flex items-center gap-2"
           >
@@ -231,12 +231,11 @@ export default function ImportForm({ userId }: ImportFormProps) {
         </p>
         <div className="bg-[var(--color-background)] p-4 rounded-lg font-mono text-sm overflow-x-auto">
           <div className="text-[var(--color-foreground)] opacity-60">曲名,難易度,レベル,スコア</div>
-          <div>曲名A,MAS,14,987654</div>
-          <div>曲名B,INS,15,965432</div>
-          <div>曲名C,HAR,12,998765</div>
+          <div>曲名A,MASTER,14,987654</div>
+          <div>曲名B,INSANITY,15,965432</div>
         </div>
         <p className="text-xs text-[var(--color-foreground)] opacity-60 mt-3">
-          ※ 難易度は NOR / HAR / MAS / INS などのCSV出力形式で記載してください
+          ※ NORMAL / HARD / MASTER / INSANITY などの正式名称で記載してください
         </p>
       </div>
     </div>

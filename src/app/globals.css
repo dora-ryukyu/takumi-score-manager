@@ -22,22 +22,6 @@
   --accent-color: #3b82f6; /* blue-500 */
 }
 
-[data-theme="game-dark"] {
-  /* Game Reproduction Dark */
-  --bg-main: #0e1f34;
-  --text-main: #ffffff;
-  --header-bg: #1682a2;
-  --header-border: #00dfeb;
-  --card-bg: #22363b;
-  --menu-hover: #1e3a5f;
-  --accent-color: #00dfeb;
-}
-
-[data-theme='game-dark'] .game-text-stroke {
-  -webkit-text-stroke: 1px black;
-  paint-order: stroke fill;
-}
-
 @theme inline {
   --color-background: var(--bg-main);
   --color-foreground: var(--text-main);
@@ -59,13 +43,24 @@ body {
 }
 
 @keyframes rainbow-hue {
-  from { filter: hue-rotate(0deg); }
-  to { filter: hue-rotate(360deg); }
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
 }
 
 .animate-rainbow {
   /* Tailwind 500 colors: Red, Yellow, Green, Blue, Purple */
-  background-image: linear-gradient(to right, #ef4444, #eab308, #22c55e, #3b82f6, #a855f7);
+  background-image: linear-gradient(
+    to right,
+    #ef4444,
+    #eab308,
+    #22c55e,
+    #3b82f6,
+    #a855f7
+  );
   background-size: 100% auto;
   background-clip: text;
   -webkit-background-clip: text;
