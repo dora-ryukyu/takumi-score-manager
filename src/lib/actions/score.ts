@@ -4,11 +4,9 @@ import { getDb } from "@/lib/d1";
 import { revalidatePath } from "next/cache";
 
 // Helper to generate consistent Chart ID
-async function generateChartId(title: string, difficulty: string, constValue: number): Promise<string> {
-  const data = new TextEncoder().encode(`${title}:${difficulty}:${constValue}`);
-  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+// Format: title_difficulty_constValue (matches charts.json, always with .0 decimal)
+function generateChartId(title: string, difficulty: string, constValue: number): string {
+  return `${title}_${difficulty}_${constValue.toFixed(1)}`;
 }
 
 export type UpsertScoreResult = {
@@ -28,7 +26,7 @@ export async function upsertScore(
 ): Promise<UpsertScoreResult> {
   try {
     const db = getDb();
-    const chartId = await generateChartId(title, difficulty, constValue);
+    const chartId = generateChartId(title, difficulty, constValue);
     const observedAtIso = observedAt.toISOString();
 
     // 2. Fetch Current Best
