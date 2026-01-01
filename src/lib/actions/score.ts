@@ -165,22 +165,27 @@ export async function batchUpsertScores(
     const db = getDb();
     const observedAtIso = observedAt.toISOString();
 
-    // 1. 一括で現在のベストスコアを取得
+    // 1. 現在のベストスコアを取得（チャンク分割でSQLite変数制限回避）
+    // SQLiteの変数上限は999だが、安全のため50件ずつに分割
+    const SELECT_CHUNK_SIZE = 50;
     const chartIds = scores.map(s => s.chartId);
-    const placeholders = chartIds.map(() => '?').join(',');
-    const currentBests = await db
-      .prepare(
-        `SELECT chart_id, best_score FROM best_current 
-         WHERE user_id = ? AND chart_id IN (${placeholders})`
-      )
-      .bind(userId, ...chartIds)
-      .all<{ chart_id: string; best_score: number }>();
-
-    // 現在のスコアをMapに変換
     const currentScoreMap = new Map<string, number>();
-    if (currentBests.results) {
-      for (const row of currentBests.results) {
-        currentScoreMap.set(row.chart_id, row.best_score);
+
+    for (let i = 0; i < chartIds.length; i += SELECT_CHUNK_SIZE) {
+      const chunk = chartIds.slice(i, i + SELECT_CHUNK_SIZE);
+      const placeholders = chunk.map(() => '?').join(',');
+      const chunkResult = await db
+        .prepare(
+          `SELECT chart_id, best_score FROM best_current 
+           WHERE user_id = ? AND chart_id IN (${placeholders})`
+        )
+        .bind(userId, ...chunk)
+        .all<{ chart_id: string; best_score: number }>();
+
+      if (chunkResult.results) {
+        for (const row of chunkResult.results) {
+          currentScoreMap.set(row.chart_id, row.best_score);
+        }
       }
     }
 
@@ -198,60 +203,69 @@ export async function batchUpsertScores(
       return { success: true, totalProcessed: scores.length, updatedCount: 0 };
     }
 
-    // 3. バッチ処理用のステートメントを準備
-    const statements: D1PreparedStatement[] = [];
-
-    for (const score of scoresToUpdate) {
-      // best_current への UPSERT
-      statements.push(
-        db.prepare(
-          `INSERT INTO best_current (user_id, chart_id, title, difficulty, best_score, best_observed_at, const_value, updated_at)
-           VALUES (?, ?, ?, ?, ?, ?, ?, datetime('now'))
-           ON CONFLICT(user_id, chart_id) DO UPDATE SET
-              best_score = excluded.best_score,
-              best_observed_at = excluded.best_observed_at,
-              const_value = excluded.const_value,
-              updated_at = datetime('now')`
-        ).bind(userId, score.chartId, score.title, score.difficulty, score.score, observedAtIso, score.constValue)
-      );
-
-      // best_history への INSERT
-      statements.push(
-        db.prepare(
-          `INSERT INTO best_history (user_id, chart_id, title, difficulty, score, observed_at, const_value)
-           VALUES (?, ?, ?, ?, ?, ?, ?)`
-        ).bind(userId, score.chartId, score.title, score.difficulty, score.score, observedAtIso, score.constValue)
-      );
-    }
-
-    // 4. バッチ実行（D1のbatch APIで一括処理）
-    await db.batch(statements);
-
-    // 5. 履歴トリム（更新があったチャートのみ、一括で実行）
-    const updatedChartIds = scoresToUpdate.map(s => s.chartId);
-    const trimStatements: D1PreparedStatement[] = [];
+    // 3. バッチ処理用のステートメントを準備（チャンク分割）
+    // D1のbatch APIでは全ステートメントのパラメータが合計される
+    // 1スコアあたり15パラメータ(8+7)なので、20件で300パラメータ = 安全
+    const BATCH_CHUNK_SIZE = 20;
     
-    for (const chartId of updatedChartIds) {
-      trimStatements.push(
-        db.prepare(
-          `DELETE FROM best_history 
-           WHERE user_id = ? AND chart_id = ? 
-           AND id NOT IN (
-             SELECT id FROM best_history 
-             WHERE user_id = ? AND chart_id = ? 
-             ORDER BY observed_at DESC 
-             LIMIT 100
-           )`
-        ).bind(userId, chartId, userId, chartId)
-      );
+    for (let i = 0; i < scoresToUpdate.length; i += BATCH_CHUNK_SIZE) {
+      const batchChunk = scoresToUpdate.slice(i, i + BATCH_CHUNK_SIZE);
+      const statements: D1PreparedStatement[] = [];
+
+      for (const score of batchChunk) {
+        // best_current への UPSERT
+        statements.push(
+          db.prepare(
+            `INSERT INTO best_current (user_id, chart_id, title, difficulty, best_score, best_observed_at, const_value, updated_at)
+             VALUES (?, ?, ?, ?, ?, ?, ?, datetime('now'))
+             ON CONFLICT(user_id, chart_id) DO UPDATE SET
+                best_score = excluded.best_score,
+                best_observed_at = excluded.best_observed_at,
+                const_value = excluded.const_value,
+                updated_at = datetime('now')`
+          ).bind(userId, score.chartId, score.title, score.difficulty, score.score, observedAtIso, score.constValue)
+        );
+
+        // best_history への INSERT
+        statements.push(
+          db.prepare(
+            `INSERT INTO best_history (user_id, chart_id, title, difficulty, score, observed_at, const_value)
+             VALUES (?, ?, ?, ?, ?, ?, ?)`
+          ).bind(userId, score.chartId, score.title, score.difficulty, score.score, observedAtIso, score.constValue)
+        );
+      }
+
+      // バッチ実行
+      await db.batch(statements);
     }
 
-    // トリム処理もバッチで実行
-    if (trimStatements.length > 0) {
+    // 4. 履歴トリム（更新があったチャートのみ、チャンク分割で実行）
+    // 1チャートあたり4パラメータなので、20件で80パラメータ = 安全
+    const updatedChartIds = scoresToUpdate.map(s => s.chartId);
+    
+    for (let i = 0; i < updatedChartIds.length; i += BATCH_CHUNK_SIZE) {
+      const trimChunk = updatedChartIds.slice(i, i + BATCH_CHUNK_SIZE);
+      const trimStatements: D1PreparedStatement[] = [];
+
+      for (const chartId of trimChunk) {
+        trimStatements.push(
+          db.prepare(
+            `DELETE FROM best_history 
+             WHERE user_id = ? AND chart_id = ? 
+             AND id NOT IN (
+               SELECT id FROM best_history 
+               WHERE user_id = ? AND chart_id = ? 
+               ORDER BY observed_at DESC 
+               LIMIT 100
+             )`
+          ).bind(userId, chartId, userId, chartId)
+        );
+      }
+
       await db.batch(trimStatements);
     }
 
-    // 6. revalidatePathは1回だけ（呼び出し元で行う）
+    // 5. revalidatePathは1回だけ（呼び出し元で行う）
     // ここでは行わない
 
     return {
