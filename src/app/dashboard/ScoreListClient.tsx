@@ -155,7 +155,7 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
         </div>
         
         <div className="text-center sm:text-right">
-          <p className="text-sm text-[var(--color-foreground)] opacity-60 font-medium uppercase tracking-wider">Overall Rate (Top 40)</p>
+          <p className="text-sm text-[var(--color-foreground)] opacity-60 font-medium uppercase tracking-wider">RATING</p>
           <div className={`text-5xl tracking-tight game-text-stroke ${getRateColorClass(parseFloat(overallRate))}`}>
             {overallRate}
           </div>

@@ -56,7 +56,7 @@ export default function Menu() {
         <div className="flex flex-col h-full">
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-[var(--color-header-border)]">
-            <span className="font-bold text-lg">Menu</span>
+            <span className="font-bold text-lg">メニュー</span>
             <button 
               onClick={toggleOpen}
               className="p-1 hover:bg-[var(--color-menu-hover)] rounded-full transition-colors"

@@ -140,7 +140,7 @@ export default function ChartDetail({
                                 color: "var(--color-foreground)" 
                             }}
                             labelFormatter={formatDate}
-                            formatter={(value: number | undefined) => [value?.toLocaleString() ?? "0", "Score"]}
+                            formatter={(value: number | undefined) => [value?.toLocaleString() ?? "0", "スコア"]}
                         />
                         <Line 
                             type="monotone" 

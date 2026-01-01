@@ -11,13 +11,15 @@ export default async function SettingsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-foreground)] p-6 sm:p-12">
+    <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-foreground)] p-4 sm:p-8">
       <div className="max-w-2xl mx-auto space-y-8">
-        <header className="border-b border-[var(--color-header-border)] pb-6">
-          <h1 className="text-3xl font-bold tracking-tight text-[var(--color-foreground)]">設定</h1>
-          <p className="text-[var(--color-foreground)] opacity-60 mt-1">
-            プロフィールなどの設定を変更します。
-          </p>
+        <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div>
+            <h1 className="text-3xl font-extrabold tracking-tight text-[var(--color-foreground)]">設定</h1>
+            <p className="text-[var(--color-foreground)] opacity-70 mt-1">
+              プロフィールなどの設定を変更します
+            </p>
+          </div>
         </header>
 
         <div className="bg-[var(--color-card-bg)] p-8 rounded-xl shadow-sm border border-[var(--color-header-border)]">

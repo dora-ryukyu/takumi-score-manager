@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "TAKUMI3 Score Manager",
-	description: "TAKUMI3のスコア管理ツール",
+	title: "TAKUMI³ Score Manager",
+	description: "TAKUMI³のスコア管理ツール",
 };
 
 export default function RootLayout({
@@ -31,7 +31,7 @@ export default function RootLayout({
 				<head>
 					<link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
 				</head>
-				<body className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans text-slate-800 bg-slate-50`}>
+				<body className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans`}>
 					<ThemeProvider>
 						<Header />
 						{children}

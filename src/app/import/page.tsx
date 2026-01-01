@@ -15,7 +15,7 @@ export default async function ImportPage() {
           <div>
             <h1 className="text-3xl font-extrabold tracking-tight text-[var(--color-foreground)]">CSVインポート</h1>
             <p className="text-[var(--color-foreground)] opacity-70 mt-1">
-              TAKUMI3のエクスポートデータを取り込みます
+              TAKUMI³のエクスポートデータを取り込みます
             </p>
           </div>
         </header>

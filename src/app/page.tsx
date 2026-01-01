@@ -1,17 +1,18 @@
 import Link from "next/link";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
+import { BookOpen } from "lucide-react";
 
 export default function Home() {
 	return (
-		<div className="font-sans min-h-[calc(100vh-64px)] grid grid-rows-[auto_1fr_auto] bg-slate-50 text-slate-800">
+		<div className="font-sans min-h-[calc(100vh-64px)] grid grid-rows-[auto_1fr_auto] bg-[var(--color-background)] text-[var(--color-foreground)]">
 			{/* Hero Section */}
 			<main className="flex flex-col items-center justify-center text-center px-4 sm:px-8 py-20 gap-8">
 				<div className="space-y-4 max-w-2xl">
-					<h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
+					<h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-[var(--color-foreground)] leading-tight">
 						TAKUMI³のスコアを、<br />
-						<span className="text-blue-600">もっとスマートに。</span>
+						<span className="text-[var(--color-accent)]">もっとスマートに。</span>
 					</h1>
-					<p className="text-lg text-slate-600 leading-relaxed">
+					<p className="text-lg text-[var(--color-foreground)] opacity-70 leading-relaxed">
 						CSVをアップロードして、ベストスコアやレートを簡単に管理・分析。<br className="hidden sm:block" />
 						あなたの成長を可視化するツールです。
 					</p>
@@ -20,7 +21,7 @@ export default function Home() {
 				<div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
 					<SignedOut>
 						<SignInButton mode="modal">
-							<button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-lg w-full sm:w-auto">
+							<button className="bg-[var(--color-accent)] hover:opacity-90 text-white font-bold py-3 px-8 rounded-full transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-lg w-full sm:w-auto">
 								ログインして始める
 							</button>
 						</SignInButton>
@@ -29,47 +30,56 @@ export default function Home() {
 					<SignedIn>
 						<Link
 							href="/dashboard"
-							className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-lg w-full sm:w-auto inline-flex items-center justify-center"
+							className="bg-[var(--color-accent)] hover:opacity-90 text-white font-bold py-3 px-8 rounded-full transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-lg w-full sm:w-auto inline-flex items-center justify-center"
 						>
 							スコア一覧へ
 						</Link>
 					</SignedIn>
+
+					{/* Guide link */}
+					<Link
+						href="/guide"
+						className="border border-[var(--color-header-border)] text-[var(--color-foreground)] font-bold py-3 px-8 rounded-full transition-all hover:bg-[var(--color-menu-hover)] text-lg w-full sm:w-auto inline-flex items-center justify-center gap-2"
+					>
+						<BookOpen size={20} />
+						使い方
+					</Link>
 				</div>
 
 				{/* Feature Highlights */}
 				<div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-8 text-left max-w-4xl w-full">
-					<div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-						<div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600 font-bold">
+					<div className="bg-[var(--color-card-bg)] p-6 rounded-2xl shadow-sm border border-[var(--color-header-border)]">
+						<div className="w-10 h-10 bg-[var(--color-accent)]/20 rounded-lg flex items-center justify-center mb-4 text-[var(--color-accent)] font-bold">
 							1
 						</div>
-						<h3 className="font-bold text-lg mb-2">CSVインポート</h3>
-						<p className="text-slate-500 text-sm">
+						<h3 className="font-bold text-lg mb-2 text-[var(--color-foreground)]">CSVインポート</h3>
+						<p className="text-[var(--color-foreground)] opacity-60 text-sm">
 							公式のエクスポートデータをそのまま読み込み可能。
 						</p>
 					</div>
-					<div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-						<div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600 font-bold">
+					<div className="bg-[var(--color-card-bg)] p-6 rounded-2xl shadow-sm border border-[var(--color-header-border)]">
+						<div className="w-10 h-10 bg-[var(--color-accent)]/20 rounded-lg flex items-center justify-center mb-4 text-[var(--color-accent)] font-bold">
 							2
 						</div>
-						<h3 className="font-bold text-lg mb-2">レート計算</h3>
-						<p className="text-slate-500 text-sm">
-							譜面定数に基づいた単曲・総合レートを自動算出。
+						<h3 className="font-bold text-lg mb-2 text-[var(--color-foreground)]">レート計算 & スコア管理</h3>
+						<p className="text-[var(--color-foreground)] opacity-60 text-sm">
+							譜面定数に基づくレートを自動算出し、過去のスコア推移も確認可能。
 						</p>
 					</div>
-					<div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-						<div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600 font-bold">
+					<div className="bg-[var(--color-card-bg)] p-6 rounded-2xl shadow-sm border border-[var(--color-header-border)]">
+						<div className="w-10 h-10 bg-[var(--color-accent)]/20 rounded-lg flex items-center justify-center mb-4 text-[var(--color-accent)] font-bold">
 							3
 						</div>
-						<h3 className="font-bold text-lg mb-2">スコア管理</h3>
-						<p className="text-slate-500 text-sm">
-							過去と現在のスコアを比較し、上達を一目で確認。
+						<h3 className="font-bold text-lg mb-2 text-[var(--color-foreground)]">ベスト枠画像生成</h3>
+						<p className="text-[var(--color-foreground)] opacity-60 text-sm">
+							あなたのベスト40をまとめた画像を生成してSNSでシェア。
 						</p>
 					</div>
 				</div>
 			</main>
 
 			{/* Footer */}
-			<footer className="py-8 text-center text-slate-400 text-sm">
+			<footer className="py-8 text-center text-[var(--color-foreground)] opacity-40 text-sm">
 				<p>&copy; {new Date().getFullYear()} TAKUMI³ Score Manager. All rights reserved.</p>
 			</footer>
 		</div>

@@ -54,7 +54,7 @@ export default function DeleteDataModal({ isOpen, onClose }: DeleteDataModalProp
           {step === 1 ? (
             <>
               <p className="text-[var(--color-foreground)] font-medium">
-                この操作を行うと、TAKUMI3 Score Managerに保存されている<span className="text-red-400 font-bold">全てのデータ</span>が削除されます。
+                この操作を行うと、TAKUMI³ Score Managerに保存されている<span className="text-red-400 font-bold">全てのデータ</span>が削除されます。
               </p>
               <ul className="list-disc list-inside text-sm text-[var(--color-foreground)] opacity-80 space-y-1 bg-red-500/10 p-4 rounded-lg border border-red-500/20">
                 <li>登録した全てのベストスコア</li>

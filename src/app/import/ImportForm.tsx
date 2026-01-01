@@ -81,7 +81,7 @@ export default function ImportForm({ userId }: ImportFormProps) {
           <div>
             <h3 className="text-lg font-bold mb-1">CSVファイルをアップロード</h3>
             <p className="text-sm text-[var(--color-foreground)] opacity-70">
-              TAKUMI3からエクスポートしたCSVファイルを選択してください
+              TAKUMI³からエクスポートしたCSVファイルを選択してください
             </p>
           </div>
 
