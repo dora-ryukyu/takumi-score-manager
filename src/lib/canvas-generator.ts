@@ -137,7 +137,7 @@ async function renderGameMode(ctx: CanvasRenderingContext2D, width: number, heig
     nameFontSize -= 2;
     ctx.font = `${nameFontSize}px sans-serif`;
   }
-  drawGameText(profile.name, infoX, headerCenterY, `${nameFontSize}px sans-serif`, "left", 3); // Thin-ish outline
+  drawGameText(profile.name, infoX, headerCenterY, `${nameFontSize}px sans-serif`, "left", 5); // Thicker outline
   const nameActualWidth = ctx.measureText(profile.name).width;
 
   // 2. Rating Group
@@ -289,15 +289,11 @@ async function renderGameMode(ctx: CanvasRenderingContext2D, width: number, heig
     // Const & Score (moved left for more gap)
     const statsX = rightEdge - rateReservedWidth;
     
-    ctx.textAlign = "right";
-    ctx.fillStyle = "#9CA3AF"; 
-    ctx.font = "bold 13px monospace";
-    ctx.fillText(`${score.constVal.toFixed(1)}`, statsX, centerY - 10);
+    // Constant - White text with black border
+    drawGameText(`${score.constVal.toFixed(1)}`, statsX, centerY - 10, "bold 13px monospace", "right", 2.5);
     
-    // Score
-    ctx.fillStyle = "#E5E7EB"; // Off-white
-    ctx.font = "14px monospace";
-    ctx.fillText(score.score.toLocaleString(), statsX, centerY + 10);
+    // Score - White text with black border
+    drawGameText(score.score.toLocaleString(), statsX, centerY + 10, "14px monospace", "right", 2.5);
     
     // 4. Title - Fixed max width to prevent overlap
     const titleStartX = x + 85; 
