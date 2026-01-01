@@ -292,10 +292,17 @@ export async function importScores(
 
     // 4. マッチングしたスコアを収集（バッチ処理用）
     const scoresToUpsert: BatchScoreInput[] = [];
+    const processedChartIds = new Set<string>(); // 重複防止用
 
     for (const chart of charts) {
       // match_configがnullの場合はマッチング対象外（HARDのみなど）
       if (!chart.match_config) {
+        continue;
+      }
+
+      // 既に処理済みのchartIdはスキップ（重複防止）
+      if (processedChartIds.has(chart.chart_id)) {
+        console.warn(`チャート ${chart.chart_id}: 重複エントリーをスキップ`);
         continue;
       }
 
@@ -336,6 +343,9 @@ export async function importScores(
         constValue: chart.const_value,
         score: matchedRow.score,
       });
+      
+      // 処理済みとしてマーク
+      processedChartIds.add(chart.chart_id);
     }
 
     const matchedRows = scoresToUpsert.length;
