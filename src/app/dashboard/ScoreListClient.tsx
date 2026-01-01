@@ -320,7 +320,7 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
               {/* Title & Difficulty Row */}
               <div className="flex items-start justify-between gap-2 mb-3">
                 <div className="flex-1 min-w-0">
-                  <Link href={`/dashboard/chart/${row.chart_id}`} className="font-bold text-[var(--color-foreground)] text-base hover:text-blue-400 transition-colors line-clamp-2">
+                  <Link href={`/dashboard/chart/${encodeURIComponent(row.chart_id)}`} className="font-bold text-[var(--color-foreground)] text-base hover:text-blue-400 transition-colors line-clamp-2">
                     {row.title || row.chart_id}
                   </Link>
                 </div>
@@ -422,7 +422,7 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
                   >
                     <td className="px-6 py-4">
                       <div className="flex flex-col">
-                        <Link href={`/dashboard/chart/${row.chart_id}`} className="font-bold text-[var(--color-foreground)] text-base hover:underline hover:text-blue-400 transition-colors">
+                        <Link href={`/dashboard/chart/${encodeURIComponent(row.chart_id)}`} className="font-bold text-[var(--color-foreground)] text-base hover:underline hover:text-blue-400 transition-colors">
                           {row.title || row.chart_id}
                         </Link>
                         <div className="mt-1">

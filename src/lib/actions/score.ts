@@ -103,7 +103,7 @@ export async function upsertScore(
     ).bind(userId, chartId, userId, chartId).run();
 
     revalidatePath("/dashboard");
-    revalidatePath(`/dashboard/chart/${chartId}`);
+    revalidatePath(`/dashboard/chart/${encodeURIComponent(chartId)}`);
 
     return {
         success: true,

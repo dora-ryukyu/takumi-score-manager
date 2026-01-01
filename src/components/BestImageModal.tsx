@@ -1,5 +1,6 @@
-import { X, Download, ImageIcon } from "lucide-react";
+import { X, Download, ImageIcon, Share2 } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
 
 interface BestImageModalProps {
   isOpen: boolean;
@@ -10,7 +11,51 @@ interface BestImageModalProps {
 }
 
 export default function BestImageModal({ isOpen, onClose, imageDataUrl, isLoading, userName }: BestImageModalProps) {
+  const [shareStatus, setShareStatus] = useState<'idle' | 'sharing' | 'copied' | 'error'>('idle');
+  
   if (!isOpen) return null;
+
+  const handleShare = async () => {
+    if (!imageDataUrl) return;
+    
+    setShareStatus('sharing');
+    
+    try {
+      // Convert data URL to blob for sharing
+      const response = await fetch(imageDataUrl);
+      const blob = await response.blob();
+      const file = new File([blob], `takumi3_best_${userName || 'player'}.png`, { type: 'image/png' });
+      
+      // Check if Web Share API is available and supports files
+      if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          title: 'TAKUMI³ Score Manager - ベスト枠',
+          text: '#TAKUMI3 #匠スコアマネージャー',
+          files: [file],
+        });
+        setShareStatus('idle');
+      } else {
+        // Fallback: Copy image to clipboard if possible, otherwise show message
+        try {
+          await navigator.clipboard.write([
+            new ClipboardItem({
+              'image/png': blob
+            })
+          ]);
+          setShareStatus('copied');
+          setTimeout(() => setShareStatus('idle'), 3000);
+        } catch {
+          // If clipboard doesn't work, show Twitter share option
+          const tweetText = encodeURIComponent('#TAKUMI3 #匠スコアマネージャー\n画像を添付して投稿してください！');
+          window.open(`https://twitter.com/intent/tweet?text=${tweetText}`, '_blank');
+          setShareStatus('idle');
+        }
+      }
+    } catch (error) {
+      // User cancelled share or error occurred
+      setShareStatus('idle');
+    }
+  };
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
@@ -70,14 +115,24 @@ export default function BestImageModal({ isOpen, onClose, imageDataUrl, isLoadin
           </button>
           
           {imageDataUrl && (
-            <a 
-              href={imageDataUrl} 
-              download={`takumi3_best_${userName ? userName + '_' : ''}${new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }).replace(/[\/\s:]/g, '-')}.png`}
-              className="px-6 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm hover:shadow transition-all flex items-center gap-2"
-            >
-              <Download size={18} />
-              画像を保存
-            </a>
+            <>
+              <button
+                onClick={handleShare}
+                disabled={shareStatus === 'sharing'}
+                className="px-6 py-2 text-sm font-bold text-white bg-green-600 hover:bg-green-700 disabled:bg-green-400 rounded-lg shadow-sm hover:shadow transition-all flex items-center gap-2"
+              >
+                <Share2 size={18} />
+                {shareStatus === 'sharing' ? '共有中...' : shareStatus === 'copied' ? 'クリップボードにコピー！' : 'SNSで共有'}
+              </button>
+              <a 
+                href={imageDataUrl} 
+                download={`takumi3_best_${userName ? userName + '_' : ''}${new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }).replace(/[\/\s:]/g, '-')}.png`}
+                className="px-6 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm hover:shadow transition-all flex items-center gap-2"
+              >
+                <Download size={18} />
+                画像を保存
+              </a>
+            </>
           )}
         </div>
       </div>

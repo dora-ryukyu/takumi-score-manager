@@ -11,7 +11,8 @@ interface PageProps {
 }
 
 export default async function ChartDetailPage({ params }: PageProps) {
-  const { chartId } = await params;
+  const { chartId: encodedChartId } = await params;
+  const chartId = decodeURIComponent(encodedChartId);
   const profile = await getUserProfile();
 
   if (!profile) {
