@@ -13,7 +13,8 @@ import {
   Sun,
   LogOut,
   Calculator,
-  BookOpen
+  BookOpen,
+  Bell
 } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 import { SignOutButton } from "@clerk/nextjs";
@@ -30,6 +31,7 @@ export default function Menu() {
     { href: "/image-gen", label: "ベスト枠画像生成", icon: ImageIcon },
     { href: "/calculator", label: "計算機", icon: Calculator },
     { href: "/guide", label: "使い方", icon: BookOpen },
+    { href: "/news", label: "お知らせ", icon: Bell },
     { href: "/settings", label: "設定", icon: Settings },
   ];
 
@@ -80,17 +82,6 @@ export default function Menu() {
                   </Link>
                 </li>
               ))}
-               {/* Debug Menu - Separated */}
-               <li>
-                  <Link 
-                    href="/dashboard/debug"
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center gap-3 px-4 py-3 text-[var(--color-foreground)] hover:bg-[var(--color-menu-hover)] rounded-lg transition-colors opacity-70 hover:opacity-100"
-                  >
-                    <Settings size={20} className="text-red-400"/>
-                    <span>デバッグメニュー</span>
-                  </Link>
-                </li>
             </ul>
           </nav>
 

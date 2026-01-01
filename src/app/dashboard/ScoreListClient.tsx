@@ -465,11 +465,7 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
   );
 }
 
-// TODO: Update these mainly static color classes to be theme compatible if needed. 
-// For now, we will leave them as they provide semantic meaning (Yellow for S+, etc)
-// but we might want to ensure they aren't unreadable in Dark Mode.
-// The "text-xxx-700" might be hard to read on dark backgrounds if the background is also dark.
-// But the badges have their own "bg-xxx-50" or similar.
+// Color classes for rank badges (semantic colors for visual distinction)
 function getRankColorClassForBadge(rank: string) {
   // Using specific Tailwind colors. In dark mode, we might want to invert or adjust.
   // For simplicity, we can trust they look "okay" as badges, or use "dark:" variants if we want to perfect it.

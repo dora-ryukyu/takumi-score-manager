@@ -1,7 +1,6 @@
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { getDb } from "@/lib/d1";
-import { addDummyScore } from "./actions";
 import ScoreListClient from "./ScoreListClient";
 import { getUserProfile } from "@/lib/auth";
 

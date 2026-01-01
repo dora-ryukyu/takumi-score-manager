@@ -1,4 +1,6 @@
-import { BookOpen, Upload, ImageIcon, Calculator, TrendingUp, Settings, HelpCircle } from "lucide-react";
+import { BookOpen, Upload, ImageIcon, Calculator, TrendingUp, Settings, HelpCircle, Mail, ChevronRight } from "lucide-react";
+import Link from "next/link";
+import { CONTACT_INFO } from "@/data/contact";
 
 export default function GuidePage() {
   return (
@@ -149,9 +151,40 @@ export default function GuidePage() {
           </div>
         </section>
 
+        {/* Contact & Links */}
+        <section className="bg-[var(--color-card-bg)] rounded-2xl p-6 border border-[var(--color-header-border)]">
+          <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+            <Mail size={24} className="text-cyan-500" />
+            お問い合わせ
+          </h2>
+          <div className="space-y-3 text-sm opacity-80">
+            <p>
+              機能に関するご質問、バグ報告、ご要望などがありましたらお気軽にお問い合わせください。
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {CONTACT_INFO.discord && (
+                <a
+                  href={CONTACT_INFO.discord.profileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#5865F2] text-white rounded-lg hover:opacity-90 transition-opacity font-medium"
+                >
+                  {CONTACT_INFO.discord.displayText}
+                </a>
+              )}
+            </div>
+            <div className="mt-4 pt-4 border-t border-[var(--color-header-border)]">
+              <Link href="/legal" className="text-[var(--color-accent)] hover:underline text-sm flex items-center gap-1">
+                プライバシーポリシー・利用規約
+                <ChevronRight size={14} />
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* Footer Note */}
         <div className="text-center text-xs opacity-50 py-4">
-          TAKUMI³ Score Manager — ご不明な点があればお気軽にお問い合わせください
+          TAKUMI³ Score Manager
         </div>
 
       </div>

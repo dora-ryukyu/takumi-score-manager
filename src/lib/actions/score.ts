@@ -123,7 +123,6 @@ export async function upsertScore(
 }
 
 export async function clearUserData(userId: string) {
-    // For debug purposes
     const db = getDb();
     await db.prepare("DELETE FROM best_current WHERE user_id = ?").bind(userId).run();
     await db.prepare("DELETE FROM best_history WHERE user_id = ?").bind(userId).run();

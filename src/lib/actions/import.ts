@@ -11,6 +11,12 @@ import { revalidatePath } from "next/cache";
 const MAX_FILE_SIZE_BYTES = 100 * 1024; // 100KB
 
 /**
+ * 行数上限（1000行）
+ * 公式CSVは約400行程度なので、成長を加味して1000行に設定
+ */
+const MAX_ROWS = 1000;
+
+/**
  * CSVインポート結果
  */
 export interface ImportResult {
@@ -240,6 +246,18 @@ export async function importScores(
         updatedRows: 0,
         warnings: [],
         error: "有効なデータ行がありません",
+      };
+    }
+
+    // 1.5. 行数チェック（DoS対策）
+    if (rows.length > MAX_ROWS) {
+      return {
+        success: false,
+        totalRows: rows.length,
+        matchedRows: 0,
+        updatedRows: 0,
+        warnings: [],
+        error: `行数が上限（${MAX_ROWS}行）を超えています。現在の行数: ${rows.length}行`,
       };
     }
 
