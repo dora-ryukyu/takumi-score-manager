@@ -31,7 +31,7 @@ interface ChartData {
 function main() {
   // コマンドライン引数をチェック
   const isRemote = process.argv.includes('--remote');
-  const target = isRemote ? '' : '--local';
+  const target = isRemote ? '--remote' : '--local';
 
   console.log(`🔧 シード対象: ${isRemote ? '本番環境' : 'ローカル'}`);
 

@@ -1,7 +1,7 @@
 "use server";
 
 import { getDb } from "@/lib/d1";
-import { upsertScore } from "./score";
+import { batchUpsertScores, BatchScoreInput } from "./score";
 import { revalidatePath } from "next/cache";
 
 /**
@@ -289,10 +289,10 @@ export async function importScores(
     }
 
     const charts = chartsResult.results;
-    let matchedRows = 0;
-    let updatedRows = 0;
 
-    // 4. 各チャートに対してマッチング処理
+    // 4. マッチングしたスコアを収集（バッチ処理用）
+    const scoresToUpsert: BatchScoreInput[] = [];
+
     for (const chart of charts) {
       // match_configがnullの場合はマッチング対象外（HARDのみなど）
       if (!chart.match_config) {
@@ -327,30 +327,41 @@ export async function importScores(
       }
 
       const matchedRow = rowList[matchConfig.order];
-      matchedRows++;
-
-      // 5. upsertScore を呼び出して保存
-      const result = await upsertScore(
-        userId,
-        chart.title,
-        chart.difficulty,
-        chart.const_value,
-        matchedRow.score,
-        observedAt
-      );
-
-      if (result.success && result.isNewRecord) {
-        updatedRows++;
-      }
+      
+      // バッチ処理用に収集
+      scoresToUpsert.push({
+        chartId: chart.chart_id,
+        title: chart.title,
+        difficulty: chart.difficulty,
+        constValue: chart.const_value,
+        score: matchedRow.score,
+      });
     }
 
+    const matchedRows = scoresToUpsert.length;
+
+    // 5. バッチ処理で一括更新（N+1問題解消）
+    const batchResult = await batchUpsertScores(userId, scoresToUpsert, observedAt);
+
+    if (!batchResult.success) {
+      return {
+        success: false,
+        totalRows: rows.length,
+        matchedRows,
+        updatedRows: 0,
+        warnings,
+        error: batchResult.error,
+      };
+    }
+
+    // 6. revalidatePathは最後に1回だけ
     revalidatePath("/dashboard");
 
     return {
       success: true,
       totalRows: rows.length,
       matchedRows,
-      updatedRows,
+      updatedRows: batchResult.updatedCount,
       warnings,
     };
   } catch (e: unknown) {
