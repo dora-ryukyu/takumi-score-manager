@@ -16,11 +16,18 @@ export interface NewsItem {
 // 新しいお知らせは配列の先頭に追加してください
 export const NEWS_DATA: NewsItem[] = [
   {
+    id: "2026-01-01-mitaiou",
+    date: "2026-01-01",
+    title: "未対応楽曲に関するお知らせ",
+    content: "現在「TAKUMI³ Score Manager」では、以下の楽曲に対応しておりません。\n\n・竹\n理由：公式CSVデータに情報が含まれていないため。\n今後：対応時期は未定です。\n\n対応までは、スコアログの保存やベスト枠への反映が行われません。ユーザーの皆様にはご不便をおかけしますが、ご了承のほどお願い申し上げます。",
+    isImportant: true,
+  },
+  {
     id: "2026-01-01-release",
     date: "2026-01-01",
     title: "サービス公開のお知らせ",
-    content: "TAKUMI³ Score Managerを正式公開しました。ご利用いただきありがとうございます。\n\n機能に関するご質問やご要望がありましたら、お気軽にお問い合わせください。",
-    isImportant: true,
+    content: "TAKUMI³ Score Managerを公開しました。ご利用いただきありがとうございます。\n機能に関するご質問やご要望がありましたら、お気軽にお問い合わせください。",
+    isImportant: false,
   },
   // ↓ 以下に過去のお知らせを追加していきます
   // {

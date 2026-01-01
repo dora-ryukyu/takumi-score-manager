@@ -1,37 +1,90 @@
-import { Bell, AlertTriangle, ChevronRight } from "lucide-react";
-import Link from "next/link";
+"use client";
+
+import { useState } from "react";
+import { AlertTriangle, ChevronDown, ChevronUp } from "lucide-react";
 import { NEWS_DATA, NewsItem } from "@/data/news-data";
 import { CONTACT_INFO } from "@/data/contact";
 
 export default function NewsPage() {
+  const [showAllGeneral, setShowAllGeneral] = useState(false);
+
+  // 重要なお知らせと一般のお知らせを分離
+  const importantNews = NEWS_DATA.filter(item => item.isImportant);
+  const generalNews = NEWS_DATA.filter(item => !item.isImportant);
+  
+  // 一般のお知らせは最新3件、または全件表示
+  const INITIAL_GENERAL_COUNT = 3;
+  const displayedGeneralNews = showAllGeneral 
+    ? generalNews 
+    : generalNews.slice(0, INITIAL_GENERAL_COUNT);
+  const hasMoreGeneralNews = generalNews.length > INITIAL_GENERAL_COUNT;
+
   return (
     <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-foreground)] p-4 sm:p-8">
       <div className="max-w-4xl mx-auto space-y-8">
         
-        {/* Header */}
+        {/* Header - アイコンなし（他ページと一貫性を保つ） */}
         <header>
-          <h1 className="text-3xl font-extrabold tracking-tight flex items-center gap-2">
-            <Bell className="text-[var(--color-accent)]" />
-            お知らせ
-          </h1>
+          <h1 className="text-3xl font-extrabold tracking-tight">お知らせ</h1>
           <p className="opacity-70 mt-1">TAKUMI³ Score Managerの更新情報・お知らせ</p>
         </header>
 
-        {/* News List */}
-        <div className="space-y-4">
-          {NEWS_DATA.length === 0 ? (
-            <div className="bg-[var(--color-card-bg)] rounded-2xl p-8 border border-[var(--color-header-border)] text-center">
-              <p className="opacity-60">現在お知らせはありません</p>
+        {/* 重要なお知らせ（常に全て表示） */}
+        {importantNews.length > 0 && (
+          <section className="space-y-4">
+            <h2 className="text-lg font-bold flex items-center gap-2 text-red-500">
+              <AlertTriangle size={20} />
+              重要なお知らせ
+            </h2>
+            <div className="space-y-4">
+              {importantNews.map((item) => (
+                <NewsCard key={item.id} item={item} />
+              ))}
             </div>
-          ) : (
-            NEWS_DATA.map((item) => (
-              <NewsCard key={item.id} item={item} />
-            ))
-          )}
-        </div>
+          </section>
+        )}
 
-        {/* Contact Section */}
-        <div className="bg-[var(--color-card-bg)] rounded-2xl p-6 border border-[var(--color-header-border)]">
+        {/* 一般のお知らせ（最新3件 + 折りたたみ） */}
+        {generalNews.length > 0 && (
+          <section className="space-y-4">
+            <h2 className="text-lg font-bold">お知らせ</h2>
+            <div className="space-y-4">
+              {displayedGeneralNews.map((item) => (
+                <NewsCard key={item.id} item={item} />
+              ))}
+            </div>
+
+            {/* もっと見る / 折りたたむボタン */}
+            {hasMoreGeneralNews && (
+              <button
+                onClick={() => setShowAllGeneral(!showAllGeneral)}
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[var(--color-card-bg)] border border-[var(--color-header-border)] rounded-xl text-sm font-medium hover:bg-[var(--color-menu-hover)] transition-colors"
+              >
+                {showAllGeneral ? (
+                  <>
+                    <ChevronUp size={16} />
+                    折りたたむ
+                  </>
+                ) : (
+                  <>
+                    <ChevronDown size={16} />
+                    過去のお知らせを表示（{generalNews.length - INITIAL_GENERAL_COUNT}件）
+                  </>
+                )}
+              </button>
+            )}
+          </section>
+        )}
+
+        {/* お知らせがない場合 */}
+        {NEWS_DATA.length === 0 && (
+          <div className="bg-[var(--color-card-bg)] rounded-2xl p-8 border border-[var(--color-header-border)] text-center">
+            <p className="opacity-60">現在お知らせはありません</p>
+          </div>
+        )}
+
+        {/* お問い合わせセクション（独立したセクションとして明確に配置） */}
+        <section className="bg-[var(--color-card-bg)] rounded-2xl p-6 border border-[var(--color-header-border)]">
           <h2 className="text-lg font-bold mb-4">お問い合わせ</h2>
           <div className="space-y-3 text-sm opacity-80">
             <p>
@@ -59,28 +112,13 @@ export default function NewsPage() {
                   className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--color-accent)] text-white rounded-lg hover:opacity-90 transition-opacity font-medium"
                 >
                   お問い合わせフォーム
-                  <ChevronRight size={16} />
                 </a>
               )}
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Links */}
-        <div className="flex flex-wrap gap-4 text-sm">
-          <Link 
-            href="/legal" 
-            className="text-[var(--color-accent)] hover:underline"
-          >
-            プライバシーポリシー・利用規約
-          </Link>
-          <Link 
-            href="/guide" 
-            className="text-[var(--color-accent)] hover:underline"
-          >
-            使い方ガイド
-          </Link>
-        </div>
+        {/* ページ下部のリンクは削除（メニューから辿ればよい） */}
 
       </div>
     </div>

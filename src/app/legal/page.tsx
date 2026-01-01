@@ -1,4 +1,4 @@
-import { Shield, FileText, Database, BarChart3, Trash2, Mail } from "lucide-react";
+import { FileText, Database, BarChart3, Trash2, Mail } from "lucide-react";
 import Link from "next/link";
 import { CONTACT_INFO } from "@/data/contact";
 
@@ -9,8 +9,7 @@ export default function LegalPage() {
         
         {/* Header */}
         <header>
-          <h1 className="text-3xl font-extrabold tracking-tight flex items-center gap-2">
-            <Shield className="text-[var(--color-accent)]" />
+          <h1 className="text-3xl font-extrabold tracking-tight">
             プライバシーポリシー・利用規約
           </h1>
           <p className="opacity-70 mt-1">最終更新日: 2026年1月1日</p>

@@ -1,5 +1,4 @@
-import { BookOpen, Upload, ImageIcon, Calculator, TrendingUp, Settings, HelpCircle, Mail, ChevronRight } from "lucide-react";
-import Link from "next/link";
+import { BookOpen, Upload, ImageIcon, Calculator, TrendingUp, Settings, HelpCircle, Mail } from "lucide-react";
 import { CONTACT_INFO } from "@/data/contact";
 
 export default function GuidePage() {
@@ -172,12 +171,6 @@ export default function GuidePage() {
                   {CONTACT_INFO.discord.displayText}
                 </a>
               )}
-            </div>
-            <div className="mt-4 pt-4 border-t border-[var(--color-header-border)]">
-              <Link href="/legal" className="text-[var(--color-accent)] hover:underline text-sm flex items-center gap-1">
-                プライバシーポリシー・利用規約
-                <ChevronRight size={14} />
-              </Link>
             </div>
           </div>
         </section>

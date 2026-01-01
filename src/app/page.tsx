@@ -79,8 +79,16 @@ export default function Home() {
 			</main>
 
 			{/* Footer */}
-			<footer className="py-8 text-center text-[var(--color-foreground)] opacity-40 text-sm">
-				<p>&copy; {new Date().getFullYear()} TAKUMI³ Score Manager. All rights reserved.</p>
+			<footer className="py-8 text-center text-[var(--color-foreground)]">
+				<div className="mb-6">
+					<Link 
+						href="/legal" 
+						className="inline-block px-6 py-2 rounded-full border border-[var(--color-header-border)] hover:bg-[var(--color-menu-hover)] hover:text-[var(--color-accent)] transition-all font-medium"
+					>
+						プライバシーポリシー・利用規約
+					</Link>
+				</div>
+				<p className="opacity-40 text-sm">&copy; {new Date().getFullYear()} TAKUMI³ Score Manager. All rights reserved.</p>
 			</footer>
 		</div>
 	);
