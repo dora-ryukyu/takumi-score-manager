@@ -7,7 +7,16 @@ async function proxyMiddleware(req: NextRequest): Promise<Response | null> {
   if (req.nextUrl.pathname.startsWith("/__clerk")) {
     const proxyHeaders = new Headers();
 
-    // リクエストヘッダーから必要なものをコピー
+    // 1. 環境変数のチェック (ログ出し)
+    const secretKey = process.env.CLERK_SECRET_KEY;
+    if (!secretKey) {
+      console.error("❌ CLERK_SECRET_KEY is missing in middleware!");
+    } else {
+      // セキュリティのため先頭数文字だけ出すとか、あるいは"Present"とだけ出す
+      // console.log("✅ CLERK_SECRET_KEY is present.");
+    }
+
+    // 2. リクエストヘッダーから必要なものをコピー
     const headersToForward = [
       "accept",
       "accept-language",
@@ -25,60 +34,106 @@ async function proxyMiddleware(req: NextRequest): Promise<Response | null> {
       }
     }
 
-    // 必須ヘッダー（公式要件）
+    // 3. 必須ヘッダー（公式要件 + 認証に必要な追加ヘッダー）
     proxyHeaders.set("Clerk-Proxy-Url", process.env.NEXT_PUBLIC_CLERK_PROXY_URL || "");
-    proxyHeaders.set("Clerk-Secret-Key", process.env.CLERK_SECRET_KEY || "");
+    proxyHeaders.set("Clerk-Secret-Key", secretKey || "");
+    
+    // IPアドレス
     proxyHeaders.set(
       "X-Forwarded-For",
       req.headers.get("CF-Connecting-IP") || req.headers.get("X-Forwarded-For") || ""
     );
+    
+    // ホスト名 (これがないと 401 になりやすい)
+    proxyHeaders.set("X-Forwarded-Host", req.headers.get("host") || "");
+    
+    // プロトコル (https)
+    proxyHeaders.set("X-Forwarded-Proto", req.nextUrl.protocol.replace(":", ""));
+    
+    // 元のURL全体
+    proxyHeaders.set("X-Url", req.url);
 
+
+    // 4. 転送先URLの構築
     const proxyUrl = new URL(req.url);
     proxyUrl.host = "frontend-api.clerk.dev";
-    proxyUrl.port = "";
+    proxyUrl.port = ""; // デフォルトポート(443)を使うので空で良いが、指定してもよい
     proxyUrl.protocol = "https:";
     proxyUrl.pathname = proxyUrl.pathname.replace("/__clerk", "");
 
-    // fetch を使って外部APIに直接リクエスト（rewriteではなく）
-    // redirect: 'manual' でリダイレクトを自動フォローしない（再帰ループ防止）
+    // 5. fetch で転送 (rewriteだと再帰する場合があるため)
     let body: ArrayBuffer | undefined;
     if (req.method !== "GET" && req.method !== "HEAD") {
-      // バイナリデータ（画像など）を正しく転送するためArrayBufferを使用
       body = await req.arrayBuffer();
     }
 
-    const response = await fetch(proxyUrl.toString(), {
-      method: req.method,
-      headers: proxyHeaders,
-      body: body,
-      redirect: "manual",
-    });
+    console.log(`[Proxy] Forwarding ${req.method} ${req.nextUrl.pathname} to ${proxyUrl.toString()}`);
 
-    // レスポンスヘッダーをコピー（Content-Typeなど重要なヘッダーを保持）
-    const responseHeaders = new Headers();
-    
-    // 必要なヘッダーを明示的にコピー
-    const headersToPreserve = [
-      "content-type",
-      "content-length",
-      "cache-control",
-      "etag",
-      "last-modified",
-      "set-cookie",
-      "location",
-    ];
-    for (const header of headersToPreserve) {
-      const value = response.headers.get(header);
-      if (value) {
-        responseHeaders.set(header, value);
+    try {
+      const response = await fetch(proxyUrl.toString(), {
+        method: req.method,
+        headers: proxyHeaders,
+        body: body,
+        redirect: "manual", // 自動リダイレクトしない
+      });
+
+      console.log(`[Proxy] Response status: ${response.status}`);
+      
+      // エラー時はレスポンス内容をログに出す (デバッグ用)
+      if (response.status >= 400) {
+        try {
+          // コンテンツタイプがJSONかテキストか確認
+          const text = await response.clone().text();
+          console.error(`[Proxy] Clerk API returned error status: ${response.status}`);
+          console.error(`[Proxy] Error body: ${text}`);
+       } catch (readErr) {
+          console.error(`[Proxy] Failed to read error body: ${readErr}`);
+       }
       }
-    }
 
-    return new Response(response.body, {
-      status: response.status,
-      statusText: response.statusText,
-      headers: responseHeaders,
-    });
+      // 6. レスポンスヘッダーのコピー
+      const responseHeaders = new Headers();
+      const headersToPreserve = [
+        "content-type",
+        "content-length",
+        "cache-control",
+        "etag",
+        "last-modified",
+        "location",
+        "www-authenticate",
+      ];
+      for (const header of headersToPreserve) {
+        const value = response.headers.get(header);
+        if (value) {
+          responseHeaders.set(header, value);
+        }
+      }
+
+      // Set-Cookieは特別扱いしないと複数のCookieが壊れることがある
+      // Cloudflare Workers / Node 18+ では getSetCookie() が使える
+      if (typeof response.headers.getSetCookie === "function") {
+        const cookies = response.headers.getSetCookie();
+        for (const cookie of cookies) {
+          responseHeaders.append("set-cookie", cookie);
+        }
+      } else {
+        // フォールバック (getSetCookieがない場合)
+        const cookie = response.headers.get("set-cookie");
+        if (cookie) {
+          responseHeaders.set("set-cookie", cookie);
+        }
+      }
+
+      return new Response(response.body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers: responseHeaders,
+      });
+
+    } catch (e) {
+      console.error("[Proxy] Fetch error:", e);
+      return new Response("Internal Server Error (Proxy)", { status: 500 });
+    }
   }
 
   return null;

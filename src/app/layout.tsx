@@ -26,7 +26,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<ClerkProvider>
+		<ClerkProvider proxyUrl={process.env.NEXT_PUBLIC_CLERK_PROXY_URL}>
 			<html lang="ja">
 				<head>
 					<link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
