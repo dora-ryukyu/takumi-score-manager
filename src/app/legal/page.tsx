@@ -148,15 +148,7 @@ export default function LegalPage() {
             </div>
 
             <div>
-              <h3 className="font-bold mb-2">4. 知的財産権</h3>
-              <p>
-                「TAKUMI³」は株式会社タイトーの登録商標です。
-                本サービスは非公式のファンメイドツールであり、タイトー社とは一切関係ありません。
-              </p>
-            </div>
-
-            <div>
-              <h3 className="font-bold mb-2">5. 規約の変更</h3>
+              <h3 className="font-bold mb-2">4. 規約の変更</h3>
               <p>
                 本規約は予告なく変更される場合があります。
                 重要な変更がある場合は、お知らせページでお知らせします。
