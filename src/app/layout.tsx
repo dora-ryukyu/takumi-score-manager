@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Noto_Sans_JP } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/context/ThemeContext";
@@ -14,6 +14,14 @@ const geistMono = Geist_Mono({
 	variable: "--font-geist-mono",
 	subsets: ["latin"],
 });
+
+const notoSansJP = Noto_Sans_JP({
+	variable: "--font-noto-sans-jp",
+	subsets: ["latin"],
+	weight: ["400", "700"],
+});
+
+
 
 export const metadata: Metadata = {
 	title: "TAKUMI³ Score Manager",
@@ -31,7 +39,7 @@ export default function RootLayout({
 				<head>
 					<link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
 				</head>
-				<body className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans`}>
+				<body className={`${geistSans.variable} ${geistMono.variable} ${notoSansJP.variable} antialiased font-sans`}>
 					<ThemeProvider>
 						<Header />
 						{children}

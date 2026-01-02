@@ -1,5 +1,38 @@
 import { getDiffColor, getDiffAbbr, getRateColorHex, isRainbowRate, RAINBOW_DIGIT_COLORS } from "./colors";
 
+// Google Fonts URLs (WOFF2 format for best compatibility)
+// Noto Sans JP - Japanese text support with clean number design
+const NOTO_SANS_JP_REGULAR = "https://fonts.gstatic.com/s/notosansjp/v53/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFJEk757Y0rw_qMHVdbR2L8Y9QTJ1LwkRmR5GprQAe-T30g.0.woff2";
+const NOTO_SANS_JP_BOLD = "https://fonts.gstatic.com/s/notosansjp/v53/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFBEk757Y0rw_qMHVdbR2L8Y9QTJ1LwkRmR5GprQAe-T30g.0.woff2";
+
+// Font family names to use in canvas (unified to Noto Sans JP for clean look)
+const FONT_SANS = '"Noto Sans JP", sans-serif';
+const FONT_MONO = '"Noto Sans JP", sans-serif'; // Using same font for numbers too
+
+// Track if fonts are already loaded
+let fontsLoaded = false;
+
+/**
+ * Load Google Fonts using FontFace API for consistent cross-device rendering
+ */
+async function loadFonts(): Promise<void> {
+  if (fontsLoaded) return;
+  
+  try {
+    const fonts = [
+      new FontFace("Noto Sans JP", `url(${NOTO_SANS_JP_REGULAR})`, { weight: "400" }),
+      new FontFace("Noto Sans JP", `url(${NOTO_SANS_JP_BOLD})`, { weight: "700" }),
+    ];
+    
+    const loadedFonts = await Promise.all(fonts.map(font => font.load()));
+    loadedFonts.forEach(font => document.fonts.add(font));
+    
+    fontsLoaded = true;
+  } catch (error) {
+    console.warn("Failed to load Google Fonts, falling back to system fonts:", error);
+  }
+}
+
 export interface BestImageScore {
   title: string;
   difficulty: string;
@@ -18,6 +51,9 @@ export interface BestImageProfile {
 }
 
 export async function generateBestImage(scores: BestImageScore[], profile: BestImageProfile): Promise<string> {
+  // Load Google Fonts before rendering for consistent cross-device appearance
+  await loadFonts();
+  
   const width = 1200; 
   const height = 1600; 
   const canvas = document.createElement("canvas");
@@ -132,18 +168,18 @@ async function renderGameMode(ctx: CanvasRenderingContext2D, width: number, heig
 
   // 1. Player Name
   let nameFontSize = 56;
-  ctx.font = `${nameFontSize}px sans-serif`;
+  ctx.font = `${nameFontSize}px ${FONT_SANS}`;
   while (ctx.measureText(profile.name).width > maxNameWidth && nameFontSize > 24) {
     nameFontSize -= 2;
-    ctx.font = `${nameFontSize}px sans-serif`;
+    ctx.font = `${nameFontSize}px ${FONT_SANS}`;
   }
-  drawGameText(profile.name, infoX, headerCenterY, `${nameFontSize}px sans-serif`, "left", 5); // Thicker outline
+  drawGameText(profile.name, infoX, headerCenterY, `${nameFontSize}px ${FONT_SANS}`, "left", 5); // Thicker outline
   const nameActualWidth = ctx.measureText(profile.name).width;
 
   // 2. Rating Group
   const rateGroupX = infoX + nameActualWidth + 30;
   
-  drawGameText("RATING", rateGroupX, headerCenterY, "24px sans-serif", "left", 3);
+  drawGameText("RATING", rateGroupX, headerCenterY, `24px ${FONT_SANS}`, "left", 3);
   const labelWidth = ctx.measureText("RATING").width;
 
   // Rating Value (Dynamic Color)
@@ -151,7 +187,7 @@ async function renderGameMode(ctx: CanvasRenderingContext2D, width: number, heig
   const valueX = rateGroupX + labelWidth + 15;
   const rateFontSize = 56;
   
-  ctx.font = `${rateFontSize}px sans-serif`;
+  ctx.font = `${rateFontSize}px ${FONT_MONO}`;
   ctx.textAlign = "left";
   ctx.lineJoin = "round";
   
@@ -179,7 +215,7 @@ async function renderGameMode(ctx: CanvasRenderingContext2D, width: number, heig
 
   // Date Tag
   const dateText = profile.date.replace(/\//g, '.');
-  drawGameText(dateText, width - glassMargin - 20, headerBoxY + 20, "14px monospace", "right", 2);
+  drawGameText(dateText, width - glassMargin - 20, headerBoxY + 20, `14px ${FONT_MONO}`, "right", 2);
 
   // --- Graph Area ---
   const graphWidth = 140;
@@ -210,7 +246,7 @@ async function renderGameMode(ctx: CanvasRenderingContext2D, width: number, heig
     ctx.stroke();
 
     ctx.fillStyle = "#00DFEB";
-    ctx.font = "bold 9px sans-serif";
+    ctx.font = `bold 9px ${FONT_SANS}`;
     ctx.textAlign = "left";
     ctx.fillText("ANALYTICS", graphX, graphY - 10);
     ctx.restore();
@@ -258,7 +294,7 @@ async function renderGameMode(ctx: CanvasRenderingContext2D, width: number, heig
     ctx.textBaseline = "middle";
 
     // 1. Rank
-    drawGameText(`${index + 1}`, x + 25, centerY, "bold 16px monospace", "center", 2);
+    drawGameText(`${index + 1}`, x + 25, centerY, `bold 16px ${FONT_MONO}`, "center", 2);
     
     // 2. Difficulty Tag
     const diffColor = getDiffColor(score.difficulty);
@@ -269,7 +305,7 @@ async function renderGameMode(ctx: CanvasRenderingContext2D, width: number, heig
     ctx.fill();
     
     ctx.fillStyle = "#FFFFFF";
-    ctx.font = "bold 14px sans-serif";
+    ctx.font = `bold 14px ${FONT_SANS}`;
     ctx.textAlign = "center";
     ctx.fillText({
       "NOR": "N", "HAR": "H", "MAS": "M", "INS": "I", "RVG": "R", "UNK": "?"
@@ -283,27 +319,27 @@ async function renderGameMode(ctx: CanvasRenderingContext2D, width: number, heig
     
     // Rate (always white for single song rate)
     const rateText = score.rating;
-    drawGameText(rateText, rightEdge, centerY, "bold 24px monospace", "right", 2.5);
+    drawGameText(rateText, rightEdge, centerY, `bold 24px ${FONT_MONO}`, "right", 2.5);
     const rateWidth = ctx.measureText(rateText).width;
     
     // Const & Score (moved left for more gap)
     const statsX = rightEdge - rateReservedWidth;
     
     // Constant - White text with black border
-    drawGameText(`${score.constVal.toFixed(1)}`, statsX, centerY - 10, "bold 13px monospace", "right", 2.5);
+    drawGameText(`${score.constVal.toFixed(1)}`, statsX, centerY - 10, `bold 13px ${FONT_MONO}`, "right", 2.5);
     
     // Score - White text with black border
-    drawGameText(score.score.toLocaleString(), statsX, centerY + 10, "14px monospace", "right", 2.5);
+    drawGameText(score.score.toLocaleString(), statsX, centerY + 10, `14px ${FONT_MONO}`, "right", 2.5);
     
     // 4. Title - Fixed max width to prevent overlap
     const titleStartX = x + 85; 
     const titleMaxEndX = statsX - statsReservedWidth - 10;
     const maxTitleW = titleMaxEndX - titleStartX;
     
-    ctx.font = "20px sans-serif"; // Set font before measuring
+    ctx.font = `20px ${FONT_SANS}`; // Set font before measuring
     let title = score.title || "";
     title = truncateText(ctx, title, maxTitleW);
-    drawGameText(title, titleStartX, centerY, "20px sans-serif", "left", 2);
+    drawGameText(title, titleStartX, centerY, `20px ${FONT_SANS}`, "left", 2);
 
     ctx.restore(); 
   };
@@ -330,7 +366,7 @@ async function renderGameMode(ctx: CanvasRenderingContext2D, width: number, heig
   ctx.fillStyle = "#1682A2"; 
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.font = "14px sans-serif";
+  ctx.font = `14px ${FONT_SANS}`;
   ctx.fillText("GENERATED BY TAKUMI³ SCORE MANAGER", width/2, height - footerH/2);
   ctx.restore();
 }
