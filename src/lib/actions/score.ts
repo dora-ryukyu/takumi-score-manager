@@ -117,7 +117,9 @@ export async function upsertScore(
     console.error("upsertScore error:", e);
     return {
         success: false,
-        message: `Error: ${errorMessage}`
+        message: process.env.NODE_ENV === 'development'
+          ? `Error: ${errorMessage}`
+          : 'スコアの更新中にエラーが発生しました。'
     };
   }
 }
@@ -281,7 +283,9 @@ export async function batchUpsertScores(
       success: false,
       totalProcessed: scores.length,
       updatedCount: 0,
-      error: `バッチ処理中にエラーが発生しました: ${errorMessage}`
+      error: process.env.NODE_ENV === 'development'
+        ? `バッチ処理中にエラーが発生しました: ${errorMessage}`
+        : 'バッチ処理中にエラーが発生しました。しばらく後に再試行してください。'
     };
   }
 }

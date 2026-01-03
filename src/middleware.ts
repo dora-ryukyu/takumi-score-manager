@@ -2,6 +2,11 @@
 import { NextResponse, NextRequest, NextFetchEvent } from "next/server";
 import { clerkMiddleware } from "@clerk/nextjs/server";
 
+// 本番環境ではデバッグログを抑制（セキュリティ対策）
+const isDev = process.env.NODE_ENV === 'development';
+const debugLog = (...args: unknown[]) => { if (isDev) console.log(...args); };
+const debugError = (...args: unknown[]) => { if (isDev) console.error(...args); };
+
 async function proxyMiddleware(req: NextRequest): Promise<Response | null> {
   // /__clerk 配下だけを確実に拾う
   if (req.nextUrl.pathname.startsWith("/__clerk")) {
@@ -67,7 +72,7 @@ async function proxyMiddleware(req: NextRequest): Promise<Response | null> {
       body = await req.arrayBuffer();
     }
 
-    console.log(`[Proxy] Forwarding ${req.method} ${req.nextUrl.pathname} to ${proxyUrl.toString()}`);
+    debugLog(`[Proxy] Forwarding ${req.method} ${req.nextUrl.pathname} to ${proxyUrl.toString()}`);
 
     try {
       const response = await fetch(proxyUrl.toString(), {
@@ -77,17 +82,17 @@ async function proxyMiddleware(req: NextRequest): Promise<Response | null> {
         redirect: "manual", // 自動リダイレクトしない
       });
 
-      console.log(`[Proxy] Response status: ${response.status}`);
+      debugLog(`[Proxy] Response status: ${response.status}`);
       
       // エラー時はレスポンス内容をログに出す (デバッグ用)
       if (response.status >= 400) {
         try {
           // コンテンツタイプがJSONかテキストか確認
           const text = await response.clone().text();
-          console.error(`[Proxy] Clerk API returned error status: ${response.status}`);
-          console.error(`[Proxy] Error body: ${text}`);
+          debugError(`[Proxy] Clerk API returned error status: ${response.status}`);
+          debugError(`[Proxy] Error body: ${text}`);
        } catch (readErr) {
-          console.error(`[Proxy] Failed to read error body: ${readErr}`);
+          debugError(`[Proxy] Failed to read error body: ${readErr}`);
        }
       }
 
@@ -131,7 +136,7 @@ async function proxyMiddleware(req: NextRequest): Promise<Response | null> {
       });
 
     } catch (e) {
-      console.error("[Proxy] Fetch error:", e);
+      debugError("[Proxy] Fetch error:", e);
       return new Response("Internal Server Error (Proxy)", { status: 500 });
     }
   }

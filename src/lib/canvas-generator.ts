@@ -326,20 +326,20 @@ async function renderGameMode(ctx: CanvasRenderingContext2D, width: number, heig
     const statsX = rightEdge - rateReservedWidth;
     
     // Constant - White text with black border
-    drawGameText(`${score.constVal.toFixed(1)}`, statsX, centerY - 10, `bold 14px ${FONT_MONO}`, "right", 3);
+    drawGameText(`${score.constVal.toFixed(1)}`, statsX, centerY - 10, `bold 15px ${FONT_MONO}`, "right", 3);
     
     // Score - White text with black border
-    drawGameText(score.score.toLocaleString(), statsX, centerY + 10, `14px ${FONT_MONO}`, "right", 2.5);
+    drawGameText(score.score.toLocaleString(), statsX, centerY + 10, `bold 15px ${FONT_MONO}`, "right", 3);
     
     // 4. Title - Fixed max width to prevent overlap
     const titleStartX = x + 85; 
     const titleMaxEndX = statsX - statsReservedWidth - 10;
     const maxTitleW = titleMaxEndX - titleStartX;
     
-    ctx.font = `22px ${FONT_SANS}`; // Set font before measuring
+    ctx.font = `25px ${FONT_SANS}`; // Set font before measuring
     let title = score.title || "";
     title = truncateText(ctx, title, maxTitleW);
-    drawGameText(title, titleStartX, centerY, `22px ${FONT_SANS}`, "left", 2);
+    drawGameText(title, titleStartX, centerY, `25px ${FONT_SANS}`, "left", 3);
 
     ctx.restore(); 
   };

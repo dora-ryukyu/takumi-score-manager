@@ -10,11 +10,32 @@ export async function updateProfile(formData: FormData) {
     throw new Error("Unauthorized");
   }
 
-  const displayName = formData.get("display_name") as string;
+  const rawDisplayName = formData.get("display_name");
   
-  // Basic validation (length, etc.)
-  if (displayName && displayName.length > 50) {
-    throw new Error("Display Name too long");
+  // サーバーサイドの入力検証（フロントエンドを信用しない）
+  // null/undefined チェック
+  if (rawDisplayName === null || rawDisplayName === undefined) {
+    throw new Error("Display name is required");
+  }
+
+  // 文字列型の確認
+  if (typeof rawDisplayName !== 'string') {
+    throw new Error("Invalid input type");
+  }
+
+  // 制御文字を除去し、前後の空白をトリム
+  const displayName = rawDisplayName
+    .replace(/[\x00-\x1F\x7F]/g, '') // 制御文字除去
+    .trim();
+  
+  // 空チェック（空白のみの場合を含む）
+  if (displayName.length === 0) {
+    throw new Error("Display name cannot be empty");
+  }
+
+  // 長さ制限
+  if (displayName.length > 50) {
+    throw new Error("Display name too long");
   }
 
   const db = getDb();

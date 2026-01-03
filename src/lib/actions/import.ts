@@ -17,6 +17,20 @@ const MAX_FILE_SIZE_BYTES = 100 * 1024; // 100KB
 const MAX_ROWS = 1000;
 
 /**
+ * フィールド長上限（攻撃防止）
+ */
+const MAX_TITLE_LENGTH = 200;      // 曲名の最大長
+const MAX_DIFFICULTY_LENGTH = 20;  // 難易度の最大長
+const MAX_LEVEL_LENGTH = 10;       // レベルの最大長
+
+/**
+ * スコア範囲（TAKUMI³の仕様に基づく）
+ * 理論値: 1,010,000（ALL BREAK MAX）
+ */
+const MIN_SCORE = 0;
+const MAX_SCORE = 1010000;
+
+/**
  * CSVインポート結果
  */
 export interface ImportResult {
@@ -167,6 +181,7 @@ function parseCsv(csvContent: string): { rows: CsvRow[]; error?: string } {
 
     const [rawTitle, rawDifficulty, rawLevel, scoreStr] = parts;
 
+    // サーバーサイドの入力検証（フロントエンドを信用しない）
     const score = parseInt(scoreStr, 10);
 
     if (isNaN(score)) {
@@ -174,10 +189,30 @@ function parseCsv(csvContent: string): { rows: CsvRow[]; error?: string } {
       continue;
     }
 
+    // スコア範囲の検証
+    if (score < MIN_SCORE || score > MAX_SCORE) {
+      console.warn(`行 ${i + 2}: スコアが範囲外（${score}）、スキップ`);
+      continue;
+    }
+
     // フィールド値を正規化（表記ゆれ対応）
     const title = normalizeFieldValue(rawTitle);
     const difficulty = rawDifficulty.trim().toUpperCase();  // 難易度は大文字に統一
     const level = rawLevel.trim();
+
+    // フィールド長の検証（悪意のある長大文字列を拒否）
+    if (title.length > MAX_TITLE_LENGTH) {
+      console.warn(`行 ${i + 2}: タイトルが長すぎる（${title.length}文字）、スキップ`);
+      continue;
+    }
+    if (difficulty.length > MAX_DIFFICULTY_LENGTH) {
+      console.warn(`行 ${i + 2}: 難易度が長すぎる（${difficulty.length}文字）、スキップ`);
+      continue;
+    }
+    if (level.length > MAX_LEVEL_LENGTH) {
+      console.warn(`行 ${i + 2}: レベルが長すぎる（${level.length}文字）、スキップ`);
+      continue;
+    }
 
     rows.push({
       title,
@@ -376,14 +411,19 @@ export async function importScores(
     };
   } catch (e: unknown) {
     const errorMessage = e instanceof Error ? e.message : String(e);
+    // サーバーログには詳細を出力（運用監視用）
     console.error("importScores error:", e);
+    
+    // ユーザーには一般的なメッセージを返す（内部実装の詳細を隠蔽）
     return {
       success: false,
       totalRows: 0,
       matchedRows: 0,
       updatedRows: 0,
       warnings,
-      error: `インポート中にエラーが発生しました: ${errorMessage}`,
+      error: process.env.NODE_ENV === 'development'
+        ? `インポート中にエラーが発生しました: ${errorMessage}`
+        : 'インポート中にエラーが発生しました。しばらく後に再試行してください。',
     };
   }
 }
