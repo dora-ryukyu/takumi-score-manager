@@ -13,6 +13,11 @@ export const CONTACT_INFO = {
     profileUrl: "https://discord.com/users/1207616500928610315",
     displayText: "Discord でお問い合わせ",
   },
+  x: {
+    handle: "@Onekibright",
+    profileUrl: "https://x.com/Onekibright",
+    displayText: "X でお問い合わせ",
+  },
   // 将来的にGoogle Formを追加する場合はここに設定
   googleForm: null as string | null,
   // googleForm: "https://forms.gle/xxxxxxx",
@@ -26,6 +31,10 @@ export function getContactText(): string {
   
   if (CONTACT_INFO.discord) {
     parts.push(`Discord: ${CONTACT_INFO.discord.profileUrl}`);
+  }
+
+  if (CONTACT_INFO.x) {
+    parts.push(`X: ${CONTACT_INFO.x.profileUrl}`);
   }
   
   if (CONTACT_INFO.googleForm) {
