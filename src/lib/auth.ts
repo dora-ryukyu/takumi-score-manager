@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { getDb } from "@/lib/d1";
 
@@ -7,7 +8,8 @@ export interface UserProfile {
   imageUrl: string;
 }
 
-export async function getUserProfile(): Promise<UserProfile | null> {
+// リクエスト単位でキャッシュ（同一リクエスト内では1回のみDB呼び出し）
+export const getUserProfile = cache(async (): Promise<UserProfile | null> => {
   const { userId } = await auth();
   if (!userId) return null;
 
@@ -25,4 +27,4 @@ export async function getUserProfile(): Promise<UserProfile | null> {
     displayName,
     imageUrl: user.imageUrl,
   };
-}
+});

@@ -35,9 +35,9 @@ export default async function ImageGenPage() {
       <div className="max-w-4xl mx-auto space-y-6">
         <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
-            <h1 className="text-3xl font-extrabold tracking-tight text-[var(--color-foreground)]">ベスト枠画像生成</h1>
+            <h1 className="text-3xl font-extrabold tracking-tight text-[var(--color-foreground)]">レート対象曲画像生成</h1>
             <p className="text-[var(--color-foreground)] opacity-70 mt-1">
-              ベストスコア画像を生成してSNSでシェアしましょう
+              レート対象曲の画像を生成してSNSでシェアしましょう
             </p>
           </div>
         </header>

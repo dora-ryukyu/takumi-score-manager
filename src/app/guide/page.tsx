@@ -26,7 +26,7 @@ export default function GuidePage() {
             <ol className="list-decimal list-inside space-y-1 text-sm opacity-80">
               <li>CSVインポートでスコアデータを読み込む</li>
               <li>スコア一覧でベストスコアを確認</li>
-              <li>ベスト枠画像を生成してSNSで共有</li>
+              <li>レート対象曲画像を生成してSNSで共有</li>
             </ol>
           </div>
         </section>
@@ -81,7 +81,7 @@ export default function GuidePage() {
         <section className="bg-[var(--color-card-bg)] rounded-2xl p-6 border border-[var(--color-header-border)]">
           <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
             <ImageIcon size={24} className="text-purple-500" />
-            ベスト枠画像生成
+            レート対象曲画像生成
           </h2>
           <div className="space-y-3 text-sm opacity-80">
             <p>
@@ -174,12 +174,6 @@ export default function GuidePage() {
             </div>
           </div>
         </section>
-
-        {/* Footer Note */}
-        <div className="text-center text-xs opacity-50 py-4">
-          TAKUMI³ Score Manager
-        </div>
-
       </div>
     </div>
   );

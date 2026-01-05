@@ -70,7 +70,7 @@ export default function Home() {
 						<div className="w-10 h-10 bg-[var(--color-accent)]/20 rounded-lg flex items-center justify-center mb-4 text-[var(--color-accent)] font-bold">
 							3
 						</div>
-						<h3 className="font-bold text-lg mb-2 text-[var(--color-foreground)]">ベスト枠画像生成</h3>
+						<h3 className="font-bold text-lg mb-2 text-[var(--color-foreground)]">レート対象曲画像生成</h3>
 						<p className="text-[var(--color-foreground)] opacity-60 text-sm">
 							あなたのベスト40をまとめた画像を生成してSNSでシェア。
 						</p>

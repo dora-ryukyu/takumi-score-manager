@@ -197,12 +197,12 @@ export default function ImportForm({ userId }: ImportFormProps) {
 
               {/* 警告一覧 */}
               {result.warnings.length > 0 && (
-                <div className="mt-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border border-yellow-200 dark:border-yellow-800">
-                  <h5 className="font-semibold text-yellow-800 dark:text-yellow-200 mb-2 flex items-center gap-2">
+                <div className="mt-4 p-4 bg-amber-50 dark:bg-yellow-900/20 rounded-lg border border-amber-300 dark:border-yellow-800">
+                  <h5 className="font-semibold text-amber-900 dark:text-yellow-200 mb-2 flex items-center gap-2">
                     <AlertTriangle size={16} />
                     警告 ({result.warnings.length}件)
                   </h5>
-                  <ul className="text-sm text-yellow-700 dark:text-yellow-300 space-y-1 max-h-40 overflow-y-auto">
+                  <ul className="text-sm text-amber-800 dark:text-yellow-300 space-y-1 max-h-40 overflow-y-auto">
                     {result.warnings.map((warning, i) => (
                       <li key={i}>• {warning}</li>
                     ))}

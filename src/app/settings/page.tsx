@@ -56,7 +56,7 @@ export default async function SettingsPage() {
                 maxLength={50}
               />
               <p className="text-xs text-[var(--color-foreground)] opacity-60">
-                スコア管理やベスト枠画像で表示される名前です。
+                スコア管理やレート対象曲画像で表示される名前です。
               </p>
             </div>
 

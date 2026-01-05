@@ -83,14 +83,14 @@ export default function ChartDetail({
                 </h1>
             </div>
             
-            <div className="text-right">
-                <div className="text-sm text-[var(--color-foreground)] opacity-70 mb-1">自己ベスト</div>
+            <div className="text-center md:text-right w-full md:w-auto">
+                <div className="text-sm text-[var(--color-foreground)] opacity-70 mb-1">スコア</div>
                 <div className="text-4xl font-mono font-bold text-[var(--color-foreground)]">
                     {info.currentBest.toLocaleString()}
                 </div>
                 <div className="text-xl mt-1">
                     <span className={rateColorClass}>
-                        単曲レート: {calculateRating(info.currentBest, info.constValue).toFixed(2)}
+                        単曲レート: {calculateRating(info.currentBest, info.constValue).toFixed(3)}
                     </span>
                 </div>
             </div>

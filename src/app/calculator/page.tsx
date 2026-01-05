@@ -8,14 +8,14 @@ export default function CalculatorPage() {
   const [activeTab, setActiveTab] = useState<"scoreToRate" | "rateToScore">("scoreToRate");
   
   // Common State
-  const [chartConst, setChartConst] = useState<string>("14.0");
+  const [chartConst, setChartConst] = useState<string>("15.0");
   
   // Score -> Rate State
   const [score, setScore] = useState<string>("1000000");
   const [calculatedRate, setCalculatedRate] = useState<string>("0.000");
   
   // Rate -> Score State
-  const [targetRate, setTargetRate] = useState<string>("16.00");
+  const [targetRate, setTargetRate] = useState<string>("20.000");
   const [calculatedScore, setCalculatedScore] = useState<number>(0);
 
   // Effect for Score -> Rate

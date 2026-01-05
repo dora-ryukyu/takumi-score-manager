@@ -28,7 +28,7 @@ export default function Menu() {
   const menuItems = [
     { href: "/dashboard", label: "スコア一覧", icon: ListMusic },
     { href: "/import", label: "CSVインポート", icon: FileSpreadsheet },
-    { href: "/image-gen", label: "ベスト枠画像生成", icon: ImageIcon },
+    { href: "/image-gen", label: "レート対象曲画像生成", icon: ImageIcon },
     { href: "/calculator", label: "計算機", icon: Calculator },
     { href: "/guide", label: "使い方", icon: BookOpen },
     { href: "/news", label: "お知らせ", icon: Bell },

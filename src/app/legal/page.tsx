@@ -59,11 +59,11 @@ export default function LegalPage() {
           </div>
 
           {/* Data Access Warning */}
-          <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-xl p-4 space-y-2">
-            <h3 className="font-bold text-yellow-800 dark:text-yellow-200 flex items-center gap-2">
+          <div className="bg-amber-50 dark:bg-yellow-900/20 border border-amber-300 dark:border-yellow-800 rounded-xl p-4 space-y-2">
+            <h3 className="font-bold text-amber-900 dark:text-yellow-200 flex items-center gap-2">
               ⚠️ 運営者によるデータアクセスについて
             </h3>
-            <div className="text-sm text-yellow-700 dark:text-yellow-300">
+            <div className="text-sm text-amber-800 dark:text-yellow-300">
               <p>
                 本サービスの運営者は、サービスの保守・運営・不具合調査のため、
                 データベースに保存されたデータを閲覧できる立場にあります。
@@ -185,21 +185,6 @@ export default function LegalPage() {
           </div>
         </section>
 
-        {/* Back Links */}
-        <div className="flex flex-wrap gap-4 text-sm">
-          <Link 
-            href="/news" 
-            className="text-[var(--color-accent)] hover:underline"
-          >
-            ← お知らせに戻る
-          </Link>
-          <Link 
-            href="/" 
-            className="text-[var(--color-accent)] hover:underline"
-          >
-            トップページへ
-          </Link>
-        </div>
 
       </div>
     </div>

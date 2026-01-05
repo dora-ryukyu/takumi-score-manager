@@ -28,9 +28,10 @@ export default function BestImageModal({ isOpen, onClose, imageDataUrl, isLoadin
       
       // Check if Web Share API is available and supports files
       if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+        const shareText = `#TAKUMI_Cubic #TAKUMI3_Score_Manager\n${userName || 'Player'}のTAKUMI³レート対象曲画像\nhttps://takumi-score-manager.otoge.workers.dev`;
         await navigator.share({
-          title: 'TAKUMI³ Score Manager - ベスト枠',
-          text: '#TAKUMI3 #匠スコアマネージャー',
+          title: 'TAKUMI³ Score Manager - レート対象曲',
+          text: shareText,
           files: [file],
         });
         setShareStatus('idle');
@@ -46,7 +47,7 @@ export default function BestImageModal({ isOpen, onClose, imageDataUrl, isLoadin
           setTimeout(() => setShareStatus('idle'), 3000);
         } catch {
           // If clipboard doesn't work, show Twitter share option
-          const tweetText = encodeURIComponent('#TAKUMI3 #匠スコアマネージャー\n画像を添付して投稿してください！');
+          const tweetText = encodeURIComponent(`#TAKUMI_Cubic #TAKUMI3_Score_Manager\n${userName || 'Player'}のTAKUMI³レート対象曲画像\nhttps://takumi-score-manager.otoge.workers.dev\n画像を添付して投稿してください！`);
           window.open(`https://twitter.com/intent/tweet?text=${tweetText}`, '_blank');
           setShareStatus('idle');
         }
@@ -72,7 +73,7 @@ export default function BestImageModal({ isOpen, onClose, imageDataUrl, isLoadin
         <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--color-header-border)]">
           <h3 className="text-lg font-bold text-[var(--color-foreground)] flex items-center gap-2">
             <ImageIcon className="text-[var(--color-accent)]" size={20} />
-            ベスト枠画像生成
+            レート対象曲画像生成
           </h3>
           <button 
             onClick={onClose}

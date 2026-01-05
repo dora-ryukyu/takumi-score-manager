@@ -102,7 +102,7 @@ export default function ImageGenClient({ initialScores, userName, userImage }: I
             <Info size={20} className="text-[var(--color-accent)] flex-shrink-0 mt-0.5" />
             <div className="text-sm text-[var(--color-foreground)] opacity-80 space-y-2">
               <p>
-                現在のベストスコア上位40曲のサマリー画像を生成します。
+                現在のレート対象曲の画像を生成します。
                 SNSへの共有や記録の保存にご利用ください。
               </p>
               <p className="opacity-60">
