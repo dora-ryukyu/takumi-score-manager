@@ -16,6 +16,13 @@ export interface NewsItem {
 // 新しいお知らせは配列の先頭に追加してください
 export const NEWS_DATA: NewsItem[] = [
   {
+    id: "2026-01-05-score-zero",
+    date: "2026-01-05",
+    title: "スコア0の譜面の記録について",
+    content: "サーバー負荷軽減のため、スコアが0点の譜面は記録されないように変更しました。\nプレイしたことのある譜面のみが記録されます。\n\nこれまでに記録されたデータには影響ありません。",
+    isImportant: true,
+  },
+  {
     id: "2026-01-01-mitaiou",
     date: "2026-01-01",
     title: "未対応楽曲に関するお知らせ",
