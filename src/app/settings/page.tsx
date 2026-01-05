@@ -36,7 +36,7 @@ export default async function SettingsPage() {
                 />
               </div>
               <div className="text-sm text-[var(--color-foreground)] opacity-60">
-                <p>アイコンはClerkアカウント（またはGoogleアカウント）のものが使用されます。</p>
+                <p>アイコンはClerkアカウントのものが使用されます。右上のアイコン→"Manage account"→"Profile"から変更可能です。</p>
               </div>
             </div>
 
