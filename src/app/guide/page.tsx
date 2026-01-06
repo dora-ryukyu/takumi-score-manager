@@ -1,4 +1,4 @@
-import { BookOpen, Upload, ImageIcon, Calculator, TrendingUp, Settings, HelpCircle, Mail } from "lucide-react";
+import { BookOpen, Upload, ImageIcon, Calculator, TrendingUp, Settings, HelpCircle, Mail, Bell } from "lucide-react";
 import { CONTACT_INFO } from "@/data/contact";
 
 export default function GuidePage() {
@@ -85,7 +85,7 @@ export default function GuidePage() {
           </h2>
           <div className="space-y-3 text-sm opacity-80">
             <p>
-              ベスト40曲のサマリー画像を生成し、SNS等で共有できます。
+              レート対象となるベスト40曲の画像を生成し、SNS等で共有できます。
             </p>
             <ul className="list-disc list-inside space-y-1 ml-2">
               <li>ゲーム風のデザインで画像を生成</li>
@@ -136,6 +136,23 @@ export default function GuidePage() {
           </div>
         </section>
 
+        {/* News */}
+        <section className="bg-[var(--color-card-bg)] rounded-2xl p-6 border border-[var(--color-header-border)]">
+          <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+            <Bell size={24} className="text-yellow-500" />
+            お知らせ
+          </h2>
+          <div className="space-y-3 text-sm opacity-80">
+            <p>
+              TAKUMI³ Score Managerの更新情報やメンテナンス情報は「お知らせ」ページで確認できます。
+            </p>
+            <ul className="list-disc list-inside space-y-1 ml-2">
+              <li><strong>重要なお知らせ</strong>：不具合情報や重要な変更点などを掲載</li>
+              <li><strong>アップデート情報</strong>：新機能の追加や改善内容を掲載</li>
+            </ul>
+          </div>
+        </section>
+
         {/* Settings */}
         <section className="bg-[var(--color-card-bg)] rounded-2xl p-6 border border-[var(--color-header-border)]">
           <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
@@ -144,6 +161,7 @@ export default function GuidePage() {
           </h2>
           <div className="space-y-3 text-sm opacity-80">
             <ul className="list-disc list-inside space-y-1 ml-2">
+              <li><strong>プロフィール設定</strong>：設定ページからプレイヤー名（表示名）を変更できます</li>
               <li><strong>テーマ切替</strong>：メニューからライト/ダークテーマを切り替え</li>
               <li><strong>データ削除</strong>：設定ページから全スコアデータを削除可能（アカウントは削除されません）</li>
             </ul>

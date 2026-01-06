@@ -14,8 +14,8 @@ export const CONTACT_INFO = {
     displayText: "Discord でお問い合わせ",
   },
   x: {
-    handle: "@Onekibright",
-    profileUrl: "https://x.com/Onekibright",
+    handle: "@Ongekibright",
+    profileUrl: "https://x.com/Ongekibright",
     displayText: "X でお問い合わせ",
   },
   // 将来的にGoogle Formを追加する場合はここに設定
