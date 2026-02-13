@@ -23,10 +23,10 @@ export const NEWS_DATA: NewsItem[] = [
     isImportant: true,
   },
   {
-    id: "2026-01-01-mitaiou",
-    date: "2026-01-01",
+    id: "2026-01-28-mitaiou",
+    date: "2026-01-28",
     title: "未対応楽曲に関するお知らせ",
-    content: "現在「TAKUMI³ Score Manager」では、以下の楽曲に対応しておりません。\n\n・竹\n理由：公式CSVデータに情報が含まれていないため。\n今後：対応時期は未定です。\n\n対応までは、スコアログの保存やレート対象曲への反映が行われません。ユーザーの皆様にはご不便をおかけしますが、ご了承のほどお願い申し上げます。",
+    content: "現在「TAKUMI³ Score Manager」では、以下の楽曲、譜面に対応しておりません。\n\n・竹\n・LAST PROPOZE [INS]\n・Oceanus [INS]\n理由：公式CSVデータに情報が含まれていないため。\n今後：対応時期は未定です。\n\n対応までは、スコアログの保存やレート対象曲への反映が行われません。ユーザーの皆様にはご不便をおかけしますが、ご了承のほどお願い申し上げます。",
     isImportant: true,
   },
   {

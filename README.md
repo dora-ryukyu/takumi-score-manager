@@ -1,47 +1,31 @@
-# OpenNext Starter
+# TAKUMI³ Score Manager
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+音楽ゲーム「TAKUMI³」のスコア管理・レート計算支援ツールです。  
+非公式ツールであり、公式とは一切関係ありません。
 
-## Getting Started
+## 🚀 機能概要
 
-Read the documentation at https://opennext.js.org/cloudflare.
+- **スコア管理**: 登録された全スコアを一覧表示、フィルタリング、ソートが可能。
+- **CSVインポート**: TAKUMI³からエクスポートしたCSVファイルを読み込み、スコアを一括登録・更新。
+- **レート計算**: 譜面定数とスコアに基づき、単曲レートおよび総合レート（ベスト40枠）を自動計算。
+- **画像生成**: レート対象曲（ベスト枠）の一覧画像を生成し、SNS共有用に保存可能。
+- **計算機**:
+  - スコア → 単曲レート計算
+  - 目標レート → 必要スコア逆算
+- **スコア推移**: 各楽曲のスコア更新履歴をグラフで可視化。
+- **その他**:
+  - ダークモード/ライトモード切替
+  - Clerkによるユーザー認証
+  - レスポンシブデザイン（PC/スマホ対応）
 
-## Develop
+## 🛠️ 技術スタック
 
-Run the Next.js development server:
+このプロジェクトは、最新のWeb標準技術とCloudflareのエッジコンピューティングを活用して構築されています。
 
-```bash
-npm run dev
-# or similar package manager command
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-## Preview
-
-Preview the application locally on the Cloudflare runtime:
-
-```bash
-npm run preview
-# or similar package manager command
-```
-
-## Deploy
-
-Deploy the application to Cloudflare:
-
-```bash
-npm run deploy
-# or similar package manager command
-```
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Framework**: [Next.js](https://nextjs.org/) (App Router)
+- **Deployment**: [OpenNext](https://opennext.js.org/) on Cloudflare Workers
+- **Database**: [Cloudflare D1](https://developers.cloudflare.com/d1/) (SQLite)
+- **Authentication**: [Clerk](https://clerk.com/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Charts**: [Recharts](https://recharts.org/)
+- **Icons**: [Lucide React](https://lucide.dev/)
