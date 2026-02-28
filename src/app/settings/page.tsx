@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { getUserProfile } from "@/lib/auth";
-import { updateProfile } from "./actions";
+import { updateProfile, getExternalUserId } from "./actions";
 import Image from "next/image";
 import DeleteDataButton from "./DeleteDataButton";
 
@@ -9,6 +9,8 @@ export default async function SettingsPage() {
   if (!profile) {
     redirect("/sign-in");
   }
+
+  const externalUserId = await getExternalUserId();
 
   return (
     <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-foreground)] p-4 sm:p-8">
@@ -27,7 +29,7 @@ export default async function SettingsPage() {
             
             {/* User Icon Display (Read-only) */}
             <div className="flex items-center gap-6">
-              <div className="relative w-20 h-20 rounded-full overflow-hidden border border-[var(--color-header-border)] bg-[var(--color-menu-hover)]">
+              <div className="relative w-20 h-20 flex-shrink-0 aspect-square rounded-full overflow-hidden border border-[var(--color-header-border)] bg-[var(--color-menu-hover)]">
                 <Image 
                   src={profile.imageUrl} 
                   alt={profile.displayName} 
@@ -57,6 +59,25 @@ export default async function SettingsPage() {
               />
               <p className="text-xs text-[var(--color-foreground)] opacity-60">
                 スコア管理やレート対象曲画像で表示される名前です。
+              </p>
+            </div>
+
+            {/* External User ID Input */}
+            <div className="space-y-2">
+              <label htmlFor="external_user_id" className="block text-sm font-medium text-[var(--color-foreground)]">
+                外部ツール ユーザーID
+              </label>
+              <input
+                type="text"
+                name="external_user_id"
+                id="external_user_id"
+                defaultValue={externalUserId ?? ""}
+                placeholder="takumi3scoretool のユーザーID"
+                className="block w-full rounded-md border-[var(--color-header-border)] bg-[var(--color-background)] text-[var(--color-foreground)] shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm px-4 py-2 border"
+                maxLength={100}
+              />
+              <p className="text-xs text-[var(--color-foreground)] opacity-60">
+                スコアインポート時に自動入力されます。空欄で保存するとクリアされます。
               </p>
             </div>
 

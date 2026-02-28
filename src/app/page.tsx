@@ -13,7 +13,7 @@ export default function Home() {
 						<span className="text-[var(--color-accent)]">もっとスマートに。</span>
 					</h1>
 					<p className="text-lg text-[var(--color-foreground)] opacity-70 leading-relaxed">
-						CSVをアップロードして、ベストスコアやレートを簡単に管理・分析。<br className="hidden sm:block" />
+						スコアデータを取り込んで、ベストスコアやレートを簡単に管理・分析。<br className="hidden sm:block" />
 						あなたの成長を可視化するツールです。
 					</p>
 				</div>
@@ -52,9 +52,9 @@ export default function Home() {
 						<div className="w-10 h-10 bg-[var(--color-accent)]/20 rounded-lg flex items-center justify-center mb-4 text-[var(--color-accent)] font-bold">
 							1
 						</div>
-						<h3 className="font-bold text-lg mb-2 text-[var(--color-foreground)]">CSVインポート</h3>
+						<h3 className="font-bold text-lg mb-2 text-[var(--color-foreground)]">スコアインポート</h3>
 						<p className="text-[var(--color-foreground)] opacity-60 text-sm">
-							公式のエクスポートデータをそのまま読み込み可能。
+							ユーザーIDを入力するだけでスコアを自動取得。CSVからの読み込みにも対応。
 						</p>
 					</div>
 					<div className="bg-[var(--color-card-bg)] p-6 rounded-2xl shadow-sm border border-[var(--color-header-border)]">

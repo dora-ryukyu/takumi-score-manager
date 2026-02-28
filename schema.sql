@@ -4,6 +4,7 @@
 CREATE TABLE IF NOT EXISTS users (
     user_id TEXT PRIMARY KEY,
     display_name TEXT,
+    external_user_id TEXT DEFAULT NULL,
     created_at TEXT DEFAULT (datetime('now'))
 );
 

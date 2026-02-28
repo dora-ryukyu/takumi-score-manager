@@ -11,6 +11,7 @@ export async function updateProfile(formData: FormData) {
   }
 
   const rawDisplayName = formData.get("display_name");
+  const rawExternalUserId = formData.get("external_user_id");
   
   // サーバーサイドの入力検証（フロントエンドを信用しない）
   // null/undefined チェック
@@ -38,19 +39,32 @@ export async function updateProfile(formData: FormData) {
     throw new Error("Display name too long");
   }
 
+  // external_user_id のバリデーション（任意フィールド）
+  let externalUserId: string | null = null;
+  if (rawExternalUserId && typeof rawExternalUserId === 'string') {
+    const trimmed = rawExternalUserId.replace(/[\x00-\x1F\x7F]/g, '').trim();
+    if (trimmed.length > 100) {
+      throw new Error("External user ID too long");
+    }
+    externalUserId = trimmed.length > 0 ? trimmed : null;
+  }
+
   const db = getDb();
   // Using UPSERT (INSERT OR REPLACE) to ensure user exists even if they were deleted before
   await db.prepare(`
-    INSERT INTO users (user_id, display_name, created_at) 
-    VALUES (?, ?, datetime('now'))
-    ON CONFLICT(user_id) DO UPDATE SET display_name = excluded.display_name
+    INSERT INTO users (user_id, display_name, external_user_id, created_at) 
+    VALUES (?, ?, ?, datetime('now'))
+    ON CONFLICT(user_id) DO UPDATE SET 
+      display_name = excluded.display_name,
+      external_user_id = excluded.external_user_id
   `)
-    .bind(userId, displayName)
+    .bind(userId, displayName, externalUserId)
     .run();
 
   revalidatePath("/");
   revalidatePath("/dashboard");
   revalidatePath("/settings");
+  revalidatePath("/import");
 }
 
 export async function deleteUserData() {
@@ -75,4 +89,20 @@ export async function deleteUserData() {
   revalidatePath("/");
   revalidatePath("/dashboard");
   revalidatePath("/settings");
+}
+
+/**
+ * 保存済みの外部ユーザーIDを取得する
+ */
+export async function getExternalUserId(): Promise<string | null> {
+  const { userId } = await auth();
+  if (!userId) return null;
+
+  const db = getDb();
+  const result = await db
+    .prepare("SELECT external_user_id FROM users WHERE user_id = ?")
+    .bind(userId)
+    .first<{ external_user_id: string | null }>();
+
+  return result?.external_user_id ?? null;
 }

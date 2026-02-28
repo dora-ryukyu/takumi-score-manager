@@ -1,4 +1,4 @@
-import { BookOpen, Upload, ImageIcon, Calculator, TrendingUp, Settings, HelpCircle, Mail, Bell } from "lucide-react";
+import { BookOpen, Upload, ImageIcon, Calculator, TrendingUp, Settings, HelpCircle, Mail, Bell, Download } from "lucide-react";
 import { CONTACT_INFO } from "@/data/contact";
 
 export default function GuidePage() {
@@ -24,7 +24,7 @@ export default function GuidePage() {
           <div className="bg-[var(--color-menu-hover)] rounded-xl p-4">
             <h3 className="font-bold mb-2">📌 基本的な流れ</h3>
             <ol className="list-decimal list-inside space-y-1 text-sm opacity-80">
-              <li>CSVインポートでスコアデータを読み込む</li>
+              <li>スコアインポートでスコアデータを読み込む</li>
               <li>スコア一覧でベストスコアを確認</li>
               <li>レート対象曲画像を生成してSNSで共有</li>
             </ol>
@@ -57,23 +57,24 @@ export default function GuidePage() {
         {/* CSV Import */}
         <section className="bg-[var(--color-card-bg)] rounded-2xl p-6 border border-[var(--color-header-border)]">
           <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-            <Upload size={24} className="text-green-500" />
-            CSVインポート
+            <Download size={24} className="text-green-500" />
+            スコアインポート
           </h2>
           <div className="space-y-3 text-sm opacity-80">
             <p>
-              TAKUMI³からエクスポートしたCSVファイルを読み込んで、スコアを一括登録できます。
+              ユーザーIDを入力するだけでスコアデータを自動取得・インポートできます。CSVファイルからの読み込みにも対応しています。
             </p>
-            <div className="bg-[var(--color-background)] p-4 rounded-lg font-mono text-xs overflow-x-auto">
-              <div className="opacity-60">曲名,難易度,レベル,スコア</div>
-              <div>Example Song,MASTER,14,987654</div>
-              <div>Another Song,INSANITY,15,965432</div>
-            </div>
-            <ul className="list-disc list-inside space-y-1 ml-2 mt-3">
-              <li>難易度は正式名称（NORMAL, HARD, MASTER, INSANITY, RAVAGE）で記載</li>
+            <ul className="list-disc list-inside space-y-1 ml-2">
+              <li><strong>直接インポート</strong>：外部ツールのユーザーIDを入力してスコアを自動取得</li>
+              <li><strong>CSVインポート</strong>：エクスポートしたCSVファイルからの読み込みも可能</li>
               <li>既存より高いスコアのみ更新されます（ベストスコア管理）</li>
               <li>マッチしなかった曲は警告として表示されます</li>
             </ul>
+            <div className="bg-[var(--color-menu-hover)] rounded-lg p-3 mt-3">
+              <p className="text-xs">
+                💡 設定ページでユーザーIDを保存すると、次回から自動入力されます
+              </p>
+            </div>
           </div>
         </section>
 

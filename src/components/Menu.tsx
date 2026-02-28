@@ -6,7 +6,7 @@ import {
   Menu as MenuIcon, 
   X, 
   Settings, 
-  FileSpreadsheet, 
+  Download, 
   ImageIcon, 
   ListMusic, 
   Moon, 
@@ -27,7 +27,7 @@ export default function Menu() {
 
   const menuItems = [
     { href: "/dashboard", label: "スコア一覧", icon: ListMusic },
-    { href: "/import", label: "CSVインポート", icon: FileSpreadsheet },
+    { href: "/import", label: "スコアインポート", icon: Download },
     { href: "/image-gen", label: "レート対象曲画像生成", icon: ImageIcon },
     { href: "/calculator", label: "計算機", icon: Calculator },
     { href: "/guide", label: "使い方", icon: BookOpen },

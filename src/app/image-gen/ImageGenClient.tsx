@@ -123,7 +123,7 @@ export default function ImageGenClient({ initialScores, userName, userImage }: I
 
           {enrichedScores.length === 0 && (
             <p className="text-sm text-center text-[var(--color-foreground)] opacity-60">
-              ※ スコアデータがありません。CSVインポートでデータを追加してください。
+              ※ スコアデータがありません。スコアインポートでデータを追加してください。
             </p>
           )}
         </div>
