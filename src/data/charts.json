@@ -1919,11 +1919,14 @@
     "title": "竹",
     "difficulty": "MASTER",
     "const_value": 14.3,
-    "match_config": {
-      "csv_difficulty": "MASTER",
-      "csv_level": "14",
-      "order": 0
-    }
+    "match_config": null
+  },
+  {
+    "chart_id": "Oceanus_INSANITY_14.3",
+    "title": "Oceanus",
+    "difficulty": "INSANITY",
+    "const_value": 14.3,
+    "match_config": null
   },
   {
     "chart_id": "Secret Order_INSANITY_14.3",
@@ -2386,6 +2389,13 @@
       "csv_level": "14+",
       "order": 0
     }
+  },
+  {
+    "chart_id": "LAST_PROPOZE_INSANITY_14.6",
+    "title": "LAST PROPOZE",
+    "difficulty": "INSANITY",
+    "const_value": 14.6,
+    "match_config": null
   },
   {
     "chart_id": "NiFlhel_MASTER_14.7",
@@ -3383,11 +3393,7 @@
     "title": "竹",
     "difficulty": "RAVAGE",
     "const_value": 15.3,
-    "match_config": {
-      "csv_difficulty": "INSANITY",
-      "csv_level": "15",
-      "order": 0
-    }
+    "match_config": null
   },
   {
     "chart_id": "Melody to Heaven_MASTER_15.4",

@@ -387,13 +387,8 @@ export async function importScores(
 
     const matchedRows = scoresToUpsert.length;
 
-    // 4.5. スコア0のエントリーを除外（DB消費最適化）
-    // スコア0は未プレイと同義のため、初回記録の必要なし
-    // これによりrows_written/rows_readを節約
-    const nonZeroScores = scoresToUpsert.filter(s => s.score > 0);
-
     // 5. バッチ処理で一括更新（N+1問題解消）
-    const batchResult = await batchUpsertScores(userId, nonZeroScores, observedAt);
+    const batchResult = await batchUpsertScores(userId, scoresToUpsert, observedAt);
 
     if (!batchResult.success) {
       return {

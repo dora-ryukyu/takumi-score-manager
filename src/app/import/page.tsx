@@ -1,12 +1,15 @@
 import { redirect } from "next/navigation";
 import { getUserProfile } from "@/lib/auth";
 import ImportForm from "./ImportForm";
+import { getManualCharts } from "@/lib/actions/manual-score";
 
 export default async function ImportPage() {
   const profile = await getUserProfile();
   if (!profile) {
     redirect("/sign-in");
   }
+
+  const manualCharts = await getManualCharts();
 
   return (
     <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-foreground)] p-4 sm:p-8">
@@ -20,9 +23,8 @@ export default async function ImportPage() {
           </div>
         </header>
 
-        <ImportForm userId={profile.userId} />
+        <ImportForm userId={profile.userId} manualCharts={manualCharts} />
       </div>
     </div>
   );
 }
-
