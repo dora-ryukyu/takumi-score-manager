@@ -1,12 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AlertTriangle, ChevronDown, ChevronUp } from "lucide-react";
 import { NEWS_DATA, NewsItem } from "@/data/news-data";
 import { CONTACT_INFO } from "@/data/contact";
+import { useNewsUnread } from "@/hooks/useNewsUnread";
 
 export default function NewsPage() {
   const [showAllGeneral, setShowAllGeneral] = useState(false);
+  const { markAllRead } = useNewsUnread();
+
+  // ページを開いたら未読を既読にする
+  useEffect(() => {
+    markAllRead();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // 重要なお知らせと一般のお知らせを分離
   const importantNews = NEWS_DATA.filter(item => item.isImportant);

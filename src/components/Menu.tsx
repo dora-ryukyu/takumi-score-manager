@@ -18,31 +18,42 @@ import {
 } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 import { SignOutButton } from "@clerk/nextjs";
+import { useNewsUnread } from "@/hooks/useNewsUnread";
 
 export default function Menu() {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { unreadCount } = useNewsUnread();
 
   const toggleOpen = () => setIsOpen(!isOpen);
 
   const menuItems = [
-    { href: "/dashboard", label: "スコア一覧", icon: ListMusic },
-    { href: "/import", label: "スコアインポート", icon: Download },
-    { href: "/image-gen", label: "レート対象曲画像生成", icon: ImageIcon },
-    { href: "/calculator", label: "計算機", icon: Calculator },
-    { href: "/guide", label: "使い方", icon: BookOpen },
-    { href: "/news", label: "お知らせ", icon: Bell },
-    { href: "/settings", label: "設定", icon: Settings },
+    { href: "/dashboard", label: "スコア一覧", icon: ListMusic, badge: 0 },
+    { href: "/import", label: "スコアインポート", icon: Download, badge: 0 },
+    { href: "/image-gen", label: "レート対象曲画像生成", icon: ImageIcon, badge: 0 },
+    { href: "/calculator", label: "計算機", icon: Calculator, badge: 0 },
+    { href: "/guide", label: "使い方", icon: BookOpen, badge: 0 },
+    { href: "/news", label: "お知らせ", icon: Bell, badge: unreadCount },
+    { href: "/settings", label: "設定", icon: Settings, badge: 0 },
   ];
 
   return (
     <>
       <button 
         onClick={toggleOpen}
-        className="p-2 text-[var(--color-foreground)] hover:bg-[var(--color-menu-hover)] rounded-lg transition-colors"
+        className="relative p-2 text-[var(--color-foreground)] hover:bg-[var(--color-menu-hover)] rounded-lg transition-colors"
         aria-label="Menu"
       >
         <MenuIcon size={24} />
+        {unreadCount > 0 && (
+          <span
+            className="absolute top-1 right-1 flex h-2.5 w-2.5"
+            aria-label={`${unreadCount}件の未読お知らせ`}
+          >
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500" />
+          </span>
+        )}
       </button>
 
       {/* Overlay */}
@@ -78,7 +89,12 @@ export default function Menu() {
                     className="flex items-center gap-3 px-4 py-3 text-[var(--color-foreground)] hover:bg-[var(--color-menu-hover)] rounded-lg transition-colors"
                   >
                     <item.icon size={20} />
-                    <span>{item.label}</span>
+                    <span className="flex-1">{item.label}</span>
+                    {item.badge > 0 && (
+                      <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 bg-red-500 text-white text-xs font-bold rounded-full">
+                        {item.badge > 99 ? "99+" : item.badge}
+                      </span>
+                    )}
                   </Link>
                 </li>
               ))}
