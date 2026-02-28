@@ -15,6 +15,7 @@ import path from 'path';
 const chartsPath = path.join(__dirname, '../src/data/charts.json');
 
 interface MatchConfig {
+  csv_title?: string;
   csv_difficulty: string;
   csv_level: string;
   order: number;

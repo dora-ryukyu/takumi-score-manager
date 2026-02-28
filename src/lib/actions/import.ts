@@ -69,6 +69,7 @@ interface ChartEntry {
  * match_configのパース後の型
  */
 interface MatchConfig {
+  csv_title?: string;      // CSV上の曲名（正式名と異なる場合のみ設定）
   csv_difficulty: string;  // 正式名称（例: "INSANITY", "MASTER"）
   csv_level: string;       // 文字列（例: "15+", "13"）
   order: number;           // 同一条件内での出現順序（0始まり）
@@ -350,8 +351,9 @@ export async function importScores(
         continue;
       }
 
-      // グループキーを生成（正式名称の難易度とレベル文字列で）
-      const key = `${chart.title}_${matchConfig.csv_difficulty}_${matchConfig.csv_level}`;
+      // グループキーを生成（csv_titleが指定されていればそちらを優先、なければtitleを使用）
+      const csvTitle = matchConfig.csv_title ?? chart.title;
+      const key = `${csvTitle}_${matchConfig.csv_difficulty}_${matchConfig.csv_level}`;
       const rowList = groupedRows.get(key);
 
       if (!rowList) {

@@ -2795,6 +2795,18 @@
     }
   },
   {
+    "chart_id": "Ardent_Gaff_MASTER_15.0",
+    "title": "Ardent Gaff",
+    "difficulty": "MASTER",
+    "const_value": 15,
+    "match_config": {
+      "csv_title": "Unknown (ID: 261)",
+      "csv_difficulty": "MASTER",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
     "chart_id": "ARCANAA？_MASTER_15.0",
     "title": "ARCANAA？",
     "difficulty": "MASTER",
@@ -3889,6 +3901,18 @@
     "difficulty": "INSANITY",
     "const_value": 15.9,
     "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Ardent_Gaff_INSANITY_15.9",
+    "title": "Ardent Gaff",
+    "difficulty": "INSANITY",
+    "const_value": 15.9,
+    "match_config": {
+      "csv_title": "Unknown (ID: 261)",
       "csv_difficulty": "INSANITY",
       "csv_level": "15+",
       "order": 0
