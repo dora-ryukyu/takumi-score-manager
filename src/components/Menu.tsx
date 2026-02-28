@@ -99,7 +99,7 @@ export default function Menu() {
             </button>
             
             <SignOutButton>
-                <button className="flex items-center gap-3 px-4 py-3 w-full text-left text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors">
+                <button className="flex items-center gap-3 px-4 py-3 w-full text-left text-red-500 hover:bg-[var(--alert-error-bg)] rounded-lg transition-colors">
                     <LogOut size={20} />
                     <span>ログアウト</span>
                 </button>

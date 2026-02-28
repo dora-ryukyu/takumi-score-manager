@@ -2812,7 +2812,7 @@
     "match_config": {
       "csv_title": "Unknown (ID: 261)",
       "csv_difficulty": "MASTER",
-      "csv_level": "15",
+      "csv_level": "",
       "order": 0
     }
   },
@@ -3920,7 +3920,7 @@
     "match_config": {
       "csv_title": "Unknown (ID: 261)",
       "csv_difficulty": "INSANITY",
-      "csv_level": "15+",
+      "csv_level": "",
       "order": 0
     }
   },

@@ -9,6 +9,55 @@
   --card-bg: #ffffff;
   --menu-hover: #f1f5f9; /* slate-100 */
   --accent-color: #2563eb; /* blue-600 */
+
+  /* Rate colors (light mode) */
+  --rate-rainbow: #d97706;
+  --rate-purple: #9333ea;
+  --rate-red: #dc2626;
+  --rate-orange: #ea580c;
+  --rate-yellow: #ca8a04;
+  --rate-green: #16a34a;
+  --rate-cyan: #0891b2;
+  --rate-default: #64748b;
+
+  /* Difficulty badge colors (light mode) */
+  --diff-normal-bg: #dbeafe;
+  --diff-normal-text: #1e3a8a;
+  --diff-normal-border: #93c5fd;
+  --diff-hard-bg: #fef9c3;
+  --diff-hard-text: #713f12;
+  --diff-hard-border: #fde047;
+  --diff-master-bg: #f3e8ff;
+  --diff-master-text: #581c87;
+  --diff-master-border: #d8b4fe;
+  --diff-insanity-bg: #e2e8f0;
+  --diff-insanity-text: #1e293b;
+  --diff-insanity-border: #94a3b8;
+  --diff-ravage-bg: #fee2e2;
+  --diff-ravage-text: #7f1d1d;
+  --diff-ravage-border: #fca5a5;
+  --diff-unknown-bg: #ffedd5;
+  --diff-unknown-text: #7c2d12;
+  --diff-unknown-border: #fdba74;
+
+  /* Difficulty text colors (inline, light mode) */
+  --diff-text-normal: #2563eb;
+  --diff-text-hard: #d97706;
+  --diff-text-master: #9333ea;
+  --diff-text-insanity: #475569;
+  --diff-text-ravage: #dc2626;
+
+  /* Alert/notification colors (light mode) */
+  --alert-warn-bg: #fffbeb;
+  --alert-warn-border: #fcd34d;
+  --alert-warn-text: #78350f;
+  --alert-warn-title: #92400e;
+  --alert-success-bg: #f0fdf4;
+  --alert-success-border: #86efac;
+  --alert-success-text: #14532d;
+  --alert-error-bg: #fef2f2;
+  --alert-error-border: #fca5a5;
+  --alert-error-text: #7f1d1d;
 }
 
 [data-theme="dark"] {
@@ -20,6 +69,55 @@
   --card-bg: #18181b; /* zinc-900 */
   --menu-hover: #27272a; /* zinc-800 */
   --accent-color: #3b82f6; /* blue-500 */
+
+  /* Rate colors (dark mode - brighter/lighter shades) */
+  --rate-rainbow: #fbbf24;
+  --rate-purple: #c084fc;
+  --rate-red: #f87171;
+  --rate-orange: #fb923c;
+  --rate-yellow: #facc15;
+  --rate-green: #4ade80;
+  --rate-cyan: #22d3ee;
+  --rate-default: #94a3b8;
+
+  /* Difficulty badge colors (dark mode) */
+  --diff-normal-bg: #1e3a5f;
+  --diff-normal-text: #93c5fd;
+  --diff-normal-border: #1d4ed8;
+  --diff-hard-bg: #422006;
+  --diff-hard-text: #fde68a;
+  --diff-hard-border: #92400e;
+  --diff-master-bg: #3b0764;
+  --diff-master-text: #d8b4fe;
+  --diff-master-border: #7e22ce;
+  --diff-insanity-bg: #1e293b;
+  --diff-insanity-text: #94a3b8;
+  --diff-insanity-border: #475569;
+  --diff-ravage-bg: #450a0a;
+  --diff-ravage-text: #fca5a5;
+  --diff-ravage-border: #991b1b;
+  --diff-unknown-bg: #431407;
+  --diff-unknown-text: #fdba74;
+  --diff-unknown-border: #9a3412;
+
+  /* Difficulty text colors (inline, dark mode) */
+  --diff-text-normal: #60a5fa;
+  --diff-text-hard: #fbbf24;
+  --diff-text-master: #c084fc;
+  --diff-text-insanity: #94a3b8;
+  --diff-text-ravage: #f87171;
+
+  /* Alert/notification colors (dark mode) */
+  --alert-warn-bg: #1c1a08;
+  --alert-warn-border: #92400e;
+  --alert-warn-text: #fde68a;
+  --alert-warn-title: #fcd34d;
+  --alert-success-bg: #052e16;
+  --alert-success-border: #166534;
+  --alert-success-text: #86efac;
+  --alert-error-bg: #1f0606;
+  --alert-error-border: #991b1b;
+  --alert-error-text: #fca5a5;
 }
 
 @theme inline {

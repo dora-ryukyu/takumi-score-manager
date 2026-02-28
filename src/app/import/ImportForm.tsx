@@ -23,13 +23,13 @@ interface ImportFormProps {
   manualCharts: ManualChart[];
 }
 
-// 難易度の表示色
+// 難易度の表示色（CSS変数小参照でテーマ対応）
 const DIFFICULTY_COLORS: Record<string, string> = {
-  NORMAL: "text-green-400",
-  HARD: "text-blue-400",
-  MASTER: "text-purple-400",
-  INSANITY: "text-red-400",
-  RAVAGE: "text-orange-400",
+  NORMAL: "text-[var(--diff-text-normal)]",
+  HARD: "text-[var(--diff-text-hard)]",
+  MASTER: "text-[var(--diff-text-master)]",
+  INSANITY: "text-[var(--diff-text-insanity)]",
+  RAVAGE: "text-[var(--diff-text-ravage)]",
 };
 
 export default function ImportForm({ userId, manualCharts }: ImportFormProps) {
@@ -221,16 +221,16 @@ export default function ImportForm({ userId, manualCharts }: ImportFormProps) {
           <div
             className={`rounded-2xl p-6 border ${
               result.success
-                ? "bg-green-50 border-green-200 dark:bg-green-900/20 dark:border-green-800"
-                : "bg-red-50 border-red-200 dark:bg-red-900/20 dark:border-red-800"
+                ? "bg-[var(--alert-success-bg)] border-[var(--alert-success-border)]"
+                : "bg-[var(--alert-error-bg)] border-[var(--alert-error-border)]"
             }`}
           >
             <div className="flex items-start gap-4">
               <div
                 className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${
                   result.success
-                    ? "bg-green-100 text-green-600 dark:bg-green-800 dark:text-green-300"
-                    : "bg-red-100 text-red-600 dark:bg-red-800 dark:text-red-300"
+                    ? "bg-[var(--alert-success-bg)] text-[var(--alert-success-text)]"
+                    : "bg-[var(--alert-error-bg)] text-[var(--alert-error-text)]"
                 }`}
               >
                 {result.success ? <CheckCircle size={24} /> : <AlertTriangle size={24} />}
@@ -240,8 +240,8 @@ export default function ImportForm({ userId, manualCharts }: ImportFormProps) {
                 <h4
                   className={`font-bold text-lg ${
                     result.success
-                      ? "text-green-800 dark:text-green-200"
-                      : "text-red-800 dark:text-red-200"
+                      ? "text-[var(--alert-success-text)]"
+                      : "text-[var(--alert-error-text)]"
                   }`}
                 >
                   {result.success ? "インポート完了" : "インポート失敗"}
@@ -249,36 +249,36 @@ export default function ImportForm({ userId, manualCharts }: ImportFormProps) {
 
                 {result.success ? (
                   <div className="grid grid-cols-3 gap-4 text-sm">
-                    <div className="text-center p-3 bg-white/50 dark:bg-black/20 rounded-lg">
+                    <div className="text-center p-3 bg-[var(--color-card-bg)] rounded-lg border border-[var(--color-header-border)]">
                       <div className="text-2xl font-bold text-[var(--color-foreground)]">
                         {result.totalRows}
                       </div>
                       <div className="text-[var(--color-foreground)] opacity-70">CSV行数</div>
                     </div>
-                    <div className="text-center p-3 bg-white/50 dark:bg-black/20 rounded-lg">
+                    <div className="text-center p-3 bg-[var(--color-card-bg)] rounded-lg border border-[var(--color-header-border)]">
                       <div className="text-2xl font-bold text-[var(--color-foreground)]">
                         {result.matchedRows}
                       </div>
                       <div className="text-[var(--color-foreground)] opacity-70">マッチ数</div>
                     </div>
-                    <div className="text-center p-3 bg-white/50 dark:bg-black/20 rounded-lg">
-                      <div className="text-2xl font-bold text-green-600 dark:text-green-400">
+                    <div className="text-center p-3 bg-[var(--color-card-bg)] rounded-lg border border-[var(--color-header-border)]">
+                      <div className="text-2xl font-bold text-[var(--alert-success-text)]">
                         {result.updatedRows}
                       </div>
                       <div className="text-[var(--color-foreground)] opacity-70">更新数</div>
                     </div>
                   </div>
                 ) : (
-                  <p className="text-red-700 dark:text-red-300">{result.error}</p>
+                  <p className="text-[var(--alert-error-text)]">{result.error}</p>
                 )}
 
                 {result.warnings.length > 0 && (
-                  <div className="mt-4 p-4 bg-amber-50 dark:bg-yellow-900/20 rounded-lg border border-amber-300 dark:border-yellow-800">
-                    <h5 className="font-semibold text-amber-900 dark:text-yellow-200 mb-2 flex items-center gap-2">
+                  <div className="mt-4 p-4 bg-[var(--alert-warn-bg)] rounded-lg border border-[var(--alert-warn-border)]">
+                    <h5 className="font-semibold text-[var(--alert-warn-title)] mb-2 flex items-center gap-2">
                       <AlertTriangle size={16} />
-                      警告 ({result.warnings.length}件)
+                      警告（{result.warnings.length}件）
                     </h5>
-                    <ul className="text-sm text-amber-800 dark:text-yellow-300 space-y-1 max-h-40 overflow-y-auto">
+                    <ul className="text-sm text-[var(--alert-warn-text)] space-y-1 max-h-40 overflow-y-auto">
                       {result.warnings.map((warning, i) => (
                         <li key={i}>• {warning}</li>
                       ))}
@@ -330,9 +330,9 @@ export default function ImportForm({ userId, manualCharts }: ImportFormProps) {
 
           <div className="bg-[var(--color-card-bg)] rounded-2xl p-6 border border-[var(--color-header-border)]">
             {/* 説明文 */}
-            <div className="flex items-start gap-3 p-4 bg-amber-50 dark:bg-yellow-900/20 rounded-xl border border-amber-200 dark:border-yellow-800 mb-6">
-              <AlertTriangle size={18} className="text-amber-500 mt-0.5 flex-shrink-0" />
-              <div className="text-sm text-amber-800 dark:text-yellow-200 space-y-1">
+            <div className="flex items-start gap-3 p-4 bg-[var(--alert-warn-bg)] rounded-xl border border-[var(--alert-warn-border)] mb-6">
+              <AlertTriangle size={18} className="text-[var(--alert-warn-title)] mt-0.5 flex-shrink-0" />
+              <div className="text-sm text-[var(--alert-warn-text)] space-y-1">
                 <p className="font-semibold">CSVに記録されていない譜面があります</p>
                 <p className="opacity-80">
                   以下の譜面は公式CSVに含まれていないため、CSVインポートでは自動登録されません。
@@ -463,20 +463,20 @@ export default function ImportForm({ userId, manualCharts }: ImportFormProps) {
                 <div
                   className={`flex items-start gap-3 p-4 rounded-xl border ${
                     manualResult.success
-                      ? "bg-green-50 border-green-200 dark:bg-green-900/20 dark:border-green-800"
-                      : "bg-red-50 border-red-200 dark:bg-red-900/20 dark:border-red-800"
+                      ? "bg-[var(--alert-success-bg)] border-[var(--alert-success-border)]"
+                      : "bg-[var(--alert-error-bg)] border-[var(--alert-error-border)]"
                   }`}
                 >
                   {manualResult.success ? (
-                    <CheckCircle size={18} className="text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle size={18} className="text-[var(--alert-success-text)] mt-0.5 flex-shrink-0" />
                   ) : (
-                    <AlertTriangle size={18} className="text-red-500 mt-0.5 flex-shrink-0" />
+                    <AlertTriangle size={18} className="text-[var(--alert-error-text)] mt-0.5 flex-shrink-0" />
                   )}
                   <p
                     className={`text-sm font-medium ${
                       manualResult.success
-                        ? "text-green-700 dark:text-green-300"
-                        : "text-red-700 dark:text-red-300"
+                        ? "text-[var(--alert-success-text)]"
+                        : "text-[var(--alert-error-text)]"
                     }`}
                   >
                     {manualResult.message}

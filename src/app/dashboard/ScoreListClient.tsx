@@ -364,7 +364,7 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
             <thead className="bg-[var(--color-menu-hover)] text-[var(--color-foreground)] font-semibold uppercase tracking-wider text-xs border-b border-[var(--color-header-border)]">
               <tr>
                 <th 
-                  className="px-6 py-4 cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 transition-colors group select-none"
+                  className="px-6 py-4 cursor-pointer hover:bg-[var(--color-menu-hover)] transition-colors group select-none"
                   onClick={() => handleSort('title')}
                 >
                   <div className="flex items-center">
@@ -372,7 +372,7 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
                   </div>
                 </th>
                 <th 
-                  className="px-6 py-4 text-right cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 transition-colors group select-none"
+                  className="px-6 py-4 text-right cursor-pointer hover:bg-[var(--color-menu-hover)] transition-colors group select-none"
                   onClick={() => handleSort('best_score')}
                 >
                   <div className="flex items-center justify-end">
@@ -381,7 +381,7 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
                 </th>
                 <th className="px-6 py-4 text-center">ランク</th>
                 <th 
-                  className="px-6 py-4 text-center cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 transition-colors group select-none"
+                  className="px-6 py-4 text-center cursor-pointer hover:bg-[var(--color-menu-hover)] transition-colors group select-none"
                   onClick={() => handleSort('const_value')}
                 >
                   <div className="flex justify-center items-center">
@@ -389,7 +389,7 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
                   </div>
                 </th>
                 <th 
-                  className="px-6 py-4 text-right cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 transition-colors group select-none"
+                  className="px-6 py-4 text-right cursor-pointer hover:bg-[var(--color-menu-hover)] transition-colors group select-none"
                   onClick={() => handleSort('rating')}
                 >
                   <div className="flex items-center justify-end">
@@ -397,7 +397,7 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
                   </div>
                 </th>
                 <th 
-                  className="px-6 py-4 text-right cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 transition-colors group select-none"
+                  className="px-6 py-4 text-right cursor-pointer hover:bg-[var(--color-menu-hover)] transition-colors group select-none"
                   onClick={() => handleSort('updated_at')}
                 >
                   <div className="flex items-center justify-end">
@@ -465,35 +465,31 @@ export default function ScoreListClient({ initialScores, userName, userImage }: 
   );
 }
 
-// Color classes for rank badges (semantic colors for visual distinction)
+// Color classes for rank badges (theme-aware via CSS variables)
 function getRankColorClassForBadge(rank: string) {
-  // Using specific Tailwind colors. In dark mode, we might want to invert or adjust.
-  // For simplicity, we can trust they look "okay" as badges, or use "dark:" variants if we want to perfect it.
   switch (rank) {
-    case "S+": return "bg-gradient-to-br from-yellow-100 to-amber-200 text-yellow-900 border border-yellow-300";
-    case "S":  return "bg-amber-100 text-amber-900 border border-amber-200";
-    case "AAA": return "bg-purple-100 text-purple-900 border border-purple-200";
-    case "AA": return "bg-indigo-100 text-indigo-900 border border-indigo-200";
-    case "A":  return "bg-blue-100 text-blue-900 border border-blue-200";
-    case "BBB": return "bg-sky-100 text-sky-900 border border-sky-200";
-    case "BB": return "bg-emerald-100 text-emerald-900 border border-emerald-200";
-    case "B":  return "bg-teal-100 text-teal-900 border border-teal-200";
-    default:   return "bg-slate-100 text-slate-700 border border-slate-200";
+    case "S+": return "bg-[var(--diff-hard-bg)] text-[var(--diff-hard-text)] border border-[var(--diff-hard-border)] font-extrabold";
+    case "S":  return "bg-[var(--diff-hard-bg)] text-[var(--diff-hard-text)] border border-[var(--diff-hard-border)]";
+    case "AAA": return "bg-[var(--diff-master-bg)] text-[var(--diff-master-text)] border border-[var(--diff-master-border)]";
+    case "AA": return "bg-[var(--diff-normal-bg)] text-[var(--diff-normal-text)] border border-[var(--diff-normal-border)]";
+    case "A":  return "bg-[var(--diff-normal-bg)] text-[var(--diff-normal-text)] border border-[var(--diff-normal-border)]";
+    case "BBB": return "bg-[var(--alert-success-bg)] text-[var(--alert-success-text)] border border-[var(--alert-success-border)]";
+    case "BB": return "bg-[var(--alert-success-bg)] text-[var(--alert-success-text)] border border-[var(--alert-success-border)]";
+    case "B":  return "bg-[var(--alert-success-bg)] text-[var(--alert-success-text)] border border-[var(--alert-success-border)]";
+    default:   return "bg-[var(--diff-insanity-bg)] text-[var(--diff-insanity-text)] border border-[var(--diff-insanity-border)]";
   }
 }
 
 function getDiffColorClass(diff: string | null) {
-  // Default/Unknown (includes EXPERT per instruction) -> Orange to differ from Insanity(Gray)
-  if (!diff) return "bg-orange-100 text-orange-900 border-orange-200";
+  if (!diff) return "bg-[var(--diff-unknown-bg)] text-[var(--diff-unknown-text)] border-[var(--diff-unknown-border)]";
   
   const d = diff.toUpperCase();
   
-  if (d.includes("RAVAGE")) return "bg-red-100 text-red-900 border-red-200";
-  if (d.includes("INSANITY")) return "bg-slate-200 text-slate-800 border-slate-300"; // Gray
-  if (d.includes("MASTER")) return "bg-purple-100 text-purple-900 border-purple-200";
-  if (d.includes("HARD")) return "bg-yellow-100 text-yellow-900 border-yellow-200";
-  if (d.includes("NORMAL")) return "bg-blue-100 text-blue-900 border-blue-200";
+  if (d.includes("RAVAGE")) return "bg-[var(--diff-ravage-bg)] text-[var(--diff-ravage-text)] border-[var(--diff-ravage-border)]";
+  if (d.includes("INSANITY")) return "bg-[var(--diff-insanity-bg)] text-[var(--diff-insanity-text)] border-[var(--diff-insanity-border)]";
+  if (d.includes("MASTER")) return "bg-[var(--diff-master-bg)] text-[var(--diff-master-text)] border-[var(--diff-master-border)]";
+  if (d.includes("HARD")) return "bg-[var(--diff-hard-bg)] text-[var(--diff-hard-text)] border-[var(--diff-hard-border)]";
+  if (d.includes("NORMAL")) return "bg-[var(--diff-normal-bg)] text-[var(--diff-normal-text)] border-[var(--diff-normal-border)]";
   
-  // Default for unmatching (e.g. EXPERT, EASY if exists)
-  return "bg-orange-100 text-orange-900 border-orange-200";
+  return "bg-[var(--diff-unknown-bg)] text-[var(--diff-unknown-text)] border-[var(--diff-unknown-border)]";
 }

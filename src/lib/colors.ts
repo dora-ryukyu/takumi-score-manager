@@ -16,26 +16,26 @@ export function getRateColorClass(rate: number): string {
     return "font-extrabold animate-rainbow";
   }
   if (rate >= 18.0) {
-    return "text-purple-600 dark:text-purple-400 font-bold";
+    return "text-[var(--rate-purple)] font-bold";
   }
   if (rate >= 16.0) {
-    return "text-red-600 dark:text-red-400 font-bold";
+    return "text-[var(--rate-red)] font-bold";
   }
   if (rate >= 14.0) {
-    return "text-orange-600 dark:text-orange-400 font-bold";
+    return "text-[var(--rate-orange)] font-bold";
   }
   if (rate >= 12.0) {
-    return "text-yellow-600 dark:text-yellow-400 font-bold"; 
+    return "text-[var(--rate-yellow)] font-bold";
   }
   if (rate >= 10.0) {
-    return "text-green-600 dark:text-green-400 font-bold";
+    return "text-[var(--rate-green)] font-bold";
   }
   if (rate >= 5.0) {
-    return "text-cyan-600 dark:text-cyan-400 font-bold"; 
+    return "text-[var(--rate-cyan)] font-bold";
   }
   
   // Default (< 5.0)
-  return "text-slate-500 dark:text-slate-400";
+  return "text-[var(--rate-default)]";
 }
 
 /**
