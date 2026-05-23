@@ -24,7 +24,7 @@ export default function GuidePage() {
           <div className="bg-[var(--color-menu-hover)] rounded-xl p-4">
             <h3 className="font-bold mb-2">📌 基本的な流れ</h3>
             <ol className="list-decimal list-inside space-y-1 text-sm opacity-80">
-              <li>スコアインポートでスコアデータを読み込む</li>
+              <li>スコアインポートでスコアデータを読み込む（次回以降はダッシュボードからワンタップ更新）</li>
               <li>スコア一覧でベストスコアを確認</li>
               <li>レート対象曲画像を生成してSNSで共有</li>
             </ol>
@@ -43,7 +43,8 @@ export default function GuidePage() {
             </p>
             <ul className="list-disc list-inside space-y-1 ml-2">
               <li><strong>並び替え</strong>：ヘッダーをクリック（PCの場合）またはドロップダウン（スマホの場合）で並び替え</li>
-              <li><strong>絞り込み</strong>：難易度、譜面定数、スコア、単曲レートで絞り込み可能</li>
+              <li><strong>検索・絞り込み</strong>：楽曲名によるテキスト検索や、難易度、譜面定数等での絞り込みが可能</li>
+              <li><strong>ワンタップ更新</strong>：ユーザーIDを保存している場合、「スコアを更新」ボタンで最新データを取り込めます</li>
               <li><strong>曲名タップ</strong>：スコア推移ページに移動し、過去のスコア履歴を確認</li>
             </ul>
             <div className="bg-[var(--color-menu-hover)] rounded-lg p-3 mt-3">
@@ -72,7 +73,7 @@ export default function GuidePage() {
             </ul>
             <div className="bg-[var(--color-menu-hover)] rounded-lg p-3 mt-3">
               <p className="text-xs">
-                💡 設定ページでユーザーIDを保存すると、次回から自動入力されます
+                💡 設定ページでユーザーIDを保存すると、ダッシュボードからワンタップで更新できるようになります
               </p>
             </div>
           </div>
@@ -89,9 +90,9 @@ export default function GuidePage() {
               レート対象となるベスト40曲の画像を生成し、SNS等で共有できます。
             </p>
             <ul className="list-disc list-inside space-y-1 ml-2">
-              <li>ゲーム風のデザインで画像を生成</li>
-              <li>ユーザー名、総合レート、各曲のスコア・レート値を表示</li>
-              <li>生成処理は端末上で行われ、サーバーに画像は保存されません</li>
+              <li>ページを開くと自動的に最新のベスト40曲の画像が生成されます</li>
+              <li>ゲーム風のデザインで生成された画像をプレビューで確認できます</li>
+              <li>そのまま「SNSで共有」ボタンでポストしたり、画像を保存することができます</li>
             </ul>
           </div>
         </section>
@@ -105,6 +106,7 @@ export default function GuidePage() {
           <div className="space-y-3 text-sm opacity-80">
             <p>
               譜面定数とスコアから単曲レートを計算したり、目標レートに必要なスコアを逆算できます。
+              「譜面から選択」のドロップダウンで楽曲を検索し、定数を自動入力することも可能です。
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
               <div className="bg-[var(--color-menu-hover)] rounded-lg p-3">
