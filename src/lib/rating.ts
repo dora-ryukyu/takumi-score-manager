@@ -52,7 +52,8 @@ export function calculateDisplayRate(songContrib: number): string {
   // 小数点第3位まで表示（例: 12.345）
   // 実際には (val * 40) を計算
   const rawRate = songContrib * 40;
-  return rawRate.toFixed(3); // 文字列として整形
+  const roundedRate = Math.round(rawRate * 1000) / 1000;
+  return roundedRate.toFixed(3); // 文字列として整形
 }
 
 /**
@@ -63,12 +64,14 @@ export function calculateDisplayRate(songContrib: number): string {
 export function calculateOverallRate(top40Contribs: number[]): string {
   const sum = top40Contribs.reduce((acc, cur) => acc + cur, 0);
   const rawOverall = sum * 40;
-  return rawOverall.toFixed(3);
+  const roundedOverall = Math.round(rawOverall * 1000) / 1000;
+  return roundedOverall.toFixed(3);
 }
 
 export function calculateRating(score: number, chartConst: number): number {
   const contrib = calculateSongContrib(score, chartConst);
-  return contrib * 40;
+  const rawRate = contrib * 40;
+  return Math.round(rawRate * 1000) / 1000;
 }
 /**
  * 単曲レートから到達スコアを逆算する

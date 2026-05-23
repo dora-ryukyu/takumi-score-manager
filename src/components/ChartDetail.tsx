@@ -13,6 +13,9 @@ import {
 } from "recharts";
 import { getDiffColor, getRateColorClass } from "@/lib/colors";
 import { calculateRating } from "@/lib/rating"; 
+import { useRouter } from "next/navigation";
+import { deleteChartScore } from "@/app/dashboard/actions";
+import { Trash2 } from "lucide-react";
 
 export type HistoryRow = {
   id: number;
@@ -22,6 +25,7 @@ export type HistoryRow = {
 };
 
 export type ChartInfo = {
+  chartId: string;
   title: string;
   difficulty: string;
   constValue: number;
@@ -36,6 +40,9 @@ export default function ChartDetail({
   info: ChartInfo;
 }) {
   const [excludeZero, setExcludeZero] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const router = useRouter();
 
   // Sort history for graph (oldest to newest)
   const sortedHistory = [...history].sort(
@@ -66,7 +73,7 @@ export default function ChartDetail({
       {/* Header Info */}
       <div className="bg-[var(--color-card-bg)] rounded-xl p-6 shadow-lg border border-[var(--color-header-border)] transition-colors">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-            <div>
+            <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
                     <span 
                         className="px-2 py-0.5 rounded text-white text-sm font-bold shadow-sm"
@@ -83,15 +90,64 @@ export default function ChartDetail({
                 </h1>
             </div>
             
-            <div className="text-center md:text-right w-full md:w-auto">
-                <div className="text-sm text-[var(--color-foreground)] opacity-70 mb-1">スコア</div>
-                <div className="text-4xl font-mono font-bold text-[var(--color-foreground)]">
-                    {info.currentBest.toLocaleString()}
+            <div className="flex flex-col md:items-end items-stretch w-full md:w-auto gap-3">
+                <div className="text-center md:text-right">
+                    <div className="text-sm text-[var(--color-foreground)] opacity-70 mb-1">スコア</div>
+                    <div className="text-4xl font-mono font-bold text-[var(--color-foreground)]">
+                        {info.currentBest.toLocaleString()}
+                    </div>
+                    <div className="text-xl mt-1">
+                        <span className={rateColorClass}>
+                            単曲レート: {calculateRating(info.currentBest, info.constValue).toFixed(3)}
+                        </span>
+                    </div>
                 </div>
-                <div className="text-xl mt-1">
-                    <span className={rateColorClass}>
-                        単曲レート: {calculateRating(info.currentBest, info.constValue).toFixed(3)}
-                    </span>
+
+                <div className="flex md:justify-end justify-center pt-2 border-t border-[var(--color-header-border)] md:border-0">
+                  {showConfirm ? (
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs text-red-500 font-semibold">本当に全スコア履歴を削除しますか？</span>
+                      <button
+                        onClick={async () => {
+                          setIsDeleting(true);
+                          try {
+                            const res = await deleteChartScore(info.chartId);
+                            if (res.success) {
+                              router.push("/dashboard");
+                              router.refresh();
+                            } else {
+                              alert(res.message);
+                              setIsDeleting(false);
+                              setShowConfirm(false);
+                            }
+                          } catch {
+                            alert("エラーが発生しました。");
+                            setIsDeleting(false);
+                            setShowConfirm(false);
+                          }
+                        }}
+                        disabled={isDeleting}
+                        className="px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded transition-colors disabled:opacity-50"
+                      >
+                        {isDeleting ? "削除中..." : "削除する"}
+                      </button>
+                      <button
+                        onClick={() => setShowConfirm(false)}
+                        disabled={isDeleting}
+                        className="px-3 py-1 bg-slate-700 hover:bg-slate-600 text-white text-xs font-bold rounded transition-colors disabled:opacity-50"
+                      >
+                        キャンセル
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      onClick={() => setShowConfirm(true)}
+                      className="flex items-center gap-1.5 text-xs text-red-400 hover:text-red-300 font-semibold px-3 py-1.5 rounded border border-red-500/30 hover:border-red-500/60 bg-red-500/5 hover:bg-red-500/10 transition-all cursor-pointer"
+                    >
+                      <Trash2 size={13} />
+                      この譜面の全スコアデータを削除
+                    </button>
+                  )}
                 </div>
             </div>
         </div>

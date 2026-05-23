@@ -61,7 +61,7 @@ export default async function ChartDetailPage({ params }: PageProps) {
       <div className="max-w-5xl mx-auto">
         <Link 
             href="/dashboard" 
-            className="text-slate-400 hover:text-white mb-6 inline-flex items-center gap-2 transition-colors"
+            className="text-[var(--color-foreground)] opacity-60 hover:opacity-100 mb-6 inline-flex items-center gap-2 transition-colors"
         >
             &larr; スコア一覧に戻る
         </Link>
@@ -69,6 +69,7 @@ export default async function ChartDetailPage({ params }: PageProps) {
         <ChartDetail 
             history={history}
             info={{
+                chartId: chartId,
                 title: currentBest.title,
                 difficulty: currentBest.difficulty,
                 currentBest: currentBest.best_score,

@@ -2391,7 +2391,7 @@
     }
   },
   {
-    "chart_id": "LAST_PROPOZE_INSANITY_14.6",
+    "chart_id": "LAST PROPOZE_INSANITY_14.6",
     "title": "LAST PROPOZE",
     "difficulty": "INSANITY",
     "const_value": 14.6,
@@ -2805,7 +2805,7 @@
     }
   },
   {
-    "chart_id": "Ardent_Gaff_MASTER_15.0",
+    "chart_id": "Ardent Gaff_MASTER_15.0",
     "title": "Ardent Gaff",
     "difficulty": "MASTER",
     "const_value": 15,
@@ -3913,7 +3913,7 @@
     }
   },
   {
-    "chart_id": "Ardent_Gaff_INSANITY_15.9",
+    "chart_id": "Ardent Gaff_INSANITY_15.9",
     "title": "Ardent Gaff",
     "difficulty": "INSANITY",
     "const_value": 15.9,
@@ -4044,5 +4044,146 @@
       "csv_level": "16",
       "order": 0
     }
+  },
+  {
+    "chart_id": "Erinnerung_INSANITY_15.4",
+    "title": "Erinnerung",
+    "difficulty": "INSANITY",
+    "const_value": 15.4,
+    "match_config": {
+      "csv_title": "Unknown (ID: 284)",
+      "csv_difficulty": "INSANITY",
+      "csv_level": "",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "HOPE_INSANITY_15.0",
+    "title": "HOPE",
+    "difficulty": "INSANITY",
+    "const_value": 15,
+    "match_config": {
+      "csv_title": "Unknown (ID: 289)",
+      "csv_difficulty": "INSANITY",
+      "csv_level": "",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Our Red_INSANITY_14.2",
+    "title": "Our Red",
+    "difficulty": "INSANITY",
+    "const_value": 14.2,
+    "match_config": {
+      "csv_title": "Unknown (ID: 293)",
+      "csv_difficulty": "INSANITY",
+      "csv_level": "",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Our Red_MASTER_13.3",
+    "title": "Our Red",
+    "difficulty": "MASTER",
+    "const_value": 13.3,
+    "match_config": {
+      "csv_title": "Unknown (ID: 293)",
+      "csv_difficulty": "MASTER",
+      "csv_level": "",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Teravolt_INSANITY_15.6",
+    "title": "Teravolt",
+    "difficulty": "INSANITY",
+    "const_value": 15.6,
+    "match_config": {
+      "csv_title": "Unknown (ID: 296)",
+      "csv_difficulty": "INSANITY",
+      "csv_level": "",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Voyager ─24,000,000,000km─_MASTER_13.9",
+    "title": "Voyager ─24,000,000,000km─",
+    "difficulty": "MASTER",
+    "const_value": 13.9,
+    "match_config": {
+      "csv_title": "Unknown (ID: 298)",
+      "csv_difficulty": "MASTER",
+      "csv_level": "",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "音弾超人ゴリライザー_RAVAGE_14.6",
+    "title": "音弾超人ゴリライザー",
+    "difficulty": "RAVAGE",
+    "const_value": 14.6,
+    "match_config": {
+      "csv_title": "Unknown (ID: 323)",
+      "csv_difficulty": "INSANITY",
+      "csv_level": "",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "音弾超人ゴリライザー_MASTER_13.0",
+    "title": "音弾超人ゴリライザー",
+    "difficulty": "MASTER",
+    "const_value": 13,
+    "match_config": {
+      "csv_title": "Unknown (ID: 323)",
+      "csv_difficulty": "MASTER",
+      "csv_level": "",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Angel Dust_INSANITY_15.7",
+    "title": "Angel Dust",
+    "difficulty": "INSANITY",
+    "const_value": 15.7,
+    "match_config": {
+      "csv_title": "Unknown (ID: 324)",
+      "csv_difficulty": "INSANITY",
+      "csv_level": "",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Angel Dust_MASTER_14.7",
+    "title": "Angel Dust",
+    "difficulty": "MASTER",
+    "const_value": 14.7,
+    "match_config": {
+      "csv_title": "Unknown (ID: 324)",
+      "csv_difficulty": "MASTER",
+      "csv_level": "",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "Angel Dust_HARD_13.0",
+    "title": "Angel Dust",
+    "difficulty": "HARD",
+    "const_value": 13,
+    "match_config": null
+  },
+  {
+    "chart_id": "チョウの標本_MASTER_14.3",
+    "title": "チョウの標本",
+    "difficulty": "MASTER",
+    "const_value": 14.3,
+    "match_config": null
+  },
+  {
+    "chart_id": "チョウの標本_RAVAGE_15.3",
+    "title": "チョウの標本",
+    "difficulty": "RAVAGE",
+    "const_value": 15.3,
+    "match_config": null
   }
 ]

@@ -16,6 +16,13 @@ export interface NewsItem {
 // 新しいお知らせは配列の先頭に追加してください
 export const NEWS_DATA: NewsItem[] = [
   {
+    id: "2026-05-20-add-charts",
+    date: "2026-05-20",
+    title: "新規楽曲・譜面追加およびスコア削除機能のお知らせ",
+    content: "新たに楽曲・譜面の追加、および個別の譜面データ削除機能の追加を行いました。\n\n【新規楽曲・譜面追加】\n■ CSVインポート対応\n・Erinnerung [INSANITY] (定数15.4)\n・HOPE [INSANITY] (定数15.0)\n・Our Red [MASTER: 13.3 / INSANITY: 14.2]\n・Teravolt [INSANITY] (定数15.6)\n・Voyager ─24,000,000,000km─ [MASTER] (定数13.9)\n・音弾超人ゴリライザー [MASTER: 13.0 / RAVAGE: 14.6]\n・Angel Dust [MASTER: 14.7 / INSANITY: 15.7]\n※CSV上で「Unknown (ID: xxx)」と出力される新曲の自動マッピングに対応しています。\n\n■ 手動スコア記録対応\n・Angel Dust [HARD] (定数13.0) ※CSV未掲載のため\n・チョウの標本 [MASTER: 14.3 / RAVAGE: 15.3] ※CSV未掲載のため\n\n【個別譜面のスコア削除機能】\n楽曲詳細ページのヘッダーカード右下部から、「この譜面の全スコアデータを削除」できるようになりました。間違えて登録してしまったデータなどのクリーンアップにご活用ください。\n※この操作は取り消せませんのでご注意ください。",
+    isImportant: true,
+  },
+  {
     id: "2026-03-01-direct-import",
     date: "2026-03-01",
     title: "スコア直接インポート機能の追加",

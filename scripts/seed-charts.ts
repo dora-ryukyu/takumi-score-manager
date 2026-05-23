@@ -47,12 +47,14 @@ function main() {
 
   // SQLファイルを一時的に生成
   const sqlStatements: string[] = [];
+  const activeIds: string[] = [];
 
   for (const chart of chartsData) {
     // SQLインジェクション防止のためのエスケープ（シングルクォートを二重化）
     const escapedTitle = chart.title.replace(/'/g, "''");
     const escapedDifficulty = chart.difficulty.replace(/'/g, "''");
     const escapedChartId = chart.chart_id.replace(/'/g, "''");
+    activeIds.push(escapedChartId);
 
     // match_configをJSON文字列に変換（nullの場合はNULL）
     let matchConfigSql: string;
@@ -73,6 +75,10 @@ ON CONFLICT(chart_id) DO UPDATE SET
   match_config = excluded.match_config;
 `.trim());
   }
+
+  // Delete charts that are not in charts.json
+  const quotedIds = activeIds.map(id => `'${id}'`).join(', ');
+  sqlStatements.push(`DELETE FROM charts WHERE chart_id NOT IN (${quotedIds});`);
 
   // 一時SQLファイルに書き込み
   const tempSqlPath = path.join(__dirname, 'temp_seed.sql');

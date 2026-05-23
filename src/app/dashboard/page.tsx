@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { getDb } from "@/lib/d1";
 import ScoreListClient from "./ScoreListClient";
 import { getUserProfile } from "@/lib/auth";
-
+import { getExternalUserId } from "@/app/settings/actions";
 // Type for the database row
 interface ScoreRow {
   chart_id: string;
@@ -41,6 +41,12 @@ export default async function DashboardPage() {
     ORDER BY best_score DESC
   `).bind(userId).all<ScoreRow>();
 
+  // 3. Fetch External User ID and Last Import Time
+  const savedExternalUserId = await getExternalUserId();
+  const lastImport = await db.prepare(
+    "SELECT observed_at FROM import_log WHERE user_id = ? ORDER BY observed_at DESC LIMIT 1"
+  ).bind(userId).first<{ observed_at: string }>();
+
   return (
     <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-foreground)] p-4 sm:p-8">
       <div className="max-w-6xl mx-auto space-y-6">
@@ -61,8 +67,11 @@ export default async function DashboardPage() {
         {/* Client Component for Sortable List & Stats */}
         <ScoreListClient 
           initialScores={results} 
+          userId={userId}
           userName={displayName} 
           userImage={imageUrl}
+          savedExternalUserId={savedExternalUserId}
+          lastImportedAt={lastImport?.observed_at ?? null}
         />
         
       </div>
