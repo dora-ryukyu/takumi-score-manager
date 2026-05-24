@@ -165,3 +165,27 @@ body {
   color: transparent;
   animation: rainbow-hue 5s linear infinite;
 }
+
+@keyframes gradient-xy {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.bg-animated-gradient {
+  background: linear-gradient(
+    -45deg,
+    var(--bg-main),
+    color-mix(in srgb, var(--accent-color) 15%, var(--bg-main)),
+    color-mix(in srgb, var(--rate-purple) 15%, var(--bg-main)),
+    var(--bg-main)
+  );
+  background-size: 400% 400%;
+  animation: gradient-xy 15s ease infinite;
+}

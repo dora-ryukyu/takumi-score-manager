@@ -4,7 +4,7 @@ import { BookOpen } from "lucide-react";
 
 export default function Home() {
 	return (
-		<div className="font-sans min-h-[calc(100vh-64px)] grid grid-rows-[auto_1fr_auto] bg-[var(--color-background)] text-[var(--color-foreground)]">
+		<div className="font-sans min-h-[calc(100vh-64px)] grid grid-rows-[auto_1fr_auto] bg-animated-gradient text-[var(--color-foreground)] transition-colors duration-1000">
 			{/* Hero Section */}
 			<main className="flex flex-col items-center justify-center text-center px-4 sm:px-8 py-20 gap-8">
 				<div className="space-y-4 max-w-2xl">

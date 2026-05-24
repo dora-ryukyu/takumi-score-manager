@@ -34,14 +34,14 @@ export const NEWS_DATA: NewsItem[] = [
     date: "2026-03-01",
     title: "スコア直接インポート機能の追加",
     content: "外部ツールのユーザーIDを入力するだけで、スコアデータを自動取得・インポートできる機能を追加しました。\n\nこれまではCSVファイルをダウンロードしてからアップロードする必要がありましたが、今後はユーザーIDを入力してボタンを押すだけでインポートが完了します。\n\nまた、設定ページでユーザーIDを保存しておくと、次回以降のインポート時に自動入力されます。\n\n従来のCSVファイルからのインポートも引き続きご利用いただけます。",
-    isImportant: true,
+    isImportant: false,
   },
   {
     id: "2026-03-01-manual-score",
     date: "2026-03-01",
     title: "手動スコア記録機能の追加・未対応楽曲への対応",
     content: "CSVに記録されていない譜面のスコアを手動で記録できる機能を追加しました。\n\nCSVインポートページに「手動スコア記録」セクションを追加しています。以下の譜面が対象です：\n・竹 [MASTER]\n・竹 [RAVAGE]\n・LAST PROPOZE [INSANITY]\n・Oceanus [INSANITY]\n\nなお、Ardent Gaff については公式CSVへの掲載が確認されたため、CSVインポートにて自動記録されます。",
-    isImportant: true,
+    isImportant: false,
   },
   {
     id: "2026-03-01-score-zero-restore",
