@@ -1,0 +1,33 @@
+- generic [active] [ref=f1e1]:
+  - banner [ref=f1e2]:
+    - generic [ref=f1e3]:
+      - link "TAKUMI³ Score Manager" [ref=f1e5] [cursor=pointer]:
+        - /url: /
+      - button "ログイン" [ref=f1e8]
+  - generic [ref=f1e9]:
+    - main [ref=f1e10]:
+      - generic [ref=f1e11]:
+        - heading "TAKUMI³のスコアを、 もっとスマートに。" [level=1] [ref=f1e12]: TAKUMI³のスコアを、もっとスマートに。
+        - paragraph [ref=f1e13]: スコアデータを取り込んで、ベストスコアやレートを簡単に管理・分析。あなたの成長を可視化するツールです。
+      - generic [ref=f1e14]:
+        - button "ログインして始める" [ref=f1e15]
+        - link "使い方" [ref=f1e16] [cursor=pointer]:
+          - /url: /guide
+      - generic [ref=f1e19]:
+        - generic [ref=f1e20]:
+          - generic [ref=f1e21]: "1"
+          - heading "スコアインポート" [level=3] [ref=f1e22]
+          - paragraph [ref=f1e23]: ユーザーIDを入力するだけでスコアを自動取得。CSVからの読み込みにも対応。
+        - generic [ref=f1e24]:
+          - generic [ref=f1e25]: "2"
+          - heading "レート計算 & スコア管理" [level=3] [ref=f1e26]
+          - paragraph [ref=f1e27]: 譜面定数に基づくレートを自動算出し、過去のスコア推移も確認可能。
+        - generic [ref=f1e28]:
+          - generic [ref=f1e29]: "3"
+          - heading "レート対象曲画像生成" [level=3] [ref=f1e30]
+          - paragraph [ref=f1e31]: あなたのベスト40をまとめた画像を生成してSNSでシェア。
+    - contentinfo [ref=f1e32]:
+      - link "プライバシーポリシー・利用規約" [ref=f1e34] [cursor=pointer]:
+        - /url: /legal
+      - paragraph [ref=f1e35]: © 2026 TAKUMI³ Score Manager. All rights reserved.
+  - alert [ref=f1e36]

@@ -48,5 +48,8 @@ next-env.d.ts
 .wrangler
 .dev.vars*
 
+# materials (ローカル検証用のCSVなど)
+/materials
+
 
 !.dev.vars.example

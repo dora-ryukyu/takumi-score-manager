@@ -16,6 +16,13 @@ export interface NewsItem {
 // 新しいお知らせは配列の先頭に追加してください
 export const NEWS_DATA: NewsItem[] = [
   {
+    id: "2026-08-04-csv-title-fix",
+    date: "2026-08-04",
+    title: "新曲対応とCSVインポート改善のお知らせ",
+    content: "最新のスコアCSVへの対応と、インポート機能の改善を行いました。\n\n■ 新曲「JUVEN+」の追加\n・JUVEN+ [MASTER: 14.9 / INSANITY: 15.7] をCSVインポート対応しました。\n\n■ CSV上の曲名が正式名に修正された楽曲の対応\nゲーム側の更新により、一部楽曲がCSV上で正式な曲名・レベルで出力されるようになりました。これに伴い、以下の楽曲を新しい形式でインポートできるよう修正しました。\n・Ardent Gaff [MASTER / INSANITY]\n・Erinnerung [INSANITY]\n・HOPE [INSANITY]\n・Our Red [MASTER / INSANITY]\n・Teravolt [INSANITY]\n・Voyager ─24，000，000，000km─ [MASTER]\n・音弾超人ゴリライザー [MASTER / RAVAGE]\n・Angel dust [MASTER / INSANITY]\n\n■ CSVインポート対応の追加（従来は手動記録のみ）\n以下の譜面が最新CSVに掲載されるようになったため、CSVインポートでの自動記録に対応しました。\n・竹 [MASTER / RAVAGE]\n・チョウの標本 [MASTER / RAVAGE]\n・LAST PROPOZE [INSANITY]\n・Oceanus [INSANITY]\n※手動スコア記録の対象からは除外されます。\n\n従来のCSVファイルをお使いの方も、最新のCSVでインポートし直すことで正しく記録されます。",
+    isImportant: true,
+  },
+  {
     id: "2026-05-23-ux-improvements",
     date: "2026-05-23",
     title: "機能改善とUIのアップデートのお知らせ",

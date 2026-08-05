@@ -51,8 +51,11 @@ export default function ScoreListClient({ initialScores, userId, userName, userI
   }, [initialScores]);
 
   // Overall Rate Calculation (Top 40 songs)
+  // contrib 0（スコア80万未満・未プレイ）の譜面はレート対象から除外
   const overallRate = useMemo(() => {
-    const sortedByContrib = [...enrichedScores].sort((a, b) => b.contrib - a.contrib);
+    const sortedByContrib = [...enrichedScores]
+      .filter(s => s.contrib > 0)
+      .sort((a, b) => b.contrib - a.contrib);
     const top40 = sortedByContrib.slice(0, 40);
     const sum = top40.reduce((acc, curr) => acc + curr.contrib, 0);
     return sum.toFixed(3);

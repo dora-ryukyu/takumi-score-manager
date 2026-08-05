@@ -12,23 +12,26 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+/**
+ * 保存済みテーマの初期値を読み込む
+ * 実際の <html data-theme> 設定は layout.tsx のインラインスクリプト（head内）が
+ * ペイント前に実行するため、ここでは現在の属性値から状態を初期化する
+ */
+function getInitialTheme(): Theme {
+  if (typeof document !== "undefined") {
+    const attr = document.documentElement.getAttribute("data-theme");
+    if (attr === "modern-light" || attr === "dark") return attr;
+  }
+  return "modern-light";
+}
+
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("modern-light");
-  const [mounted, setMounted] = useState(false);
+  const [theme, setThemeState] = useState<Theme>(getInitialTheme);
 
   useEffect(() => {
-    // Load theme from localStorage on mount
-    const savedTheme = localStorage.getItem("app-theme") as Theme;
-    // Handle legacy game-dark theme fallback
-    if (savedTheme && (savedTheme === "modern-light" || savedTheme === "dark")) {
-      setThemeState(savedTheme);
-      document.documentElement.setAttribute("data-theme", savedTheme);
-    } else {
-      // Default or invalid/legacy theme
-      document.documentElement.setAttribute("data-theme", "modern-light");
-    }
-    setMounted(true);
-  }, []);
+    // 状態と <html> の属性を同期する（インラインスクリプトで設定済みのはずだが確実に）
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
 
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme);

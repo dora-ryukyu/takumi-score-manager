@@ -35,9 +35,14 @@ export default function RootLayout({
 }>) {
 	return (
 		<ClerkProvider proxyUrl={process.env.NEXT_PUBLIC_CLERK_PROXY_URL}>
-			<html lang="ja">
+			<html lang="ja" suppressHydrationWarning>
 				<head>
 					<link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
+					<script
+						dangerouslySetInnerHTML={{
+							__html: `(function(){try{var t=localStorage.getItem("app-theme");if(t!=="modern-light"&&t!=="dark"){t="modern-light";}document.documentElement.setAttribute("data-theme",t);var s=document.createElement("style");s.textContent="html{background-color:"+(t==="dark"?"#000000":"#f8fafc")+";}";document.head.appendChild(s);}catch(e){document.documentElement.setAttribute("data-theme","modern-light");}})();`,
+						}}
+					/>
 				</head>
 				<body className={`${geistSans.variable} ${geistMono.variable} ${notoSansJP.variable} antialiased font-sans`}>
 					<ThemeProvider>

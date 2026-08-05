@@ -2,18 +2,11 @@ import { getCloudflareContext } from "@opennextjs/cloudflare";
 
 export function getDb(): D1Database {
   // Access the Cloudflare environment
-  // We cast to support both 'DB' (from wrangler.jsonc) and 'score_db' (from cloudflare-env.d.ts)
-  // just in case of mismatch, though 'DB' is the runtime binding name.
-  const env = getCloudflareContext().env as CloudflareEnv | Record<string, unknown>;
-  
-  if ('DB' in env && env.DB) {
-    return env.DB as D1Database;
-  }
-  
-  if ('score_db' in env && env.score_db) {
-    return env.score_db as D1Database;
+  const env = getCloudflareContext().env as CloudflareEnv;
+
+  if (!env.DB) {
+    throw new Error("D1 Database binding 'DB' not found in Cloudflare context.");
   }
 
-  throw new Error("D1 Database binding 'DB' or 'score_db' not found in Cloudflare context.");
+  return env.DB;
 }
-

@@ -1919,14 +1919,24 @@
     "title": "竹",
     "difficulty": "MASTER",
     "const_value": 14.3,
-    "match_config": null
+    "match_config": {
+      "csv_title": "竹",
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
   },
   {
     "chart_id": "Oceanus_INSANITY_14.3",
     "title": "Oceanus",
     "difficulty": "INSANITY",
     "const_value": 14.3,
-    "match_config": null
+    "match_config": {
+      "csv_title": "Oceanus",
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14",
+      "order": 0
+    }
   },
   {
     "chart_id": "Secret Order_INSANITY_14.3",
@@ -2395,7 +2405,12 @@
     "title": "LAST PROPOZE",
     "difficulty": "INSANITY",
     "const_value": 14.6,
-    "match_config": null
+    "match_config": {
+      "csv_title": "LAST PROPOZE",
+      "csv_difficulty": "INSANITY",
+      "csv_level": "14+",
+      "order": 0
+    }
   },
   {
     "chart_id": "NiFlhel_MASTER_14.7",
@@ -2810,9 +2825,9 @@
     "difficulty": "MASTER",
     "const_value": 15,
     "match_config": {
-      "csv_title": "Unknown (ID: 261)",
+      "csv_title": "Ardent Gaff",
       "csv_difficulty": "MASTER",
-      "csv_level": "",
+      "csv_level": "15",
       "order": 0
     }
   },
@@ -3393,7 +3408,12 @@
     "title": "竹",
     "difficulty": "RAVAGE",
     "const_value": 15.3,
-    "match_config": null
+    "match_config": {
+      "csv_title": "竹",
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
   },
   {
     "chart_id": "Melody to Heaven_MASTER_15.4",
@@ -3918,9 +3938,9 @@
     "difficulty": "INSANITY",
     "const_value": 15.9,
     "match_config": {
-      "csv_title": "Unknown (ID: 261)",
+      "csv_title": "Ardent Gaff",
       "csv_difficulty": "INSANITY",
-      "csv_level": "",
+      "csv_level": "15+",
       "order": 0
     }
   },
@@ -4051,9 +4071,9 @@
     "difficulty": "INSANITY",
     "const_value": 15.4,
     "match_config": {
-      "csv_title": "Unknown (ID: 284)",
+      "csv_title": "Erinnerung",
       "csv_difficulty": "INSANITY",
-      "csv_level": "",
+      "csv_level": "15",
       "order": 0
     }
   },
@@ -4063,9 +4083,9 @@
     "difficulty": "INSANITY",
     "const_value": 15,
     "match_config": {
-      "csv_title": "Unknown (ID: 289)",
+      "csv_title": "HOPE",
       "csv_difficulty": "INSANITY",
-      "csv_level": "",
+      "csv_level": "15",
       "order": 0
     }
   },
@@ -4075,9 +4095,9 @@
     "difficulty": "INSANITY",
     "const_value": 14.2,
     "match_config": {
-      "csv_title": "Unknown (ID: 293)",
+      "csv_title": "Our Red",
       "csv_difficulty": "INSANITY",
-      "csv_level": "",
+      "csv_level": "14",
       "order": 0
     }
   },
@@ -4087,9 +4107,9 @@
     "difficulty": "MASTER",
     "const_value": 13.3,
     "match_config": {
-      "csv_title": "Unknown (ID: 293)",
+      "csv_title": "Our Red",
       "csv_difficulty": "MASTER",
-      "csv_level": "",
+      "csv_level": "13",
       "order": 0
     }
   },
@@ -4099,21 +4119,21 @@
     "difficulty": "INSANITY",
     "const_value": 15.6,
     "match_config": {
-      "csv_title": "Unknown (ID: 296)",
+      "csv_title": "Teravolt",
       "csv_difficulty": "INSANITY",
-      "csv_level": "",
+      "csv_level": "15+",
       "order": 0
     }
   },
   {
-    "chart_id": "Voyager ─24,000,000,000km─_MASTER_13.9",
-    "title": "Voyager ─24,000,000,000km─",
+    "chart_id": "Voyager ─24，000，000，000km─_MASTER_13.9",
+    "title": "Voyager ─24，000，000，000km─",
     "difficulty": "MASTER",
     "const_value": 13.9,
     "match_config": {
-      "csv_title": "Unknown (ID: 298)",
+      "csv_title": "Voyager ─24，000，000，000km─",
       "csv_difficulty": "MASTER",
-      "csv_level": "",
+      "csv_level": "13+",
       "order": 0
     }
   },
@@ -4123,9 +4143,9 @@
     "difficulty": "RAVAGE",
     "const_value": 14.6,
     "match_config": {
-      "csv_title": "Unknown (ID: 323)",
+      "csv_title": "音弾超人ゴリライザー",
       "csv_difficulty": "INSANITY",
-      "csv_level": "",
+      "csv_level": "14+",
       "order": 0
     }
   },
@@ -4135,39 +4155,39 @@
     "difficulty": "MASTER",
     "const_value": 13,
     "match_config": {
-      "csv_title": "Unknown (ID: 323)",
+      "csv_title": "音弾超人ゴリライザー",
       "csv_difficulty": "MASTER",
-      "csv_level": "",
+      "csv_level": "13",
       "order": 0
     }
   },
   {
-    "chart_id": "Angel Dust_INSANITY_15.7",
-    "title": "Angel Dust",
+    "chart_id": "Angel dust_INSANITY_15.7",
+    "title": "Angel dust",
     "difficulty": "INSANITY",
     "const_value": 15.7,
     "match_config": {
-      "csv_title": "Unknown (ID: 324)",
+      "csv_title": "Angel dust",
       "csv_difficulty": "INSANITY",
-      "csv_level": "",
+      "csv_level": "15+",
       "order": 0
     }
   },
   {
-    "chart_id": "Angel Dust_MASTER_14.7",
-    "title": "Angel Dust",
+    "chart_id": "Angel dust_MASTER_14.7",
+    "title": "Angel dust",
     "difficulty": "MASTER",
     "const_value": 14.7,
     "match_config": {
-      "csv_title": "Unknown (ID: 324)",
+      "csv_title": "Angel dust",
       "csv_difficulty": "MASTER",
-      "csv_level": "",
+      "csv_level": "14+",
       "order": 0
     }
   },
   {
-    "chart_id": "Angel Dust_HARD_13.0",
-    "title": "Angel Dust",
+    "chart_id": "Angel dust_HARD_13.0",
+    "title": "Angel dust",
     "difficulty": "HARD",
     "const_value": 13,
     "match_config": null
@@ -4177,13 +4197,45 @@
     "title": "チョウの標本",
     "difficulty": "MASTER",
     "const_value": 14.3,
-    "match_config": null
+    "match_config": {
+      "csv_title": "チョウの標本",
+      "csv_difficulty": "MASTER",
+      "csv_level": "14",
+      "order": 0
+    }
   },
   {
     "chart_id": "チョウの標本_RAVAGE_15.3",
     "title": "チョウの標本",
     "difficulty": "RAVAGE",
     "const_value": 15.3,
-    "match_config": null
+    "match_config": {
+      "csv_title": "チョウの標本",
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "JUVEN+_MASTER_14.9",
+    "title": "JUVEN+",
+    "difficulty": "MASTER",
+    "const_value": 14.9,
+    "match_config": {
+      "csv_difficulty": "MASTER",
+      "csv_level": "14+",
+      "order": 0
+    }
+  },
+  {
+    "chart_id": "JUVEN+_INSANITY_15.7",
+    "title": "JUVEN+",
+    "difficulty": "INSANITY",
+    "const_value": 15.7,
+    "match_config": {
+      "csv_difficulty": "INSANITY",
+      "csv_level": "15+",
+      "order": 0
+    }
   }
 ]

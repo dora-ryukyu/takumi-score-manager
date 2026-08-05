@@ -9,22 +9,25 @@ const STORAGE_KEY = "news_last_read_id";
  * お知らせの未読管理フック
  * - 最新のお知らせIDをlocalStorageに保存
  * - 未読かどうか（= 最新IDが保存済みIDと異なる）を返す
+ *
+ * 初回アクセス時（lastReadId 未保存）は未読0を返す。
+ * お知らせページを開くと markAllRead が呼ばれ、その時点の最新IDが保存される。
  */
 export function useNewsUnread() {
   const [unreadCount, setUnreadCount] = useState(0);
 
   useEffect(() => {
     const lastReadId = localStorage.getItem(STORAGE_KEY);
-    
+
     if (NEWS_DATA.length === 0) {
       setUnreadCount(0);
       return;
     }
 
-    // 未読 = 未だ見ていないお知らせの数
+    // 一度も既読化していない（lastReadId 未保存）場合は未読0
+    // （過去のお知らせを全て未読扱いにする誤検知を防ぐ）
     if (!lastReadId) {
-      // 一度も見ていない場合は全件未読
-      setUnreadCount(NEWS_DATA.length);
+      setUnreadCount(0);
       return;
     }
 
